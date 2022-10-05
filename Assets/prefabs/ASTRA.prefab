@@ -289,6 +289,37 @@ Transform:
   m_Father: {fileID: 1081335853874647526}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1722239738696872636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5289141323403238411}
+  m_Layer: 0
+  m_Name: groundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5289141323403238411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722239738696872636}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.028191209, y: 0, z: 0.005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6399547613601586355}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1938385304482139537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,7 +1584,8 @@ GameObject:
   - component: {fileID: 6399547613601586355}
   - component: {fileID: 1022297811457541833}
   - component: {fileID: -3974398621766229066}
-  - component: {fileID: 5260938467417730917}
+  - component: {fileID: 1486211225457030816}
+  - component: {fileID: 7603364667557003838}
   m_Layer: 0
   m_Name: ASTRA
   m_TagString: Untagged
@@ -1577,6 +1609,7 @@ Transform:
   - {fileID: 4520061168110804142}
   - {fileID: 1492893013983699245}
   - {fileID: 6806689894837912038}
+  - {fileID: 5289141323403238411}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1612,39 +1645,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d498110e2d1af459dd3eab4cb716c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 5260938467417730917}
+  rb: {fileID: 1486211225457030816}
   distanceIsGrounded: 0.1
   mouseSensitivityX: 5
   mouseSensitivityY: 5
-  playerVelocity: {x: 0, y: 0, z: 0}
+  playerMouvement: {x: 0, y: 0, z: 0}
   playerSpeed: 3
   playerSprintSpeedMultiplicator: 1.5
-  jumpForce: 10
+  jumpForce: 0
   isSprinting: 0
+  floorMask:
+    serializedVersion: 2
+    m_Bits: 0
+  feetTransform: {fileID: 5289141323403238411}
   gravity: -9.81
   gravitySwited: 0
   gravitRotationSpeed: 1
   cam: {fileID: 6812435653995802223}
   camRotMin: -50
   camRotMax: 60
---- !u!143 &5260938467417730917
-CharacterController:
+--- !u!54 &1486211225457030816
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6017954833772545545}
-  m_Material: {fileID: 0}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &7603364667557003838
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017954833772545545}
+  m_Material: {fileID: 13400000, guid: 5838b8d2f42c6514699e68ca4ea253a5, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.7
-  m_Radius: 0.21
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.0001
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.84, z: 0}
+  m_Radius: 0.22
+  m_Height: 1.87
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.87, z: 0}
 --- !u!1 &6276221052763350486
 GameObject:
   m_ObjectHideFlags: 0

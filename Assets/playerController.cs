@@ -6,7 +6,7 @@ public class playerController : MonoBehaviour
 {
     [Header("Player mouvement")]
     //component
-    [SerializeField] private CharacterController characterController;
+    [SerializeField] private Rigidbody rb;
 
     //isGrounded
     [SerializeField] private float distanceIsGrounded = 1f;
@@ -16,17 +16,26 @@ public class playerController : MonoBehaviour
     [SerializeField] private float mouseSensitivityX = 5f;
     [SerializeField] private float mouseSensitivityY = 5f;
     private float rotationX = 0f;
+    private Vector2 playerMouseInput;
 
     //walk / jump
-    [SerializeField] private Vector3 playerVelocity;
+    [SerializeField] private Vector3 playerMouvement;
     private Vector3 playerInput;
     [SerializeField] private float playerSpeed = 3f;
     [SerializeField] private float playerSprintSpeedMultiplicator = 1.5f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private bool isSprinting;
 
+
+    [SerializeField] private LayerMask floorMask;
+    [SerializeField] private Transform feetTransform;
+    
+
+
+
+
     [Header("Gravity switch")]
-    [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float gravity = 1f;
     [SerializeField] private bool gravitySwited;
 
     //gravity player rotation
@@ -57,6 +66,11 @@ public class playerController : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        rb.AddForce(Physics.gravity * rb.mass * gravity);
+    }
+
     private IEnumerator smoothRotation()
     {
         Quaternion playerRotation = Quaternion.Euler(new Vector3(0, 0, 0));
@@ -81,7 +95,7 @@ public class playerController : MonoBehaviour
 
     private bool isGrounded()
     {
-        if(Physics.Raycast(transform.position, -transform.up, distanceIsGrounded) || characterController.isGrounded)
+        if(Physics.Raycast(transform.position, Vector3.down * gravity, distanceIsGrounded))
         {
             Debug.Log("IsGrounded");
             return true;
@@ -115,46 +129,20 @@ public class playerController : MonoBehaviour
             }
         }
 
+        playerMouvement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        playerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
 
+        Vector3 MoveVector = transform.TransformDirection(playerMouvement) * playerSpeed;
+        rb.velocity = new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
 
-        playerInput = new Vector2(playerSpeed * Input.GetAxis("Vertical"), playerSpeed * Input.GetAxis("Horizontal"));
-
-        float playerDirectionY = playerVelocity.y;
-        playerVelocity = (transform.TransformDirection(Vector3.forward) * playerInput.x) + (transform.TransformDirection(Vector3.right) * playerInput.y);
-        playerVelocity.y = playerDirectionY;
-
-
-
-        //jump system
-        if (isGrounded())
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerVelocity.y = -1f;
-            if (gravitySwited)
+            if (isGrounded())
             {
-                playerVelocity.y = 1f;
-            }
-
-
-                if (Input.GetKey(KeyCode.Space))
-            {
-                Debug.Log("jump");
-                if (!gravitySwited) 
-                {
-                    playerVelocity.y = jumpForce;
-                }
-                else
-                {
-                    playerVelocity.y = -jumpForce;
-                }
+                rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode.Impulse);
             }
         }
-        else
-        {
-            playerVelocity.y -= gravity * -2f * Time.deltaTime;
 
-        }
-
-        characterController.Move(playerVelocity * Time.deltaTime);
     }
 
 
