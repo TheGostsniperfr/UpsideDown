@@ -227,26 +227,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3974398621766229066, guid: 1682db025104a7940b23767b6cdcb84c, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 1171447693}
-    - target: {fileID: -3974398621766229066, guid: 1682db025104a7940b23767b6cdcb84c, type: 3}
-      propertyPath: gravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -3974398621766229066, guid: 1682db025104a7940b23767b6cdcb84c, type: 3}
-      propertyPath: jumpForce
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1486211225457030816, guid: 1682db025104a7940b23767b6cdcb84c, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1486211225457030816, guid: 1682db025104a7940b23767b6cdcb84c, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 6017954833772545545, guid: 1682db025104a7940b23767b6cdcb84c, type: 3}
       propertyPath: m_Name
       value: ASTRA
@@ -572,11 +552,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006427063}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &1171447693 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 1486211225457030816, guid: 1682db025104a7940b23767b6cdcb84c, type: 3}
-  m_PrefabInstance: {fileID: 586236942}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1249083754
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +740,7 @@ Transform:
   m_GameObject: {fileID: 1786691097}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10.06, y: 0.4, z: 11.337051}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1862343267}
