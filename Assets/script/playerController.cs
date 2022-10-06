@@ -77,17 +77,17 @@ public class playerController : MonoBehaviour
 
     private IEnumerator smoothRotation()
     {
-        Quaternion playerRotation = Quaternion.Euler(new Vector3(transform.localRotation.x, transform.localRotation.y, 0));
+        Quaternion playerRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0));
 
         if (gravitySwited)
         {
-            playerRotation = Quaternion.Euler(new Vector3(transform.localRotation.x, transform.localRotation.y, 180));
+            playerRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 180));
         }
   
 
         float time = -0.2f;
 
-        while(time < 1)
+        while(time < 0.3f)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, playerRotation, time);
 
