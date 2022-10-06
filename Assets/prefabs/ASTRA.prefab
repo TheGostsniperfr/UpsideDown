@@ -1664,6 +1664,7 @@ MonoBehaviour:
   cam: {fileID: 6812435653995802223}
   camRotMin: -50
   camRotMax: 60
+  animator: {fileID: 1022297811457541833}
 --- !u!54 &1486211225457030816
 Rigidbody:
   m_ObjectHideFlags: 0

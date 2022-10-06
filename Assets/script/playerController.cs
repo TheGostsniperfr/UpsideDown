@@ -50,6 +50,10 @@ public class playerController : MonoBehaviour
     [SerializeField] private float camRotMax = 90f;
 
 
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
+
+
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -73,11 +77,11 @@ public class playerController : MonoBehaviour
 
     private IEnumerator smoothRotation()
     {
-        Quaternion playerRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        Quaternion playerRotation = Quaternion.Euler(new Vector3(transform.localRotation.x, transform.localRotation.y, 0));
 
         if (gravitySwited)
         {
-            playerRotation = Quaternion.Euler(new Vector3(0, 0, 180));
+            playerRotation = Quaternion.Euler(new Vector3(transform.localRotation.x, transform.localRotation.y, 180));
         }
   
 
@@ -118,6 +122,7 @@ public class playerController : MonoBehaviour
             {
                 isSprinting = true;
                 playerSpeed *= playerSprintSpeedMultiplicator;
+                animator.SetBool("isRunning", true);
             }
         }
         else
@@ -126,6 +131,8 @@ public class playerController : MonoBehaviour
             {
                 playerSpeed /= playerSprintSpeedMultiplicator;
                 isSprinting = false;
+                animator.SetBool("isRunning", false);
+
             }
         }
 
@@ -135,11 +142,26 @@ public class playerController : MonoBehaviour
         Vector3 MoveVector = transform.TransformDirection(playerMouvement) * playerSpeed;
         rb.velocity = new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
 
+        if(MoveVector.magnitude > 0.1)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+
+        }
+
+
+
+
+        //jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isGrounded())
             {
                 rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode.Impulse);
+                animator.SetTrigger("jump");
             }
         }
 
@@ -169,6 +191,7 @@ public class playerController : MonoBehaviour
         {
             gravitySwited = !gravitySwited;
             gravity *= -1;
+            animator.SetTrigger("flip");
             StartCoroutine(smoothRotation());
          
 
