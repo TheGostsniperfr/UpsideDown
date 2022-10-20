@@ -18,6 +18,9 @@ public class playerController : MonoBehaviour
     private float rotationX = 0f;
     private Vector2 playerMouseInput;
 
+    //Sphere rotation
+    [SerializeField] private GameObject gravitySphere;
+
     //walk / jump
     [SerializeField] private Vector3 playerMouvement;
     private Vector3 playerInput;
@@ -90,6 +93,7 @@ public class playerController : MonoBehaviour
         while(time < 0.3f)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, playerRotation, time);
+            gravitySphere.transform.localRotation = transform.rotation;
 
             time += Time.deltaTime * gravitRotationSpeed;
             yield return null;
