@@ -941,7 +941,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 247
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2018,7 +2018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36b7dd2df57963449fb4432030418be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 1
+  amplitude: 0.15
   speed: 1
 --- !u!1 &5713198387218047635
 GameObject:
@@ -2052,6 +2052,37 @@ Transform:
   m_Father: {fileID: 263397186088652740}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5923713776004845568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 40883621074132310}
+  m_Layer: 0
+  m_Name: pickUpArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &40883621074132310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5923713776004845568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.3, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6399547613601586355}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6017954833772545545
 GameObject:
   m_ObjectHideFlags: 0
@@ -2065,6 +2096,7 @@ GameObject:
   - component: {fileID: -3974398621766229066}
   - component: {fileID: 1486211225457030816}
   - component: {fileID: 7603364667557003838}
+  - component: {fileID: 6529732382123068054}
   m_Layer: 3
   m_Name: ASTRA
   m_TagString: Untagged
@@ -2090,6 +2122,7 @@ Transform:
   - {fileID: 6806689894837912038}
   - {fileID: 5289141323403238411}
   - {fileID: 4623228373134132322}
+  - {fileID: 40883621074132310}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2129,6 +2162,7 @@ MonoBehaviour:
   distanceIsGrounded: 0.1
   mouseSensitivityX: 5
   mouseSensitivityY: 5
+  gravitySphere: {fileID: 4020154217627782711}
   playerMouvement: {x: 0, y: 0, z: 0}
   playerSpeed: 3
   playerSprintSpeedMultiplicator: 1.5
@@ -2175,6 +2209,22 @@ CapsuleCollider:
   m_Height: 1.87
   m_Direction: 1
   m_Center: {x: 0, y: 0.87, z: 0}
+--- !u!114 &6529732382123068054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017954833772545545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b065c8b3c5a9b14a8fd06e346d8d438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpArea: {fileID: 40883621074132310}
+  obj: {fileID: 0}
+  pickUpRange: 3
+  pickUpForce: 150
 --- !u!1 &6276221052763350486
 GameObject:
   m_ObjectHideFlags: 0
