@@ -941,7 +941,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 247
+    m_Bits: 503
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2221,10 +2221,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b065c8b3c5a9b14a8fd06e346d8d438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpArea: {fileID: 40883621074132310}
-  obj: {fileID: 0}
-  pickUpRange: 3
-  pickUpForce: 150
+  sphereCastRadius: 1
+  interactableLayerIndex: 8
+  lookObject: {fileID: 0}
+  mainCamera: {fileID: 6812435653995802223}
+  pickupParent: {fileID: 40883621074132310}
+  currentlyPickedUpObject: {fileID: 0}
+  minSpeed: 0
+  maxSpeed: 300
+  maxDistancePickUp: 2
+  maxDistance: 1
+  rotationSpeed: 100
 --- !u!1 &6276221052763350486
 GameObject:
   m_ObjectHideFlags: 0

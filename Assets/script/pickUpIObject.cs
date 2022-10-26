@@ -3,71 +3,120 @@ using UnityEngine;
 
 public class pickUpIObject : MonoBehaviour
 {
-    [Header("Pickup settings")]
-    [SerializeField] private Transform pickUpArea;
-    [SerializeField] private GameObject obj;
-    private Rigidbody objRB;
+    [Header("InteractableInfo")]
+    public float sphereCastRadius = 0.5f;
+    public int interactableLayerIndex;
+    private Vector3 raycastPos;
+    public GameObject lookObject;
+    private isPickUp physicsObject;
+    [SerializeField] private Camera mainCamera;
 
-    [Header("physics parameters")]
-    [SerializeField] private float pickUpRange = 3.0f;
-    [SerializeField] private float pickUpForce = 150.0f;
+    [Header("Pickup")]
+    [SerializeField] private Transform pickupParent;
+    public GameObject currentlyPickedUpObject;
+    private Rigidbody pickupRB;
 
-    private void Update()
+    [Header("ObjectFollow")]
+    [SerializeField] private float minSpeed = 0;
+    [SerializeField] private float maxSpeed = 300f;
+    [SerializeField] private float maxDistancePickUp = 10f;
+    [SerializeField] private float maxDistance = 10f;
+
+    private float currentSpeed = 0f;
+    private float currentDist = 0f;
+
+    [Header("Rotation")]
+    public float rotationSpeed = 100f;
+    Quaternion lookRot;
+
+
+    //A simple visualization of the point we're following in the scene view
+    private void OnDrawGizmos()
     {
-        if (Input.GetMouseButtonDown(0))
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(pickupParent.position, 0.5f);
+    }
+
+    //Interactable Object detections and distance check
+    void Update()
+    {
+        //Here we check if we're currently looking at an interactable object
+        raycastPos = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        RaycastHit hit;
+        if (Physics.SphereCast(raycastPos, sphereCastRadius, mainCamera.transform.forward, out hit, maxDistancePickUp, 1 << interactableLayerIndex))
         {
-            if(obj == null)
+
+            lookObject = hit.collider.transform.root.gameObject;
+
+        }
+        else
+        {
+            lookObject = null;
+
+        }
+
+
+
+        //if we press the button of choice
+        if (Input.GetButtonDown("Fire2"))
+        {
+            //and we're not holding anything
+            if (currentlyPickedUpObject == null)
             {
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange))
+                //and we are looking an interactable object
+                if (lookObject != null)
                 {
-                    pickUpObject(hit.transform.gameObject);
+
+                    PickUpObject();
                 }
+
             }
+            //if we press the pickup button and have something, we drop it
             else
             {
-                dropObject();
+                BreakConnection();
             }
         }
-        if (obj != null)
-        {
-            moveObject();
-        }
+
+
     }
 
-    private void moveObject()
+    //Velocity movement toward pickup parent and rotation
+    private void FixedUpdate()
     {
-        if(Vector3.Distance(obj.transform.position, pickUpArea.position) > 0.1f)
+        if (currentlyPickedUpObject != null)
         {
-            Vector3 moveDirection = (pickUpArea.position - obj.transform.position);
-            objRB.AddForce(moveDirection * pickUpForce);
+            currentDist = Vector3.Distance(pickupParent.position, pickupRB.position);
+            currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, currentDist / maxDistance);
+            currentSpeed *= Time.fixedDeltaTime;
+            Vector3 direction = pickupParent.position - pickupRB.position;
+            pickupRB.velocity = direction.normalized * currentSpeed;
+            //Rotation
+            lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
+            lookRot = Quaternion.Slerp(mainCamera.transform.rotation, lookRot, rotationSpeed * Time.fixedDeltaTime);
+            pickupRB.MoveRotation(lookRot);
         }
+
     }
 
-    private void pickUpObject(GameObject item)
+    //Release the object
+    public void BreakConnection()
     {
-        if (item.GetComponent<Rigidbody>())
-        {
-            objRB = item.GetComponent<Rigidbody>();
-            objRB.useGravity =false;
-            objRB.drag = 10;
-            objRB.constraints = RigidbodyConstraints.FreezeRotation;
-
-            objRB.transform.parent = pickUpArea;
-            obj = item;
-        }
+        pickupRB.constraints = RigidbodyConstraints.None;
+        currentlyPickedUpObject = null;
+        physicsObject.pickedUp = false;
+        currentDist = 0;
     }
 
-    private void dropObject()
+    public void PickUpObject()
     {
-
-        objRB.useGravity = true;
-        objRB.drag = 1;
-        objRB.constraints = RigidbodyConstraints.None;
-
-        objRB.transform.parent = null;
-        obj = null;
-        
+        physicsObject = lookObject.GetComponentInChildren<isPickUp>();
+        currentlyPickedUpObject = lookObject;
+        pickupRB = currentlyPickedUpObject.GetComponent<Rigidbody>();
+        pickupRB.constraints = RigidbodyConstraints.FreezeRotation;
+        physicsObject.playerInteractions = this;
+        StartCoroutine(physicsObject.PickUp());
     }
+
 
 }

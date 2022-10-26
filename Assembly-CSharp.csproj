@@ -59,6 +59,7 @@
     <Compile Include="Assets\script\ABelieveICanFly.cs" />
     <Compile Include="Assets\script\playerController.cs" />
     <Compile Include="Assets\script\pickUpIObject.cs" />
+    <Compile Include="Assets\isPickUp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
