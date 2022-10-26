@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class pickUpIObject : MonoBehaviour
@@ -10,6 +11,7 @@ public class pickUpIObject : MonoBehaviour
     public GameObject lookObject;
     private isPickUp physicsObject;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private playerController playerController;
 
     [Header("Pickup")]
     [SerializeField] private Transform pickupParent;
@@ -75,6 +77,10 @@ public class pickUpIObject : MonoBehaviour
             //if we press the pickup button and have something, we drop it
             else
             {
+                //syncro gravity  
+                physicsObject.synLocalGrabity(playerController.gravity);
+
+                //throw object
                 pickupRB.velocity *= throwSpeed;
                 BreakConnection();
             }

@@ -2225,13 +2225,14 @@ MonoBehaviour:
   interactableLayerIndex: 8
   lookObject: {fileID: 0}
   mainCamera: {fileID: 6812435653995802223}
+  playerController: {fileID: -3974398621766229066}
   pickupParent: {fileID: 40883621074132310}
   currentlyPickedUpObject: {fileID: 0}
   minSpeed: 0
   maxSpeed: 300
   maxDistancePickUp: 2
   maxDistance: 1
-  testSpeeed: 1.5
+  throwSpeed: 1.5
   rotationSpeed: 100
 --- !u!1 &6276221052763350486
 GameObject:

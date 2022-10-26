@@ -38,7 +38,7 @@ public class playerController : MonoBehaviour
 
 
     [Header("Gravity switch")]
-    [SerializeField] private float gravity = 1f;
+    [SerializeField] public int gravity = 1;
     [SerializeField] private bool gravitySwited;
 
     //gravity player rotation
