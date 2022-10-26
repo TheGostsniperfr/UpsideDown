@@ -2231,6 +2231,7 @@ MonoBehaviour:
   maxSpeed: 300
   maxDistancePickUp: 2
   maxDistance: 1
+  testSpeeed: 1.5
   rotationSpeed: 100
 --- !u!1 &6276221052763350486
 GameObject:

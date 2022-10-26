@@ -21,6 +21,7 @@ public class pickUpIObject : MonoBehaviour
     [SerializeField] private float maxSpeed = 300f;
     [SerializeField] private float maxDistancePickUp = 10f;
     [SerializeField] private float maxDistance = 10f;
+    [SerializeField] private float throwSpeed =1f;
 
     private float currentSpeed = 0f;
     private float currentDist = 0f;
@@ -74,6 +75,7 @@ public class pickUpIObject : MonoBehaviour
             //if we press the pickup button and have something, we drop it
             else
             {
+                pickupRB.velocity *= throwSpeed;
                 BreakConnection();
             }
         }
@@ -95,6 +97,7 @@ public class pickUpIObject : MonoBehaviour
             lookRot = Quaternion.LookRotation(mainCamera.transform.position - pickupRB.position);
             lookRot = Quaternion.Slerp(mainCamera.transform.rotation, lookRot, rotationSpeed * Time.fixedDeltaTime);
             pickupRB.MoveRotation(lookRot);
+
         }
 
     }
