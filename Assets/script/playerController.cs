@@ -1,8 +1,9 @@
 
 using System.Collections;
 using UnityEngine;
+using Mirror;
 
-public class playerController : MonoBehaviour
+public class playerController : NetworkBehaviour
 {
     [Header("Player mouvement")]
     //component
@@ -65,11 +66,14 @@ public class playerController : MonoBehaviour
 
     void Update()
     {
-        movePlayer();
-        rotationPlayer();
-        rotationCamera();
+        if (isLocalPlayer)
+        {
+            movePlayer();
+            rotationPlayer();
+            rotationCamera();
 
-        gravitySwitcher();
+            gravitySwitcher();
+        }
 
     }
 
