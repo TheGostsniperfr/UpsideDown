@@ -17,18 +17,28 @@ public class playerController : NetworkBehaviour
     [SerializeField] private float mouseSensitivityX = 5f;
     [SerializeField] private float mouseSensitivityY = 5f;
     private float rotationX = 0f;
-    private Vector2 playerMouseInput;
 
     //Sphere rotation
     [SerializeField] private GameObject gravitySphere;
 
     //walk / jump
     [SerializeField] private Vector3 playerMouvement;
-    private Vector3 playerInput;
     [SerializeField] private float playerSpeed = 3f;
-    [SerializeField] private float playerSprintSpeedMultiplicator = 1.5f;
+    [SerializeField] private float playerCurrentSpeed = 3f;
+    [SerializeField] private float playerSprintSpeed = 4.5f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private bool isSprinting;
+    [SerializeField] private bool playerInputControlBool = true;
+    private Vector3 currentInputControl;
+    private Vector3 smoothInputVelocity;
+    private Vector3 playerInputControl;
+    [SerializeField] private float currentSmoothInputSpeed = 0.05f;
+    [SerializeField] private float jumpSmoothInputSpeed = 1f;
+
+
+    [SerializeField] float smoothInputSpeed = 0.2f;
+        
+
 
 
     [SerializeField] private LayerMask floorMask;
@@ -57,11 +67,13 @@ public class playerController : NetworkBehaviour
     [Header("Animator")]
     [SerializeField] private Animator animator;
 
-
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        playerSpeed = playerCurrentSpeed;
+        smoothInputSpeed = currentSmoothInputSpeed;
     }
 
     void Update()
@@ -81,6 +93,28 @@ public class playerController : NetworkBehaviour
     {
         rb.AddForce(Physics.gravity * rb.mass * gravity);
     }
+
+    public void EnablePlayerInput(bool status)
+    {
+        if (status)
+        {
+            //enable player input 
+            playerInputControlBool = true;
+        }
+        else
+        {
+            //disable player input
+            playerInputControlBool = false;
+
+            //disable sprint and reset speed sprint
+            isSprinting = false;
+            playerSpeed = playerCurrentSpeed;
+
+            //reset player inertia ( smooth )
+            //playerMouvement = new Vector3(0, 0, 0);
+        }
+    }
+
 
     private IEnumerator smoothRotation()
     {
@@ -123,13 +157,23 @@ public class playerController : NetworkBehaviour
 
     private void movePlayer()
     {
+        if (isGrounded())
+        {
+            smoothInputSpeed = currentSmoothInputSpeed;
+        }
+        else
+        {
+            smoothInputSpeed = jumpSmoothInputSpeed;
+        }
+
+
         //sprint system
         if (Input.GetKey(KeyCode.LeftShift))
         {
             if (!isSprinting)
             {
                 isSprinting = true;
-                playerSpeed *= playerSprintSpeedMultiplicator;
+                playerSpeed = playerSprintSpeed;
                 animator.SetBool("isRunning", true);
             }
         }
@@ -137,17 +181,29 @@ public class playerController : NetworkBehaviour
         { 
             if (isSprinting)
             {
-                playerSpeed /= playerSprintSpeedMultiplicator;
+                playerSpeed = playerCurrentSpeed;
                 isSprinting = false;
                 animator.SetBool("isRunning", false);
 
             }
         }
 
-        playerMouvement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        playerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        
 
-        Vector3 MoveVector = transform.TransformDirection(playerMouvement) * playerSpeed;
+        if (playerInputControlBool)
+        {
+            playerInputControl = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        }
+        else
+        {
+            playerInputControl = new Vector3(0f, 0f, 0f);    
+        }
+
+        currentInputControl = Vector3.SmoothDamp(currentInputControl, playerInputControl, ref smoothInputVelocity, smoothInputSpeed);
+
+
+
+        Vector3 MoveVector = transform.TransformDirection(currentInputControl) * playerSpeed;
         rb.velocity = new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
 
         if(MoveVector.magnitude > 0.1)
@@ -181,15 +237,21 @@ public class playerController : NetworkBehaviour
 
     private void rotationPlayer()
     {
-        transform.rotation *= Quaternion.Euler(0f, Input.GetAxis("Mouse X") * mouseSensitivityX, 0f);
+        if (playerInputControlBool)
+        {
+            transform.rotation *= Quaternion.Euler(0f, Input.GetAxis("Mouse X") * mouseSensitivityX, 0f);
+        }
     }
 
 
     private void rotationCamera()
     {
-        rotationX -= Input.GetAxis("Mouse Y") * mouseSensitivityY;
-        rotationX = Mathf.Clamp(rotationX, camRotMin, camRotMax);
-        cam.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
+        if (playerInputControlBool)
+        {
+            rotationX -= Input.GetAxis("Mouse Y") * mouseSensitivityY;
+            rotationX = Mathf.Clamp(rotationX, camRotMin, camRotMax);
+            cam.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
+        }
     }
 
 
