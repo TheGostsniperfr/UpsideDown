@@ -36,6 +36,7 @@ public class PauseMenu : MonoBehaviour
             {
                 //Go to menu
                 Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
                 pauseMenuUI.SetActive(true);
 
                 //stop player mouvement
