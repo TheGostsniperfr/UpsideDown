@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8116685558262953886}
   m_Layer: 8
   m_Name: uploads_files_3471221_111
-  m_TagString: Untagged
+  m_TagString: cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

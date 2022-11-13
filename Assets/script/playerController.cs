@@ -143,12 +143,10 @@ public class playerController : NetworkBehaviour
     {
         if(Physics.Raycast(transform.position, Vector3.down * gravity, distanceIsGrounded))
         {
-            Debug.Log("IsGrounded");
             return true;
         }
         else
         {
-            Debug.Log("Is not Grounded");
             return false;
         }
          
