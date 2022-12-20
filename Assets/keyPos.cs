@@ -7,9 +7,11 @@ public class keyPos : MonoBehaviour
 {
     [SerializeField] private TMP_Text keyLetter;
     [SerializeField] private TMP_Text keyText;
+    [SerializeField] Animation animator;
 
     public char currentKey;
     public bool isActived;
+    [SerializeField] private bool isPlayingAnimation;
 
     public void setKeyDisplay(char key, string text)
     {
@@ -21,9 +23,20 @@ public class keyPos : MonoBehaviour
 
     private void Update()
     {
-        if(isActived && Input.GetKeyDown((KeyCode)currentKey))
+        if (isActived && !isPlayingAnimation && Input.GetKeyDown((KeyCode)currentKey))
         {
             Debug.Log($"key : {currentKey} is pressed !");
+            isPlayingAnimation = true;
+        }
+
+        if (Input.GetKeyUp((KeyCode)currentKey))
+        {
+            isPlayingAnimation = false;
+        }
+
+        if (isPlayingAnimation)
+        {
+            animator.Play("");
         }
     }
 

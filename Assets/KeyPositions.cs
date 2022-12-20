@@ -14,12 +14,11 @@ public class KeyPositions : MonoBehaviour
             keyPos.removeKeyDisplay();
         }
 
-
         ShowKeyUI('F', "Je suis un test !");
         ShowKeyUI('A', "Je suis un autre test !");
         ShowKeyUI('P', "EX : Ouvrir la porte");
 
-        removeKeyUI('A');
+        //removeKeyUI('A');
 
         ShowKeyUI('E', "boire la bierre");
     }
