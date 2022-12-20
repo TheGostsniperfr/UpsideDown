@@ -12,3 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778d33917ee50ce49ad6eca4dd6a2bc5, type: 3}
   m_Name: test
   m_EditorClassIdentifier: 
+  dialogue:
+  - 'Hi, i''m the first dialogue to test
+
+    the dialogueSystem !'
+  - 'And now, i''m the second dialogue,
+
+    to continue testing the dialogueSystem
+    !
+
+    GoodBye !!'
