@@ -52,8 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358d72f01e15e1942a7953f2765c6093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueBox: {fileID: 353443786}
   textLabel: {fileID: 1820769418}
   writerEffect: {fileID: 1685056506}
+  testDialogue: {fileID: 11400000, guid: 3c73add390385ac4bbb70af459635325, type: 2}
 --- !u!114 &1685056506
 MonoBehaviour:
   m_ObjectHideFlags: 0
