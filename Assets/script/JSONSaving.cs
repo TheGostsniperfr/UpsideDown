@@ -6,18 +6,24 @@ using UnityEngine;
 public class JSONSaving : MonoBehaviour
 {
     private string path = string.Empty;
-    private string persistentpath = string.Empty;
 
     private void setPaths()
     {
         path = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
-        persistentpath = Application.persistentDataPath + Path.AltDirectorySeparatorChar + "SavaData.json";
     }
 
-    private void Start()
+    public PlayerData loadSettings()
     {
         setPaths();
-        saveData(new PlayerData());
+
+        //check if file exist
+
+        if (System.IO.File.Exists(path))
+        {
+            saveData(new PlayerData());
+        }
+
+        return loadData();
     }
 
     public void saveData(PlayerData playerData)
@@ -31,12 +37,14 @@ public class JSONSaving : MonoBehaviour
         writer.Write(json);
     }
 
-    public void loadData()
+    public PlayerData loadData()
     {
         using StreamReader reader= new StreamReader(path);
         string json = reader.ReadToEnd();
 
         PlayerData data = JsonUtility.FromJson<PlayerData>(json);
         Debug.Log(data.ToString());
+
+        return data;
     }
 }

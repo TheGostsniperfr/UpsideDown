@@ -917,7 +917,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1511774532}
-  - component: {fileID: 7129262947549456413}
   m_Layer: 5
   m_Name: keyPositions
   m_TagString: Untagged
@@ -950,24 +949,6 @@ RectTransform:
   m_AnchoredPosition: {x: 500, y: 0}
   m_SizeDelta: {x: 700, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7129262947549456413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511774531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4194d952e7fc8d849a5a57c22f9f63f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyPositions:
-  - {fileID: 1724929649398684681}
-  - {fileID: 7916151678040690002}
-  - {fileID: 7293176135619581814}
-  - {fileID: 1611562416452806648}
-  - {fileID: 8783048168958029351}
 --- !u!1 &1551846881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1541,7 @@ GameObject:
   - component: {fileID: 4210506302235174037}
   - component: {fileID: 3099082352167736425}
   - component: {fileID: 417625063579459112}
+  - component: {fileID: 2044664128431815908}
   m_Layer: 5
   m_Name: playerCanvas
   m_TagString: Untagged
@@ -1667,6 +1649,24 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 7024443726750504576}
   playerController: {fileID: -3974398621766229066}
   menuActivate: 0
+--- !u!114 &2044664128431815908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77044795008022038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4194d952e7fc8d849a5a57c22f9f63f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyPositions:
+  - {fileID: 1724929649398684681}
+  - {fileID: 7916151678040690002}
+  - {fileID: 7293176135619581814}
+  - {fileID: 1611562416452806648}
+  - {fileID: 8783048168958029351}
 --- !u!1 &562717275163515338
 GameObject:
   m_ObjectHideFlags: 0
@@ -4929,7 +4929,7 @@ GameObject:
   - component: {fileID: 5830707951911622002}
   - component: {fileID: 4189979148403011227}
   - component: {fileID: 6736326969627325604}
-  - component: {fileID: 7348501557511073505}
+  - component: {fileID: 1937141051}
   m_Layer: 3
   m_Name: ASTRA
   m_TagString: Player
@@ -5022,6 +5022,13 @@ MonoBehaviour:
   camRotMin: -50
   camRotMax: 60
   animator: {fileID: 1022297811457541833}
+  playerReatch: 5
+  playerData:
+    jSONSaving: {fileID: 0}
+    useKey: 102
+    switchGravityKey: 101
+  keyPositions: {fileID: 2044664128431815908}
+  jSONSaving: {fileID: 1937141051}
 --- !u!54 &1486211225457030816
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5141,7 +5148,7 @@ MonoBehaviour:
   cooldownRegen: 1
   hpRegenByCycle: 10
   CooldownActiveRegenAfterDamage: 3
---- !u!114 &7348501557511073505
+--- !u!114 &1937141051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

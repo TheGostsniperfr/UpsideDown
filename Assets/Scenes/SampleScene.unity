@@ -797,9 +797,10 @@ GameObject:
   - component: {fileID: 1786691100}
   - component: {fileID: 1786691099}
   - component: {fileID: 1786691098}
+  - component: {fileID: 1786691102}
   m_Layer: 0
   m_Name: Cube_bleu
-  m_TagString: Untagged
+  m_TagString: interactive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -882,6 +883,20 @@ Transform:
   m_Father: {fileID: 1862343267}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1786691102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786691097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be94f703c7d8af84d97bbb2a65bfbec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: use
+  description: just a test
 --- !u!1 &1862343266
 GameObject:
   m_ObjectHideFlags: 0

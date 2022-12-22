@@ -12,7 +12,6 @@ public class playerController : NetworkBehaviour
     //isGrounded
     [SerializeField] private float distanceIsGrounded = 1f;
 
-
     //rotation
     [SerializeField] private float mouseSensitivityX = 5f;
     [SerializeField] private float mouseSensitivityY = 5f;
@@ -34,19 +33,10 @@ public class playerController : NetworkBehaviour
     private Vector3 playerInputControl;
     [SerializeField] private float currentSmoothInputSpeed = 0.05f;
     [SerializeField] private float jumpSmoothInputSpeed = 1f;
-
-
     [SerializeField] float smoothInputSpeed = 0.2f;
-        
-
-
 
     [SerializeField] private LayerMask floorMask;
     [SerializeField] private Transform feetTransform;
-    
-
-
-
 
     [Header("Gravity switch")]
     [SerializeField] public int gravity = 1;
@@ -55,20 +45,29 @@ public class playerController : NetworkBehaviour
     //gravity player rotation
     [SerializeField] private float gravitRotationSpeed = 1f;
 
-
-
-
     [Header("camera")]
     [SerializeField] private Camera cam;
     [SerializeField] private float camRotMin = -90f;
     [SerializeField] private float camRotMax = 90f;
 
-
     [Header("Animator")]
     [SerializeField] private Animator animator;
 
+    [Header("player Action")]
+    [SerializeField] private float playerReatch = 3f;
+ 
+    [Header("player keyBind")]
+    public PlayerData playerData;
+    [SerializeField] KeyPositions keyPositions;
+    [SerializeField] JSONSaving jSONSaving;
+    private RaycastHit hit;
+    private GameObject currentHit = null;
+    private char currentKey = 'f';
+
     private void Awake()
     {
+        loadPlayerSettings();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -80,6 +79,8 @@ public class playerController : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
+            checkPlayerActions();
+
             movePlayer();
             rotationPlayer();
             rotationCamera();
@@ -94,6 +95,55 @@ public class playerController : NetworkBehaviour
         rb.AddForce(Physics.gravity * rb.mass * gravity);
     }
 
+    //check if the player can do an action
+    private void checkPlayerActions()
+    {
+        
+
+        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, playerReatch))
+        {
+            //check new interactif object ( ex: door, tv, ... )
+            if (hit.collider != null && hit.collider.gameObject.tag == "interactive" && hit.collider.gameObject != currentHit)
+            {
+                if(currentHit != null)
+                {
+                    keyPositions.removeKeyUI(currentKey);
+                }
+
+                currentHit = hit.collider.gameObject;
+
+                var e = currentHit.GetComponent<interactiveObjectID>();
+
+                switch (e.type)
+                {
+                    case "use" :
+                        currentKey = playerData.useKey;
+                        break;       
+                    default: 
+                        Debug.LogError("no key bind for : " + currentHit);
+                        break;
+                }
+
+                keyPositions.ShowKeyUI(currentKey, e.description);
+            }  
+        }
+        else
+        {
+            if (currentHit != null)
+            {
+                keyPositions.removeKeyUI(currentKey);
+                currentHit= null;
+            }
+        }
+
+  
+    }
+
+
+    public void loadPlayerSettings()
+    {
+        playerData = jSONSaving.loadSettings();
+    }
     public void EnablePlayerInput(bool status)
     {
         if (status)
@@ -114,8 +164,6 @@ public class playerController : NetworkBehaviour
             //playerMouvement = new Vector3(0, 0, 0);
         }
     }
-
-
     private IEnumerator smoothRotation()
     {
         Quaternion playerRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0));
@@ -138,7 +186,6 @@ public class playerController : NetworkBehaviour
         }
         StopCoroutine(smoothRotation());
     }
-
     private bool isGrounded()
     {
         if(Physics.Raycast(transform.position, Vector3.down * gravity, distanceIsGrounded))
@@ -151,8 +198,6 @@ public class playerController : NetworkBehaviour
         }
          
     }
-
-
     private void movePlayer()
     {
         if (isGrounded())
@@ -228,11 +273,6 @@ public class playerController : NetworkBehaviour
         }
 
     }
-
-
-
-
-
     private void rotationPlayer()
     {
         if (playerInputControlBool)
@@ -240,8 +280,6 @@ public class playerController : NetworkBehaviour
             transform.rotation *= Quaternion.Euler(0f, Input.GetAxis("Mouse X") * mouseSensitivityX, 0f);
         }
     }
-
-
     private void rotationCamera()
     {
         if (playerInputControlBool)
@@ -251,8 +289,6 @@ public class playerController : NetworkBehaviour
             cam.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
         }
     }
-
-
     private void gravitySwitcher()
     {
         if (Input.GetKeyDown(KeyCode.E) && isGrounded())

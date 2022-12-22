@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerData : MonoBehaviour
+
+
+
+[System.Serializable]
+public class PlayerData
 {
+    [SerializeField] JSONSaving jSONSaving;
+
     [Header("KeyBinding settings")]
-    public char actionKey = 'f';
+    public char useKey = 'f';
     public char switchGravityKey = 'e';
+    
+
 }
 
 
