@@ -113,6 +113,9 @@ public class playerController : NetworkBehaviour
                 currentHit = hit.collider.gameObject;
 
                 var e = currentHit.GetComponent<interactiveObjectID>();
+                var outLine = currentHit.GetComponent<Outline>();
+
+                outLine.enabled = true;
 
                 switch (e.type)
                 {
@@ -131,6 +134,9 @@ public class playerController : NetworkBehaviour
         {
             if (currentHit != null)
             {
+                var outLine = currentHit.GetComponent<Outline>();
+                outLine.enabled = false;
+
                 keyPositions.removeKeyUI(currentKey);
                 currentHit= null;
             }
