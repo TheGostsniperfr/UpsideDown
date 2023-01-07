@@ -285,6 +285,7 @@ MonoBehaviour:
   textLabel: {fileID: 1820769418}
   writerEffect: {fileID: 1685056506}
   testDialogue: {fileID: 11400000, guid: 3c73add390385ac4bbb70af459635325, type: 2}
+  playerController: {fileID: -3974398621766229066}
 --- !u!114 &1685056506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5043,9 +5044,9 @@ MonoBehaviour:
   animator: {fileID: 1022297811457541833}
   playerReatch: 5
   playerData:
-    jSONSaving: {fileID: 0}
     useKey: 102
     switchGravityKey: 101
+    nextDialogue: 119
   keyPositions: {fileID: 2044664128431815908}
   jSONSaving: {fileID: 1937141051}
 --- !u!54 &1486211225457030816

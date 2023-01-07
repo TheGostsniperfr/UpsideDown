@@ -8,11 +8,14 @@ public class dialogueSystem : MonoBehaviour
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] typeWriterEffect writerEffect;
     [SerializeField] private DialogueObject testDialogue;
+    [SerializeField] private playerController playerController;
+    private PlayerData playerData;
 
     private void Start()
     {
         CloseDialogue();
         ShowDialogue(testDialogue);
+        playerData = playerController.playerData;
     }
 
     public void ShowDialogue(DialogueObject dialogueObject)
@@ -26,7 +29,7 @@ public class dialogueSystem : MonoBehaviour
         foreach(string dialogue in dialogueObject.Dialogue)
         {
             yield return writerEffect.Run(dialogue, textLabel);
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.W));
+            yield return new WaitUntil(() => Input.GetKeyDown(playerData.nextDialogue));
         }
 
         CloseDialogue();

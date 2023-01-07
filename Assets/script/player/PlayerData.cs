@@ -9,13 +9,10 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
-    [SerializeField] JSONSaving jSONSaving;
-
     [Header("KeyBinding settings")]
-    public char useKey = 'f';
-    public char switchGravityKey = 'e';
-    
-
+    public KeyCode useKey = KeyCode.F;
+    public KeyCode switchGravityKey = KeyCode.E;
+    public KeyCode nextDialogue = KeyCode.W;
 }
 
 

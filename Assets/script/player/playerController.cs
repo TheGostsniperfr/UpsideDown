@@ -62,7 +62,7 @@ public class playerController : NetworkBehaviour
     [SerializeField] JSONSaving jSONSaving;
     private RaycastHit hit;
     private GameObject currentHit = null;
-    private char currentKey = 'f';
+    private KeyCode currentKey;
 
     private void Awake()
     {
@@ -117,16 +117,8 @@ public class playerController : NetworkBehaviour
 
                 outLine.enabled = true;
 
-                switch (e.type)
-                {
-                    case "use" :
-                        currentKey = playerData.useKey;
-                        break;       
-                    default: 
-                        Debug.LogError("no key bind for : " + currentHit);
-                        break;
-                }
-
+                currentKey = e.getKey(playerData);
+                
                 keyPositions.ShowKeyUI(currentKey, e.description);
             }  
         }
