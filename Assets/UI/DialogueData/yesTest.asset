@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778d33917ee50ce49ad6eca4dd6a2bc5, type: 3}
   m_Name: yesTest
   m_EditorClassIdentifier: 
-  dialogue: []
+  dialogue:
+  - Your reponse is "Yes"
   responces: []

@@ -22,3 +22,8 @@ MonoBehaviour:
     !
 
     GoodBye !!'
+  responces:
+  - reponseText: Yes
+    dialogueObject: {fileID: 11400000, guid: ca9a8bf8fb465804794630db3d52c93e, type: 2}
+  - reponseText: No
+    dialogueObject: {fileID: 11400000, guid: 839a411823583f24c80e478193de2a82, type: 2}
