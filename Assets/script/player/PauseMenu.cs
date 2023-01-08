@@ -78,8 +78,8 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("settings btn clicked");
     }
 
-    public void menu()
+    public void quit()
     {
-        Debug.Log("menu btn clicked");
+        Debug.Log("quit btn clicked");
     }
 }

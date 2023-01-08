@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 1023345736579328015}
   - component: {fileID: 2543584661948835544}
   m_Layer: 5
-  m_Name: MenuBtn
+  m_Name: QuitBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -738,7 +738,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6675359085160729710}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: menu
+        m_MethodName: quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1103,7 +1103,7 @@ GameObject:
   - component: {fileID: 7462755769479936622}
   - component: {fileID: 5132216660124212742}
   m_Layer: 5
-  m_Name: MenuBtn
+  m_Name: QuitBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Menu
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6c6c7cc32b6cd404882b0d6f7e7f7d01, type: 2}
   m_sharedMaterial: {fileID: 6052305186761702103, guid: 6c6c7cc32b6cd404882b0d6f7e7f7d01, type: 2}
@@ -5389,7 +5389,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 6302160224761967074}
   textLabel: {fileID: 1851859779114831820}
   writerEffect: {fileID: 1980701827810894672}
-  testDialogue: {fileID: 11400000, guid: 3c73add390385ac4bbb70af459635325, type: 2}
+  testDialogue: {fileID: 11400000, guid: 6e70bb821e42ad645a31dca59c619ae1, type: 2}
   playerController: {fileID: -3974398621766229066}
   responceHandler: {fileID: 6037802712506201400}
 --- !u!114 &1980701827810894672
