@@ -63,6 +63,7 @@ public class playerController : NetworkBehaviour
     private RaycastHit hit;
     private GameObject currentHit = null;
     private KeyCode currentKey;
+    private interactiveInterfaceObject currentInterfaceObject;
 
     private void Awake()
     {
@@ -112,14 +113,14 @@ public class playerController : NetworkBehaviour
 
                 currentHit = hit.collider.gameObject;
 
-                var e = currentHit.GetComponent<interactiveObjectID>();
+                currentInterfaceObject = currentHit.GetComponent<interactiveInterfaceObject>();
                 var outLine = currentHit.GetComponent<Outline>();
 
                 outLine.enabled = true;
 
-                currentKey = e.getKey(playerData);
+                currentKey = currentInterfaceObject.getKey(playerData);
                 
-                keyPositions.ShowKeyUI(currentKey, e.description);
+                keyPositions.ShowKeyUI(currentKey, currentInterfaceObject.getDescription());
             }  
         }
         else
@@ -132,6 +133,12 @@ public class playerController : NetworkBehaviour
                 keyPositions.removeKeyUI(currentKey);
                 currentHit= null;
             }
+        }
+
+        //check if the key bind is pressed
+        if(currentHit != null && Input.GetKeyDown(currentKey))
+        {
+            currentInterfaceObject.onAction();
         }
 
   

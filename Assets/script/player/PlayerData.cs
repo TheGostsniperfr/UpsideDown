@@ -13,6 +13,7 @@ public class PlayerData
     public KeyCode useKey = KeyCode.F;
     public KeyCode switchGravityKey = KeyCode.E;
     public KeyCode nextDialogue = KeyCode.W;
+    public KeyCode testKey = KeyCode.O;
 }
 
 
