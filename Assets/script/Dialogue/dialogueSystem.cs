@@ -10,6 +10,7 @@ public class dialogueSystem : MonoBehaviour
     [SerializeField] private DialogueObject testDialogue;
     [SerializeField] private playerController playerController;
     private PlayerData playerData;
+    [SerializeField] private ResponceHandler responceHandler;
 
     private void Start()
     {
@@ -26,13 +27,24 @@ public class dialogueSystem : MonoBehaviour
 
     private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
     {
-        foreach(string dialogue in dialogueObject.Dialogue)
+        for (int i = 0; i < dialogueObject.Dialogue.Length; i++)
         {
+            string dialogue = dialogueObject.Dialogue[i];
             yield return writerEffect.Run(dialogue, textLabel);
+
+            if(i == dialogueObject.Dialogue.Length - 1 && dialogueObject.hasResponses) { break; }
+
             yield return new WaitUntil(() => Input.GetKeyDown(playerData.nextDialogue));
         }
 
-        CloseDialogue();
+        if (dialogueObject.hasResponses)
+        {
+            responceHandler.showResponce(dialogueObject.Responces);
+        }
+        else
+        {
+            CloseDialogue();
+        }
     }
 
     private void CloseDialogue()

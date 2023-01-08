@@ -240,6 +240,7 @@ GameObject:
   - component: {fileID: 353443787}
   - component: {fileID: 353443788}
   - component: {fileID: 1685056506}
+  - component: {fileID: 1858628807603481759}
   m_Layer: 5
   m_Name: dialogueBox
   m_TagString: Untagged
@@ -286,6 +287,7 @@ MonoBehaviour:
   writerEffect: {fileID: 1685056506}
   testDialogue: {fileID: 11400000, guid: 3c73add390385ac4bbb70af459635325, type: 2}
   playerController: {fileID: -3974398621766229066}
+  responceHandler: {fileID: 1858628807603481759}
 --- !u!114 &1685056506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +301,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   writingSpeed: 50
+--- !u!114 &1858628807603481759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353443786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd92d903f559424aa2e89b65294e2cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyPositions: {fileID: 2044664128431815908}
+  playerController: {fileID: -3974398621766229066}
+  dialogueSystem: {fileID: 353443788}
+  isResponceShow: 0
 --- !u!1 &443591781
 GameObject:
   m_ObjectHideFlags: 0
@@ -5047,6 +5065,10 @@ MonoBehaviour:
     useKey: 102
     switchGravityKey: 101
     nextDialogue: 119
+    testKey: 111
+    reponse1: 121
+    reponse2: 110
+    reponse3: 104
   keyPositions: {fileID: 2044664128431815908}
   jSONSaving: {fileID: 1937141051}
 --- !u!54 &1486211225457030816
