@@ -1,64 +1,64 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2022.5.21)  13 JAN 2023 12:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2023.1.13)  13 JAN 2023 13:41
 entering extended mode
-**c:/Users/loren/Documents/GitHub/S2-Game/rapport/rapport.tex
-(c:/Users/loren/Documents/GitHub/S2-Game/rapport/rapport.tex
-LaTeX2e <2021-06-01>
-L3 programming layer <2021-06-01> (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
-Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
-(C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo
-File: size11.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**c:/Users/alexa/S2-Game/rapport/rapport.tex
+(c:/Users/alexa/S2-Game/rapport/rapport.tex
+LaTeX2e <2022-06-01> patch level 5
+L3 programming layer <2022-09-28> (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo
+File: size11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count182
-\c@section=\count183
-\c@subsection=\count184
-\c@subsubsection=\count185
-\c@paragraph=\count186
-\c@subparagraph=\count187
-\c@figure=\count188
-\c@table=\count189
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
-) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
-) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
-Package: babel 2021/06/02 3.60 The Babel package
- (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.def
-File: babel.def 2021/06/02 3.60 Babel common definitions
-\babel@savecnt=\count190
+) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+Package: babel 2022/10/04 3.81 The Babel package
+\babel@savecnt=\count193
 \U@D=\dimen139
 \l@unhyphenated=\language79
- (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+ (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
 \bbl@readstream=\read2
-)
-\bbl@dirlevel=\count191
+\bbl@dirlevel=\count194
 
 *************************************
 * Local config file bblopts.cfg used
 *
-(C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+(C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
-) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/generic/babel-french\french.ldf
+) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/generic/babel-french\french.ldf
 Language: french 2023/01/02 v3.5p French support from the babel system
 Package babel Info: Hyphen rules for 'acadian' set to \l@french
 (babel)             (\language22). Reported on input line 91.
 Package babel Info: Hyphen rules for 'canadien' set to \l@french
 (babel)             (\language22). Reported on input line 92.
-\FB@nonchar=\count192
+\FB@nonchar=\count195
 Package babel Info: Making : an active character on input line 395.
 Package babel Info: Making ; an active character on input line 396.
 Package babel Info: Making ! an active character on input line 397.
 Package babel Info: Making ? an active character on input line 398.
-\FBguill@level=\count193
+\FBguill@level=\count196
 \FBold@everypar=\toks18
 \FB@Mht=\dimen140
-\mc@charclass=\count194
-\mc@charfam=\count195
-\mc@charslot=\count196
-\std@mcc=\count197
-\dec@mcc=\count198
+\mc@charclass=\count197
+\mc@charfam=\count198
+\mc@charslot=\count199
+\std@mcc=\count266
+\dec@mcc=\count267
 \listindentFB=\dimen141
 \descindentFB=\dimen142
 \labelindentFB=\dimen143
@@ -66,19 +66,22 @@ Package babel Info: Making ? an active character on input line 398.
 \leftmarginFB=\dimen145
 \parindentFFN=\dimen146
 \FBfnindent=\dimen147
-)) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+)) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/fr\babel-french.tex
+Package babel Info: Importing font and identification data for french
+(babel)             from babel-fr.ini. Reported on input line 11.
+) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks19
-) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+ (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
-Package: iftex 2020/03/06 v1.0d TeX engine tests
+ (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count199
-\Gm@cntv=\count266
-\c@Gm@tempcnt=\count267
+\Gm@cnth=\count268
+\Gm@cntv=\count269
+\c@Gm@tempcnt=\count270
 \Gm@bindingoffset=\dimen148
 \Gm@wd@mp=\dimen149
 \Gm@odd@mp=\dimen150
@@ -88,34 +91,36 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@layouthoffset=\dimen154
 \Gm@layoutvoffset=\dimen155
 \Gm@dimlist=\toks20
- (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
-Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
-Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
- (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+ (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
- (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
-File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+ (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+\stockwidth=\dimen156
+\stockheight=\dimen157
 ))
-\Gin@req@height=\dimen156
-\Gin@req@width=\dimen157
-) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
-Package: color 2020/02/24 v1.2b Standard LaTeX Color (DPC)
- (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+\Gin@req@height=\dimen158
+\Gin@req@width=\dimen159
+) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
+Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+ (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 149.
-) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+ (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip49
-\multirow@cntb=\count268
+\multirow@cntb=\count271
 \multirow@dima=\skip50
-\bigstrutjot=\dimen158
-) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+\bigstrutjot=\dimen160
+) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 \f@nch@headwidth=\skip51
 \f@nch@O@elh=\skip52
@@ -126,20 +131,20 @@ Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
 \f@nch@O@erf=\skip57
 \f@nch@O@olf=\skip58
 \f@nch@O@orf=\skip59
-) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3keys2e.sty (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2021-06-01 L3 programming layer (loader) 
- (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
-File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count269
-\l__pdf_internal_box=\box50
+) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.sty (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3keys2e.sty (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
+Package: expl3 2022-09-28 L3 programming layer (loader) 
+ (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-09-28 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count272
+\l__pdf_internal_box=\box51
 ))
-Package: l3keys2e 2021-06-01 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2022-06-22 LaTeX2e option processing using LaTeX3 keys
 )
 Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
-\g__lipsum_par_int=\count270
-\l__lipsum_a_int=\count271
-\l__lipsum_b_int=\count272
- (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex)) (rapport.aux)
+\g__lipsum_par_int=\count273
+\l__lipsum_a_int=\count274
+\l__lipsum_b_int=\count275
+ (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex)) (rapport.aux)
 \openout1 = `rapport.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
@@ -198,23 +203,23 @@ Package french.ldf Warning: OT1 encoding should not be used for French.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+(C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count273
-\scratchdimen=\dimen159
-\scratchbox=\box51
-\nofMPsegments=\count274
-\nofMParguments=\count275
+\scratchcounter=\count276
+\scratchdimen=\dimen161
+\scratchbox=\box52
+\nofMPsegments=\count277
+\nofMParguments=\count278
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count276
-\MPscratchDim=\dimen160
-\MPnumerator=\count277
-\makeMPintoPDFobject=\count278
+\MPscratchCnt=\count279
+\MPscratchDim=\dimen162
+\MPnumerator=\count280
+\makeMPintoPDFobject=\count281
 \everyMPtoPDFconversion=\toks22
-) (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+) (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (C:\Users\loren\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+ (C:\Users\alexa\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 )) (pagedegarde.tex
 <pictures/logo.jpg, id=1, 501.875pt x 340.27126pt>
@@ -248,7 +253,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 28.
 [1
 
-{C:/Users/loren/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./pictures/logo.jpg> <./pictures/Gravi.png>]) (rapport.toc)
+{C:/Users/alexa/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./pictures/logo.jpg> <./pictures/Gravi.png>]) (rapport.toc)
 \tf@toc=\write3
 \openout3 = `rapport.toc'.
 
@@ -333,7 +338,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [4]
 Overfull \hbox (4.1097pt too wide) in paragraph at lines 174--176
-[]\OT1/cmr/m/n/10.95 Nous avons repartit le tra-vail en different r^ole en fonc-tion des en-vies et des competences
+[]\OT1/cmr/m/n/10.95 Nous avons r^^Separtit le tra-vail en diff^^Serent r^ole en fonc-tion des en-vies et des comp^^Setences
  []
 
 
@@ -342,32 +347,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 174--176
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
+Underfull \hbox (badness 10000) in paragraph at lines 177--190
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--190
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--197
+Underfull \hbox (badness 10000) in paragraph at lines 177--190
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--205
+Underfull \hbox (badness 10000) in paragraph at lines 201--204
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
 []\OT1/cmr/m/n/10.95 Histoire et
  []
 
 
-Overfull \hbox (24.4854pt too wide) in paragraph at lines 209--209
-[]|\OT1/cmr/m/n/10.95 Fonctionnalite|  
+Overfull \hbox (24.4854pt too wide) in paragraph at lines 216--216
+[]|\OT1/cmr/m/n/10.95 Fonctionnalit^^Se|  
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--209
+Underfull \hbox (badness 10000) in paragraph at lines 216--216
 \OT1/cmr/m/n/10.95 sont fonc-tion-
  []
 
 
-Underfull \hbox (badness 3000) in paragraph at lines 212--212
+Underfull \hbox (badness 3000) in paragraph at lines 219--219
 []\OT1/cmr/m/n/10.95 - Ob-jets prin-ci-
  []
 
@@ -388,15 +403,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [6] (rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 4090 strings out of 478864
- 66229 string characters out of 2848660
- 486845 words of memory out of 3000000
- 21967 multiletter control sequences out of 15000+600000
- 409802 words of font info for 48 fonts, out of 8000000 for 9000
+ 4524 strings out of 475385
+ 80077 string characters out of 2776907
+ 539810 words of memory out of 3000000
+ 25853 multiletter control sequences out of 15000+600000
+ 475631 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,11n,81p,460b,424s stack positions out of 5000i,500n,10000p,200000b,80000s
-<C:/Users/loren/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/loren/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on rapport.pdf (7 pages, 382406 bytes).
+ 72i,11n,77p,446b,426s stack positions out of 10000i,1000n,20000p,200000b,80000s
+<C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/alexa/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
+Output written on rapport.pdf (7 pages, 382576 bytes).
 PDF statistics:
  60 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -1,4 +1,4 @@
-\babel@toc {french}{}
+\babel@toc {french}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{2}{}%
 \contentsline {section}{\numberline {2}Origine et nature du projet}{2}{}%
 \contentsline {subsection}{\numberline {2.1}Origine :}{2}{}%

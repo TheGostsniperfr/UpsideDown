@@ -65,7 +65,7 @@ spéciaux se trouvant dans les salles d'énigmes.
 \subsection{Origine :}
 
 	L’idée principale vient du souhait de pouvoir avoir un jeu agréable à manipuler 
-    et jouer avec un concept simple et très ouvert, permettant d’avoir rapidement le concept fonctionnel et ainsi de pouvoir le développer sur de nombreux points pour offrir une meilleure expérience de jeu. Après une mise en commun de nos idées, nous avons décidé de faire un jeu d’énigmes en s’appuyant sur le modèle du jeu Portal correspondant à nos critères.	
+    et à jouer avec un concept simple et très ouvert, permettant d’avoir rapidement le concept fonctionnel et ainsi de pouvoir le développer sur de nombreux points pour offrir une meilleure expérience de jeu. Après une mise en commun de nos idées, nous avons décidé de faire un jeu d’énigmes en s’appuyant sur le modèle du jeu Portal correspondant à nos critères.	
 
     \subsection{Nature :}
 	Upside Down est un jeu de réflexion et d'action en duo.
@@ -76,7 +76,7 @@ résoudre en utilisant le principe de changement de gravité, soit sur lui-même
 
 \subsection{Intérêt du projet}
 Ce projet permet de nous apporter de nombreuses connaissances du point de vue management, 
-travail en équipe, programmation, gestion du temps d’un projet de moyen terme, 
+travail en équipe, programmation et gestion du temps d’un projet de moyen terme, 
 grâce à l’utilisation de méthodes très utilisées comme la méthode Agile et des logiciels pour l’appliquer : \newline
 
 \begin{itemize}
@@ -90,7 +90,7 @@ l’année prochaine, mais aussi durant notre vie aussi bien personnelle que pro
 
 \subsection{But}
 
-Notre but dans ce projet est de réussir à appliquer la méthode Agile dans l’objectif 
+Notre but dans ce projet est de réussir à appliquer la méthode Agile, dans l’objectif 
 de réaliser notre projet comme il a été prévu et dans les délais imposés.
 Pour cela, nous allons découper notre projet en sous-projet (sprint).
 Chaque sous-projet est constitué d’un ensemble de tâches attribuées à une ou plusieurs 
@@ -107,13 +107,13 @@ tâches à faire, mais seulement quelques tâches pour réaliser le sous-projet 
 \subsection{Modèle similaire}
 
 Lors de la recherche du concept de base de notre jeu, nous avions pour modèle le très connu “Portal” 
-qui a été extrêmement innovant pour gameplay totalement inédit, ainsi que d’autre jeu du même type et 
+qui a été extrêmement innovant pour un gameplay totalement inédit, ainsi que d’autre jeu du même type et 
 de différentes époques comme “AntiChamber” (2013) ou encore “It takes two” (2021). 
 
 \subsection{Fonctionnalité propre}
 
 Nous avons donc tiré parti de ces jeux ce qui a fait leurs succès et leurs innovations appréciées des joueurs. C’est-à-dire, 
-un concept basé sur un objet ou action offrant un gameplay original ( portal gun, non-Euclidean space, … ) permettant de résoudre 
+un concept basé sur un objet ou action offrant un gameplay original ( Générateur de portail, Géométrie non-euclidienne, … ) permettant de résoudre 
 une suite d'énigmes totalement innovante grâce aux nouvelles mécaniques du concept de base, ainsi qu’une 
 histoire associée permettant d’avoir une meilleure compréhension et immersion du jeu et de son intrigue.
 
@@ -123,10 +123,10 @@ histoire associée permettant d’avoir une meilleure compréhension et immersio
 \subsection{Descriptif d’une salle :} 
 
 Deux joueurs se retrouvent dans une salle d'énigme, 
-composée d’obstacles en tous genres ainsi que des items et actionneurs tels que des cubes 
+composée d’obstacles en tous genres ainsi que des éléments et actionneurs tels que des cubes 
 à placer sur des plaques de pression pour actionner un mécanisme (porte, ascenseur, …) dans 
 le but de rejoindre la fin du niveau. Pour arriver à leurs fins, les deux joueurs devront faire 
-un certain nombre d’étapes en s’entraidant pour atteindre de nouveaux items, plateformes.\newline
+un certain nombre d’étapes en coopérant pour atteindre de nouvelles zones, plateformes.\newline
 
 \subsection{Descriptif des joueurs :} 
 
@@ -137,7 +137,7 @@ Chacun des joueurs contrôle son propre avatar pouvant effectuer différentes ac
     \item déplacement en 3 dimensions (sans double saut, ni dégât de chute)
     \item déplacer certains objets (cube, …)
     \item inversion de la gravité local du joueur et de l’item qu’il tient
-    \item interaction avec les pnj pour connaître des indices \newline
+    \item interaction avec les Personnage Non-Joueur pour connaître des indices \newline
 \end{itemize}
 
 
@@ -145,7 +145,7 @@ Chacun des joueurs contrôle son propre avatar pouvant effectuer différentes ac
 Chaque joueur peut subir des dégâts et donc mourir uniquement via les différents pièges
  mis en place dans les salles d'énigmes.
 
-Si un joueur vient à mourir, celui-ci réapparaît au début du niveau (dernier point de sauvegarde) 
+Si un joueur vient à mourir, celui-ci réapparaît au début du niveau (au dernier point de sauvegarde) 
 
 \section{L’intelligence artificielle}
 
@@ -174,12 +174,19 @@ en appuyant sur la touche associée et en étant au niveau du comptoir du bar.
 Nous avons répartit le travail en différent rôle en fonction des envies 
 et des compétences de chacun :\newline
 
-\begin{itemize}
-    \item Brian Perret : Chef de groupe, Développeur principale 
-    \item Lorenzo Lombardi : Graphiste, développeur
-    \item Ronan Leboucher : Game designer, level designer, scénariste
-    \item Thomas Morin : Game designer, level designer, scénariste\newline
-\end{itemize}
+\begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}|p{3cm}|  }
+    \hline
+    \multicolumn{4}{|c|}{Répartition des rôles} \\
+    \hline
+     Ronan & Brian & Lorenzo & Thomas\\
+    \hline
+     - Game Designer & - Chef de groupe & - Graphiste & - Game designer\\
+     - Level designer & - Développeur & - Développeur & - Level designer\\
+     - Scénariste & & & Scénariste\\
+    \hline
+\end{tabular}
+\break
+\newline
 
 Ces choix ont été faits de telles sortes à ce que le projet est directement une bonne base, 
 c’est-à-dire qu’il est préférable d’assigner le rôle à quelqu'un utilisant déjà le logiciel 
@@ -197,7 +204,7 @@ en fonction de leur complexité (Planning poker).\newline
 
 
 
-\begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{3cm}|  }
+\begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}|p{3cm}|  }
  \hline
  \multicolumn{4}{|c|}{Liste des sprints jusqu'à mi-mai} \\
  \hline
@@ -215,7 +222,7 @@ en fonction de leur complexité (Planning poker).\newline
 \end{tabular}
 
 
-Le reste des sprints concernera principalement la recherche de bug, l'amélioration des 
+Le reste des sprints concernera principalement la recherche de bug et l'amélioration des 
 fonctionnalités mineurs.
 
 
@@ -227,8 +234,8 @@ fonctionnalités mineurs.
 Upside Down est fait pour être joué uniquement en duo. Unity offre plusieurs solutions très complètes, 
 mais c’est “Mirror” qui a été choisi, principalement, car elle possède une très bonne documentation avec une 
 grande communauté derrière tout en répondant aux contraintes de notre jeu, à savoir un besoin d’avoir une 
-très faible latence entre les joueurs pour ne pas avoir possible décalage lors d’action rapide ainsi 
-que de pouvoir lancer facilement des partie en LAN.
+très faible latence entre les joueurs pour ne pas avoir de possibles décalages lors d’action rapide ainsi 
+que de pouvoir lancer facilement des partie en local.
 
 
 \subsection{Hébergement des services :}
@@ -248,12 +255,11 @@ Ce coût de fonctionnement pouvant être amorti par la mise en place d’un prix
 
 \section{Conclusion}
 
-Nous sommes tous d'accord sur le sujet du jeu, et motivé pour le réaliser. Étant réaliste, nous espérons pouvoir le terminer
+Nous sommes tous d'accord sur le sujet du jeu, et motivé pour le réaliser. Étant réalistes, nous espérons pouvoir le terminer
 dans les délais prévus, mais avec l'utilisation de Jira, nous devrions n'avoir aucun problème à ce niveau-là.
 
-Par ailleurs, le développement du jeu est déjà en cours où chacun travaille déjà sur son domaine attribué. Nous aspirons
-Nous aspirons à surmonter les futures difficultés et de développer de nouvelles compétences et consolider celle déjà existante.
-Enfin, nous désirons qu'aucun membre ne disparaisse durant ce semestre et qu'aucune tension ne vient retarder l'avancement du projet.
+Par ailleurs, le développement du jeu est déjà en cours où chacun travaille déjà sur son domaine attribué. Nous aspirons à surmonter les futures difficultés et de développer de nouvelles compétences et consolider celles déjà existante.
+Enfin, nous désirons qu'aucun membre ne disparaisse durant ce semestre et qu'aucune tension ne vienne retarder l'avancement du projet.
 
 
 \end{document}
