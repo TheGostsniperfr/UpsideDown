@@ -72,9 +72,10 @@ public class PauseMenu : MonoBehaviour
     }
 
 
+
+
     public void removeSetting()
     {
-        keyBindingsManager.save();
         keyBinding.SetActive(false);
     }
 
