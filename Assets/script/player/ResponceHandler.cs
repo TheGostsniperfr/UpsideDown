@@ -14,18 +14,18 @@ public class ResponceHandler : MonoBehaviour
 
     private void Start()
     {
-        playerData = playerController.playerData;
+        playerData = playerController.getPlayerData();
         responsesKeys = new KeyCode[3] { playerData.reponse1, playerData.reponse2, playerData.reponse3 };
-    }    
+    }
 
     public void showResponce(Responce[] _responces)
     {
         responces = _responces;
-        isResponceShow= true;
-        nbResponce= responces.Length;
+        isResponceShow = true;
+        nbResponce = responces.Length;
 
         //check if the number of response isn't higther of 3
-        if(nbResponce > 3) { Debug.LogError("number of responces too higher !"); }
+        if (nbResponce > 3) { Debug.LogError("number of responces too higher !"); }
 
         for (int i = 0; i < nbResponce; i++)
         {
@@ -35,7 +35,7 @@ public class ResponceHandler : MonoBehaviour
 
     public void removeResponce()
     {
-        isResponceShow = false;        
+        isResponceShow = false;
 
         for (int i = 0; i < nbResponce; i++)
         {
@@ -46,7 +46,7 @@ public class ResponceHandler : MonoBehaviour
     void Update()
     {
         //check responceKey is pressed
-        if(isResponceShow)
+        if (isResponceShow)
         {
             for (int i = 0; i < nbResponce; i++)
             {
@@ -55,8 +55,8 @@ public class ResponceHandler : MonoBehaviour
                     removeResponce();
 
                     //switch dialogue
-                    dialogueSystem.ShowDialogue(responces[i].DialogueObject);                   
-                    
+                    dialogueSystem.ShowDialogue(responces[i].DialogueObject);
+
                 }
             }
         }

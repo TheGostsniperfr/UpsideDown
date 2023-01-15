@@ -1,6 +1,6 @@
-using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine;
 
 public class dialogueSystem : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class dialogueSystem : MonoBehaviour
     {
         CloseDialogue();
         ShowDialogue(testDialogue);
-        playerData = playerController.playerData;
+        playerData = playerController.getPlayerData();
     }
 
     public void ShowDialogue(DialogueObject dialogueObject)
@@ -32,7 +32,7 @@ public class dialogueSystem : MonoBehaviour
             string dialogue = dialogueObject.Dialogue[i];
             yield return writerEffect.Run(dialogue, textLabel);
 
-            if(i == dialogueObject.Dialogue.Length - 1 && dialogueObject.hasResponses) { break; }
+            if (i == dialogueObject.Dialogue.Length - 1 && dialogueObject.hasResponses) { break; }
 
             yield return new WaitUntil(() => Input.GetKeyDown(playerData.nextDialogue));
         }

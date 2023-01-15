@@ -1,24 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class JSONSaving : MonoBehaviour
+public static class JSONSaving
 {
-    private string path = string.Empty;
+    private static string path = string.Empty;
 
-    private void setPaths()
+    private static void setPaths()
     {
         path = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
     }
 
-    public PlayerData loadSettings()
+    public static PlayerData loadSettings()
     {
         setPaths();
 
         //check if file exist
 
-        if (System.IO.File.Exists(path))
+        if (!System.IO.File.Exists(path))
         {
             saveData(new PlayerData());
         }
@@ -26,24 +24,37 @@ public class JSONSaving : MonoBehaviour
         return loadData();
     }
 
-    public void saveData(PlayerData playerData)
+    public static void saveData(PlayerData playerData)
     {
+        setPaths();
+
+        if (System.IO.File.Exists(path))
+        {
+            System.IO.File.Delete(path);
+        }
+
         string savePath = path;
         Debug.Log("Saving Data at " + savePath);
+
+
         string json = JsonUtility.ToJson(playerData);
         Debug.Log("json");
 
-        using StreamWriter writer= new StreamWriter(savePath);
+        StreamWriter writer = new StreamWriter(savePath, false);
         writer.Write(json);
+
+        writer.Close();
     }
 
-    public PlayerData loadData()
+    public static PlayerData loadData()
     {
-        using StreamReader reader= new StreamReader(path);
+        StreamReader reader = new StreamReader(path);
         string json = reader.ReadToEnd();
 
         PlayerData data = JsonUtility.FromJson<PlayerData>(json);
         Debug.Log(data.ToString());
+
+        reader.Close();
 
         return data;
     }

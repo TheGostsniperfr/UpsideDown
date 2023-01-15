@@ -1,7 +1,7 @@
 
+using Mirror;
 using System.Collections;
 using UnityEngine;
-using Mirror;
 
 public class playerController : NetworkBehaviour
 {
@@ -55,11 +55,10 @@ public class playerController : NetworkBehaviour
 
     [Header("player Action")]
     [SerializeField] private float playerReatch = 3f;
- 
+
     [Header("player keyBind")]
     public PlayerData playerData;
     [SerializeField] KeyPositions keyPositions;
-    [SerializeField] JSONSaving jSONSaving;
     private RaycastHit hit;
     private GameObject currentHit = null;
     private KeyCode currentKey;
@@ -67,13 +66,16 @@ public class playerController : NetworkBehaviour
 
     private void Awake()
     {
-        loadPlayerSettings();
-
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         playerSpeed = playerCurrentSpeed;
         smoothInputSpeed = currentSmoothInputSpeed;
+    }
+
+    private void Start()
+    {
+        playerData = JSONSaving.loadSettings();
     }
 
     void Update()
@@ -91,6 +93,7 @@ public class playerController : NetworkBehaviour
 
     }
 
+
     private void FixedUpdate()
     {
         rb.AddForce(Physics.gravity * rb.mass * gravity);
@@ -99,14 +102,14 @@ public class playerController : NetworkBehaviour
     //check if the player can do an action
     private void checkPlayerActions()
     {
-        
+
 
         if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, playerReatch))
         {
             //check new interactif object ( ex: door, tv, ... )
             if (hit.collider != null && hit.collider.gameObject.tag == "interactive" && hit.collider.gameObject != currentHit)
             {
-                if(currentHit != null)
+                if (currentHit != null)
                 {
                     keyPositions.removeKeyUI(currentKey);
                 }
@@ -119,9 +122,9 @@ public class playerController : NetworkBehaviour
                 outLine.enabled = true;
 
                 currentKey = currentInterfaceObject.getKey(playerData);
-                
+
                 keyPositions.ShowKeyUI(currentKey, currentInterfaceObject.getDescription());
-            }  
+            }
         }
         else
         {
@@ -131,23 +134,27 @@ public class playerController : NetworkBehaviour
                 outLine.enabled = false;
 
                 keyPositions.removeKeyUI(currentKey);
-                currentHit= null;
+                currentHit = null;
             }
         }
 
         //check if the key bind is pressed
-        if(currentHit != null && Input.GetKeyDown(currentKey))
+        if (currentHit != null && Input.GetKeyDown(currentKey))
         {
             currentInterfaceObject.onAction();
         }
 
-  
+
     }
 
-
-    public void loadPlayerSettings()
+    public ref PlayerData getPlayerData()
     {
-        playerData = jSONSaving.loadSettings();
+        return ref playerData;
+    }
+
+    public void reLoadPlayerSettings()
+    {
+        playerData = JSONSaving.loadData();
     }
     public void EnablePlayerInput(bool status)
     {
@@ -177,11 +184,11 @@ public class playerController : NetworkBehaviour
         {
             playerRotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 180));
         }
-  
+
 
         float time = -0.2f;
 
-        while(time < 0.3f)
+        while (time < 0.3f)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, playerRotation, time);
             gravitySphere.transform.localRotation = transform.rotation;
@@ -193,7 +200,7 @@ public class playerController : NetworkBehaviour
     }
     private bool isGrounded()
     {
-        if(Physics.Raycast(transform.position, Vector3.down * gravity, distanceIsGrounded))
+        if (Physics.Raycast(transform.position, Vector3.down * gravity, distanceIsGrounded))
         {
             return true;
         }
@@ -201,7 +208,7 @@ public class playerController : NetworkBehaviour
         {
             return false;
         }
-         
+
     }
     private void movePlayer()
     {
@@ -226,7 +233,7 @@ public class playerController : NetworkBehaviour
             }
         }
         else
-        { 
+        {
             if (isSprinting)
             {
                 playerSpeed = playerCurrentSpeed;
@@ -236,7 +243,7 @@ public class playerController : NetworkBehaviour
             }
         }
 
-        
+
 
         if (playerInputControlBool)
         {
@@ -244,7 +251,7 @@ public class playerController : NetworkBehaviour
         }
         else
         {
-            playerInputControl = new Vector3(0f, 0f, 0f);    
+            playerInputControl = new Vector3(0f, 0f, 0f);
         }
 
         currentInputControl = Vector3.SmoothDamp(currentInputControl, playerInputControl, ref smoothInputVelocity, smoothInputSpeed);
@@ -254,7 +261,7 @@ public class playerController : NetworkBehaviour
         Vector3 MoveVector = transform.TransformDirection(currentInputControl) * playerSpeed;
         rb.velocity = new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
 
-        if(MoveVector.magnitude > 0.1)
+        if (MoveVector.magnitude > 0.1)
         {
             animator.SetBool("isWalking", true);
         }
@@ -296,15 +303,13 @@ public class playerController : NetworkBehaviour
     }
     private void gravitySwitcher()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isGrounded())
+        if (Input.GetKeyDown(playerData.switchGravityKey) && isGrounded())
         {
             gravitySwited = !gravitySwited;
             gravity *= -1;
             animator.SetTrigger("flip");
             StartCoroutine(smoothRotation());
-         
-
         }
-        
+
     }
 }

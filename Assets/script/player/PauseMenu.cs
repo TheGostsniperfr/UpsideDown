@@ -8,10 +8,14 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private bool menuActivate = false;
     [SerializeField] private GameObject reticule;
     [SerializeField] private GameObject keyPositions;
+    [SerializeField] private GameObject keyBinding;
+    [SerializeField] private KeyBindingManager keyBindingsManager;
+    private PlayerData playerData;
 
     private void Awake()
     {
         pauseMenuUI.SetActive(false);
+        playerData = playerController.getPlayerData();
     }
 
     void Update()
@@ -68,6 +72,13 @@ public class PauseMenu : MonoBehaviour
     }
 
 
+    public void removeSetting()
+    {
+        keyBindingsManager.save();
+        keyBinding.SetActive(false);
+    }
+
+
     public void resume()
     {
         removeMenu();
@@ -75,7 +86,9 @@ public class PauseMenu : MonoBehaviour
 
     public void setting()
     {
-        Debug.Log("settings btn clicked");
+        //show setting
+        keyBinding.SetActive(true);
+        keyBindingsManager.showKey();
     }
 
     public void quit()
