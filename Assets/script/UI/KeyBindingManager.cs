@@ -3,12 +3,18 @@ using UnityEngine;
 public class KeyBindingManager : MonoBehaviour
 {
     [SerializeField] private KeyContentControler[] keyContents;
-    [SerializeField] private playerController playerController;
     [SerializeField] private PauseMenu pauseMenu;
+    private Player player;
+
+
+    private void Start()
+    {
+        player = pauseMenu.player;
+    }
 
     public void showKey()
     {
-        PlayerData playerData = playerController.getPlayerData();
+        PlayerData playerData = player.getPlayerData();
 
         keyContents[0].setKey("Use", playerData.useKey);
         keyContents[1].setKey("Switch gravity", playerData.switchGravityKey);
@@ -20,7 +26,7 @@ public class KeyBindingManager : MonoBehaviour
     //save edit keys
     public void save()
     {
-        PlayerData playerData = playerController.getPlayerData();
+        PlayerData playerData = player.getPlayerData();
 
         Debug.Log("key bind save : " + keyContents[2].getKeyBind() + playerData.testKey);
 
@@ -32,6 +38,8 @@ public class KeyBindingManager : MonoBehaviour
 
 
         JSONSaving.saveData(playerData);
-        playerController.reLoadPlayerSettings();
+
+        Debug.Log("re load player data");
+        player.reLoadPlayerSettings();
     }
 }

@@ -15,8 +15,8 @@ TagManager:
   - floor
   - graviSphere
   - isPickUp
-  - 
-  - 
+  - LocalPlayer
+  - RemotePlayer
   - 
   - 
   - 

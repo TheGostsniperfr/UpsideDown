@@ -3,18 +3,21 @@ using UnityEngine;
 public class ResponceHandler : MonoBehaviour
 {
     [SerializeField] private KeyPositions keyPositions;
-    [SerializeField] playerController playerController;
+    [SerializeField] private Player player;
     private PlayerData playerData;
     private KeyCode[] responsesKeys;
     private Responce[] responces;
     [SerializeField] private dialogueSystem dialogueSystem;
+    [SerializeField] private PauseMenu pauseMenu;
 
     public bool isResponceShow = false;
     private int nbResponce = 0;
 
     private void Start()
     {
-        playerData = playerController.getPlayerData();
+        player = pauseMenu.player;
+
+        playerData = player.getPlayerData();
         responsesKeys = new KeyCode[3] { playerData.reponse1, playerData.reponse2, playerData.reponse3 };
     }
 

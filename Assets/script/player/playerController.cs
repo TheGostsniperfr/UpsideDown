@@ -53,16 +53,11 @@ public class playerController : NetworkBehaviour
     [Header("Animator")]
     [SerializeField] private Animator animator;
 
-    [Header("player Action")]
-    [SerializeField] private float playerReatch = 3f;
-
     [Header("player keyBind")]
     public PlayerData playerData;
-    [SerializeField] KeyPositions keyPositions;
-    private RaycastHit hit;
-    private GameObject currentHit = null;
-    private KeyCode currentKey;
-    private interactiveInterfaceObject currentInterfaceObject;
+
+
+    [SerializeField] private PlayerSetup playerSetup;
 
     private void Awake()
     {
@@ -82,8 +77,6 @@ public class playerController : NetworkBehaviour
     {
         if (isLocalPlayer)
         {
-            checkPlayerActions();
-
             movePlayer();
             rotationPlayer();
             rotationCamera();
@@ -99,63 +92,6 @@ public class playerController : NetworkBehaviour
         rb.AddForce(Physics.gravity * rb.mass * gravity);
     }
 
-    //check if the player can do an action
-    private void checkPlayerActions()
-    {
-
-
-        if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, playerReatch))
-        {
-            //check new interactif object ( ex: door, tv, ... )
-            if (hit.collider != null && hit.collider.gameObject.tag == "interactive" && hit.collider.gameObject != currentHit)
-            {
-                if (currentHit != null)
-                {
-                    keyPositions.removeKeyUI(currentKey);
-                }
-
-                currentHit = hit.collider.gameObject;
-
-                currentInterfaceObject = currentHit.GetComponent<interactiveInterfaceObject>();
-                var outLine = currentHit.GetComponent<Outline>();
-
-                outLine.enabled = true;
-
-                currentKey = currentInterfaceObject.getKey(playerData);
-
-                keyPositions.ShowKeyUI(currentKey, currentInterfaceObject.getDescription());
-            }
-        }
-        else
-        {
-            if (currentHit != null)
-            {
-                var outLine = currentHit.GetComponent<Outline>();
-                outLine.enabled = false;
-
-                keyPositions.removeKeyUI(currentKey);
-                currentHit = null;
-            }
-        }
-
-        //check if the key bind is pressed
-        if (currentHit != null && Input.GetKeyDown(currentKey))
-        {
-            currentInterfaceObject.onAction();
-        }
-
-
-    }
-
-    public ref PlayerData getPlayerData()
-    {
-        return ref playerData;
-    }
-
-    public void reLoadPlayerSettings()
-    {
-        playerData = JSONSaving.loadData();
-    }
     public void EnablePlayerInput(bool status)
     {
         if (status)

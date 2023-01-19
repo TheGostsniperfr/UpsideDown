@@ -4,19 +4,25 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
-    [SerializeField] private playerController playerController;
+    [SerializeField] public playerController playerController;
     [SerializeField] private bool menuActivate = false;
     [SerializeField] private GameObject reticule;
     [SerializeField] private GameObject keyPositions;
     [SerializeField] private GameObject keyBinding;
     [SerializeField] private KeyBindingManager keyBindingsManager;
     [SerializeField] private GameObject settingsMenu;
-    private PlayerData playerData;
+    public Player player;
 
-    private void Awake()
+
+
+
+    public void setup(Player _player)
     {
+        player = _player;
+
+        playerController = player.gameObject.GetComponent<playerController>();
+
         pauseMenuUI.SetActive(false);
-        playerData = playerController.getPlayerData();
     }
 
     void Update()

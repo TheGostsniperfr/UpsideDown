@@ -8,7 +8,7 @@ public class dialogueSystem : MonoBehaviour
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] typeWriterEffect writerEffect;
     [SerializeField] private DialogueObject testDialogue;
-    [SerializeField] private playerController playerController;
+    private Player player;
     private PlayerData playerData;
     [SerializeField] private ResponceHandler responceHandler;
 
@@ -16,7 +16,10 @@ public class dialogueSystem : MonoBehaviour
     {
         CloseDialogue();
         ShowDialogue(testDialogue);
-        playerData = playerController.getPlayerData();
+
+        player = gameObject.GetComponentInParent<PauseMenu>().player;
+
+        playerData = player.getPlayerData();
     }
 
     public void ShowDialogue(DialogueObject dialogueObject)
