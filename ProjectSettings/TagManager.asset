@@ -17,8 +17,8 @@ TagManager:
   - isPickUp
   - LocalPlayer
   - RemotePlayer
-  - 
-  - 
+  - noRendering
+  - rendering
   - 
   - 
   - 

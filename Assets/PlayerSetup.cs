@@ -9,6 +9,13 @@ public class PlayerSetup : NetworkBehaviour
     [SerializeField]
     private string remoteLayerName = "RemotePlayer";
 
+    [SerializeField] private string noRendering = "noRendering";
+    [SerializeField] private string rendering = "player";
+
+    [SerializeField] private GameObject body;
+    [SerializeField] private GameObject hair;
+    [SerializeField] private GameObject noBody;
+
     Camera sceneCamera;
 
     [SerializeField] private Animator anim;
@@ -56,6 +63,10 @@ public class PlayerSetup : NetworkBehaviour
     private void AssignRemoteLayer()
     {
         gameObject.layer = LayerMask.NameToLayer(remoteLayerName);
+
+        body.layer = LayerMask.NameToLayer(rendering);
+        hair.layer = LayerMask.NameToLayer(rendering);
+        noBody.layer = LayerMask.NameToLayer(noRendering);
     }
 
     private void DisableComponents()

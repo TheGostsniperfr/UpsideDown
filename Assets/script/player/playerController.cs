@@ -52,6 +52,7 @@ public class playerController : NetworkBehaviour
 
     [Header("Animator")]
     [SerializeField] private Animator animator;
+    [SerializeField] private NetworkAnimator netAnimator;
 
     [Header("player keyBind")]
     public PlayerData playerData;
@@ -216,7 +217,7 @@ public class playerController : NetworkBehaviour
             if (isGrounded())
             {
                 rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode.Impulse);
-                animator.SetTrigger("jump");
+                netAnimator.SetTrigger("jump");
             }
         }
 
@@ -243,7 +244,7 @@ public class playerController : NetworkBehaviour
         {
             gravitySwited = !gravitySwited;
             gravity *= -1;
-            animator.SetTrigger("flip");
+            netAnimator.SetTrigger("flip");
             StartCoroutine(smoothRotation());
         }
 
