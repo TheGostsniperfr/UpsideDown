@@ -2512,7 +2512,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   rb: {fileID: 1486211225457030816}
-  distanceIsGrounded: 0.1
+  distanceIsGrounded: 0.2
   mouseSensitivityX: 5
   mouseSensitivityY: 5
   gravitySphere: {fileID: 4020154217627782711}
@@ -2524,7 +2524,7 @@ MonoBehaviour:
   isSprinting: 0
   playerInputControlBool: 1
   currentSmoothInputSpeed: 0.05
-  jumpSmoothInputSpeed: 1
+  jumpSmoothInputSpeed: 0.45
   smoothInputSpeed: 0.2
   floorMask:
     serializedVersion: 2
@@ -2576,7 +2576,7 @@ CapsuleCollider:
   m_Radius: 0.22
   m_Height: 1.87
   m_Direction: 1
-  m_Center: {x: 0, y: 0.87, z: 0}
+  m_Center: {x: 0, y: 0.92, z: 0}
 --- !u!114 &6529732382123068054
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -84,13 +84,15 @@ public class playerController : NetworkBehaviour
 
             gravitySwitcher();
         }
-
     }
 
 
     private void FixedUpdate()
     {
-        rb.AddForce(Physics.gravity * rb.mass * gravity);
+        if (!isGrounded())
+        {
+            rb.AddForce(Physics.gravity * rb.mass * gravity);
+        }
     }
 
     public void EnablePlayerInput(bool status)
