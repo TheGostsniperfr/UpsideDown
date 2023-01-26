@@ -24,8 +24,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Wall_01
-  m_Shader: {fileID: -6465566751694194690, guid: 9e02e967bf9101448bcc948574ac90c8,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 9e02e967bf9101448bcc948574ac90c8, type: 3}
   m_ValidKeywords:
   - _DISABLE_SSR_TRANSPARENT
   m_InvalidKeywords:
@@ -295,7 +294,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Custom_Color_Base_Map_Alpha: {r: 0.5411765, g: 0.1372549, b: 0.01568628, a: 1}
+    - _Custom_Color_Base_Map_Alpha: {r: 0, g: 0.037216693, b: 0.4056604, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

@@ -21,7 +21,6 @@ public class playerController : NetworkBehaviour
     [SerializeField] private GameObject gravitySphere;
 
     //walk / jump
-    [SerializeField] private Vector3 playerMouvement;
     [SerializeField] private float playerSpeed = 3f;
     [SerializeField] private float playerCurrentSpeed = 3f;
     [SerializeField] private float playerSprintSpeed = 4.5f;
@@ -83,16 +82,17 @@ public class playerController : NetworkBehaviour
             rotationCamera();
 
             gravitySwitcher();
+
+            //Debug.Log("is grounded : " + isGrounded());
         }
     }
 
 
     private void FixedUpdate()
     {
-        if (!isGrounded())
-        {
-            rb.AddForce(Physics.gravity * rb.mass * gravity);
-        }
+
+        rb.AddForce(Physics.gravity * rb.mass * gravity);
+
     }
 
     public void EnablePlayerInput(bool status)
@@ -110,9 +110,6 @@ public class playerController : NetworkBehaviour
             //disable sprint and reset speed sprint
             isSprinting = false;
             playerSpeed = playerCurrentSpeed;
-
-            //reset player inertia ( smooth )
-            //playerMouvement = new Vector3(0, 0, 0);
         }
     }
     private IEnumerator smoothRotation()
