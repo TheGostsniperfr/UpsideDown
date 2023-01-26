@@ -2516,7 +2516,6 @@ MonoBehaviour:
   mouseSensitivityX: 5
   mouseSensitivityY: 5
   gravitySphere: {fileID: 4020154217627782711}
-  playerMouvement: {x: 0, y: 0, z: 0}
   playerSpeed: 3
   playerCurrentSpeed: 3
   playerSprintSpeed: 4.5
@@ -2532,6 +2531,7 @@ MonoBehaviour:
   feetTransform: {fileID: 5289141323403238411}
   gravity: 1
   gravitySwited: 0
+  playerCollider: {fileID: 7603364667557003838}
   gravitRotationSpeed: 1
   cam: {fileID: 6812435653995802223}
   camRotMin: -50
