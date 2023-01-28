@@ -34,13 +34,11 @@ public class playerController : NetworkBehaviour
     [SerializeField] private float jumpSmoothInputSpeed = 1f;
     [SerializeField] float smoothInputSpeed = 0.2f;
 
-    [SerializeField] private LayerMask floorMask;
-    [SerializeField] private Transform feetTransform;
-
     [Header("Gravity switch")]
     [SerializeField] public int gravity = 1;
     [SerializeField] private bool gravitySwited;
     [SerializeField] private CapsuleCollider playerCollider;
+    [SerializeField] private GameObject playerGraphics;
 
 
     //gravity player rotation
@@ -129,17 +127,13 @@ public class playerController : NetworkBehaviour
 
         }
 
-        var currentPlayerColliderHeight = playerCollider.height;
-        playerCollider.height = 0.5f;
-        EnablePlayerInput(false);
 
-        float time = -0.4f;
+        float time = 0f;
 
-        while (time < 0.5f)
+        while (time < 0.3f)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, playerRotation, time);
+            playerGraphics.transform.rotation = Quaternion.Slerp(transform.rotation, playerRotation, time);
             gravitySphere.transform.localRotation = Quaternion.Slerp(gravitySphere.transform.localRotation, graviRotation, time);
-            playerCollider.height = Mathf.SmoothStep(playerCollider.height, currentPlayerColliderHeight, time);
 
 
 
@@ -148,18 +142,15 @@ public class playerController : NetworkBehaviour
         }
         StopCoroutine(smoothRotation());
 
-        playerCollider.height = currentPlayerColliderHeight;
-
-        EnablePlayerInput(true);
         //fix def the rotation
 
         if (gravitySwited)
         {
-            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 180);
+            playerGraphics.transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 180);
         }
         else
         {
-            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+            playerGraphics.transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
 
         }
 
@@ -213,7 +204,7 @@ public class playerController : NetworkBehaviour
 
         if (playerInputControlBool)
         {
-            playerInputControl = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+            playerInputControl = new Vector3(Input.GetAxis("Horizontal") * gravity, 0f, Input.GetAxis("Vertical"));
         }
         else
         {
@@ -255,7 +246,7 @@ public class playerController : NetworkBehaviour
     {
         if (playerInputControlBool)
         {
-            transform.rotation *= Quaternion.Euler(0f, Input.GetAxis("Mouse X") * mouseSensitivityX, 0f);
+            transform.rotation *= Quaternion.Euler(0f, Input.GetAxis("Mouse X") * mouseSensitivityX * gravity, 0f);
         }
     }
     private void rotationCamera()
