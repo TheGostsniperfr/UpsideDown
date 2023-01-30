@@ -21,12 +21,10 @@ public class groupOfFlameStream : MonoBehaviour
             {
                 if (FlameStreams[0].GetComponent<ParticleSystem>().isPlaying)
                 {
-                    Debug.Log("stop throwing");
                     stopThrowing();
                 }
                 else
                 {
-                    Debug.Log("start throwing");
                     startThrowing();
                 }
             }

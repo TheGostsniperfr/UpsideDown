@@ -1799,12 +1799,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4020154217627782711}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 1.9488171, z: 0}
-  m_LocalScale: {x: 128.46657, y: 128.46657, z: 128.46657}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4623228373134132322}
-  m_RootOrder: 4
+  m_Father: {fileID: 858356719255514893}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &3317288643842031101
 MeshFilter:
@@ -2232,6 +2232,38 @@ Transform:
   m_Father: {fileID: 1492893013983699245}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4885201282342172980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858356719255514893}
+  m_Layer: 7
+  m_Name: AppleContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &858356719255514893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4885201282342172980}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+  m_LocalScale: {x: 128.46657, y: 128.46655, z: 128.46655}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7092127992474261167}
+  m_Father: {fileID: 4623228373134132322}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5167666946066627468
 GameObject:
   m_ObjectHideFlags: 0
@@ -2364,7 +2396,7 @@ Transform:
   - {fileID: 1882629699670896984}
   - {fileID: 7614439042111239205}
   - {fileID: 2630932818154929509}
-  - {fileID: 7092127992474261167}
+  - {fileID: 858356719255514893}
   - {fileID: 3488180712273098095}
   - {fileID: 37188835346707998}
   - {fileID: 4089783936959998142}
@@ -2547,7 +2579,7 @@ MonoBehaviour:
   distanceIsGrounded: 0.88
   mouseSensitivityX: 5
   mouseSensitivityY: 5
-  gravitySphere: {fileID: 4020154217627782711}
+  gravitySphere: {fileID: 4885201282342172980}
   playerSpeed: 3
   playerCurrentSpeed: 3
   playerSprintSpeed: 4.5
@@ -2561,7 +2593,7 @@ MonoBehaviour:
   gravitySwited: 0
   playerCollider: {fileID: 7603364667557003838}
   playerGraphics: {fileID: 7347292531887473008}
-  gravitRotationSpeed: 1
+  gravitRotationSpeed: 2.5
   cam: {fileID: 6812435653995802223}
   camRotMin: -50
   camRotMax: 60

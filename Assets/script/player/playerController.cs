@@ -83,7 +83,7 @@ public class playerController : NetworkBehaviour
 
             gravitySwitcher();
 
-            Debug.Log("is grounded : " + isGrounded());
+            //Debug.Log("is grounded : " + isGrounded());
         }
     }
 
@@ -114,28 +114,19 @@ public class playerController : NetworkBehaviour
     }
     private IEnumerator smoothRotation()
     {
+        var playerOrigineRotation = playerGraphics.transform.localEulerAngles;
+        var playerRotation = new Vector3(playerGraphics.transform.localEulerAngles.x + 180, playerGraphics.transform.localEulerAngles.y + 180, playerGraphics.transform.localEulerAngles.z);
 
-
-        Quaternion playerRotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 0));
-        Quaternion graviRotation = Quaternion.LookRotation(Vector3.up);
-
-
-        if (gravitySwited)
-        {
-            playerRotation = Quaternion.Euler(new Vector3(0, transform.eulerAngles.y, 180));
-            graviRotation = Quaternion.LookRotation(Vector3.down);
-
-        }
+        var graviRotationOrigine = gravitySphere.transform.localEulerAngles;
+        var graviRotation = new Vector3(graviRotationOrigine.x + 180, graviRotationOrigine.y, graviRotationOrigine.z);
 
 
         float time = 0f;
 
-        while (time < 0.3f)
+        while (time < 1f)
         {
-            playerGraphics.transform.rotation = Quaternion.Slerp(transform.rotation, playerRotation, time);
-            gravitySphere.transform.localRotation = Quaternion.Slerp(gravitySphere.transform.localRotation, graviRotation, time);
-
-
+            playerGraphics.transform.localEulerAngles = Vector3.Slerp(playerOrigineRotation, playerRotation, time);
+            gravitySphere.transform.eulerAngles = Vector3.Slerp(graviRotationOrigine, graviRotation, time);
 
             time += Time.deltaTime * gravitRotationSpeed;
             yield return null;
@@ -146,15 +137,22 @@ public class playerController : NetworkBehaviour
 
         if (gravitySwited)
         {
-            playerGraphics.transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 180);
+            playerGraphics.transform.localRotation = Quaternion.Euler(0, 0, 180);
+            gravitySphere.transform.rotation = Quaternion.Euler(180, 0, 0);
+
         }
         else
         {
-            playerGraphics.transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
-
+            playerGraphics.transform.localRotation = Quaternion.Euler(0, 0, 0);
+            gravitySphere.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
     }
+
+
+
+
+
     private bool isGrounded()
     {
         if (Physics.Raycast(transform.position, Vector3.down * gravity, distanceIsGrounded))
