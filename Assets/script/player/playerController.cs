@@ -26,7 +26,11 @@ public class playerController : NetworkBehaviour
     [SerializeField] private float playerSprintSpeed = 4.5f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private bool isSprinting;
-    [SerializeField] private bool playerInputControlBool = true;
+    [SerializeField] private bool playerInputControlKeyBoardBool = true;
+    [SerializeField] private bool playerInputControlMouseBool = true;
+
+
+
     private Vector3 currentInputControl;
     private Vector3 smoothInputVelocity;
     private Vector3 playerInputControl;
@@ -56,6 +60,11 @@ public class playerController : NetworkBehaviour
     [Header("player keyBind")]
     public PlayerData playerData;
 
+    [Header("Player No Gravity Mode")]
+    [SerializeField] private bool isNoGravity = false;
+    [SerializeField] private float noGravitySmoothInputSpeed = 1f;
+
+
 
     [SerializeField] private PlayerSetup playerSetup;
 
@@ -83,6 +92,8 @@ public class playerController : NetworkBehaviour
 
             gravitySwitcher();
 
+            noGravityMode();
+
             //Debug.Log("is grounded : " + isGrounded());
         }
     }
@@ -90,9 +101,34 @@ public class playerController : NetworkBehaviour
 
     private void FixedUpdate()
     {
+        if (!isNoGravity)
+        {
+            rb.AddForce(Physics.gravity * rb.mass * gravity);
+        }
+    }
 
-        rb.AddForce(Physics.gravity * rb.mass * gravity);
 
+    public void noGravityMode()
+    {
+        if (Input.GetKeyDown(playerData.NoGravityKey))
+        {
+            //check current mode of the player
+            if (isNoGravity)
+            {
+                //Player stand up / no gravity disable
+                //smoothInputSpeed = currentSmoothInputSpeed;
+                //playerSpeed = playerCurrentSpeed;
+                isNoGravity = false;
+            }
+            else
+            {
+                //Player sit down / no gravity enable
+                //currentSmoothInputSpeed = noGravitySmoothInputSpeed;
+                isNoGravity = true;
+            }
+            animator.SetBool("noGravity", isNoGravity);
+            playerInputControlKeyBoardBool = !isNoGravity;
+        }
     }
 
     public void EnablePlayerInput(bool status)
@@ -100,12 +136,14 @@ public class playerController : NetworkBehaviour
         if (status)
         {
             //enable player input 
-            playerInputControlBool = true;
+            playerInputControlKeyBoardBool = true;
+            playerInputControlMouseBool = true;
         }
         else
         {
             //disable player input
-            playerInputControlBool = false;
+            playerInputControlKeyBoardBool = false;
+            playerInputControlMouseBool = false;
 
             //disable sprint and reset speed sprint
             isSprinting = false;
@@ -200,7 +238,7 @@ public class playerController : NetworkBehaviour
 
 
 
-        if (playerInputControlBool)
+        if (playerInputControlKeyBoardBool)
         {
             playerInputControl = new Vector3(Input.GetAxis("Horizontal") * gravity, 0f, Input.GetAxis("Vertical"));
         }
@@ -242,14 +280,14 @@ public class playerController : NetworkBehaviour
     }
     private void rotationPlayer()
     {
-        if (playerInputControlBool)
+        if (playerInputControlMouseBool)
         {
             transform.rotation *= Quaternion.Euler(0f, Input.GetAxis("Mouse X") * mouseSensitivityX * gravity, 0f);
         }
     }
     private void rotationCamera()
     {
-        if (playerInputControlBool)
+        if (playerInputControlMouseBool)
         {
             rotationX -= Input.GetAxis("Mouse Y") * mouseSensitivityY;
             rotationX = Mathf.Clamp(rotationX, camRotMin, camRotMax);

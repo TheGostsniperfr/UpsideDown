@@ -1,5 +1,3 @@
-
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class pickUpIObject : MonoBehaviour
@@ -17,13 +15,14 @@ public class pickUpIObject : MonoBehaviour
     [SerializeField] private Transform pickupParent;
     public GameObject currentlyPickedUpObject;
     private Rigidbody pickupRB;
+    [SerializeField] private Player player;
 
     [Header("ObjectFollow")]
     [SerializeField] private float minSpeed = 0;
     [SerializeField] private float maxSpeed = 300f;
     [SerializeField] private float maxDistancePickUp = 10f;
     [SerializeField] private float maxDistance = 10f;
-    [SerializeField] private float throwSpeed =1f;
+    [SerializeField] private float throwSpeed = 1f;
 
     private float currentSpeed = 0f;
     private float currentDist = 0f;
@@ -58,10 +57,11 @@ public class pickUpIObject : MonoBehaviour
 
         }
 
-
+        //get key for action
+        PlayerData playerData = player.playerData;
 
         //if we press the button of choice
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetKeyDown(playerData.lockObjectKey))
         {
             //and we're not holding anything
             if (currentlyPickedUpObject == null)
