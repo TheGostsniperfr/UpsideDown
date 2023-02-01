@@ -1,16 +1,91 @@
+using Mirror;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class isPickUp : MonoBehaviour
+public class isPickUp : NetworkBehaviour
 {
 
     public float waitOnPickup = 0.2f;
     public float breakForce = 35f;
     private int gravityObject = 1;
-    [HideInInspector] public bool pickedUp = false;
-    [HideInInspector] public pickUpIObject playerInteractions;
+    [SerializeField] public bool pickedUp = false;
+    public pickUpIObject playerInteractions;
     [SerializeField] private Rigidbody rb;
+
+    [SyncVar] public Player player;
+
+    [Header("ObjectFollow")]
+    [SerializeField] private float minSpeed = 0;
+    [SerializeField] private float maxSpeed = 300f;
+    [SerializeField] private float maxDistance = 10f;
+    [SerializeField] private float throwSpeed = 1f;
+
+    private float currentSpeed = 0f;
+    private float currentDist = 0f;
+
+    [Header("Rotation")]
+    public float rotationSpeed = 100f;
+    Quaternion lookRot;
+
+
+    [Command(requiresAuthority = false)]
+    public void setPickUpIObject(Player _player)
+    {
+        //Debug.Log("test set pick up" + player);
+        this.player = _player;
+
+        playerInteractions = _player.GetComponent<pickUpIObject>();
+
+        PickUpObject();
+    }
+
+    [Command(requiresAuthority = false)]
+    public void resetPickUpObject()
+    {
+        this.player = null;
+    }
+
+
+
+
+    //Velocity movement toward pickup parent and rotation
+    private void FixedUpdate()
+    {
+        if (pickedUp)
+        {
+            currentDist = Vector3.Distance(player.pickupParent.position, rb.position);
+            currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, currentDist / maxDistance);
+            currentSpeed *= Time.fixedDeltaTime;
+            Vector3 direction = player.pickupParent.position - rb.position;
+            rb.velocity = direction.normalized * currentSpeed;
+            //Rotation
+            lookRot = Quaternion.LookRotation(player.transform.position - rb.position);
+            lookRot = Quaternion.Slerp(player.cam.transform.rotation, lookRot, rotationSpeed * Time.fixedDeltaTime);
+            rb.MoveRotation(lookRot);
+
+        }
+
+
+
+        rb.AddForce(new Vector3(0, -10 * gravityObject, 0), ForceMode.Acceleration);
+    }
+
+    //Release the objec
+    [Command(requiresAuthority = false)]
+    public void BreakConnection()
+    {
+        rb.constraints = RigidbodyConstraints.None;
+        this.pickedUp = false;
+        currentDist = 0;
+    }
+    [Command(requiresAuthority = false)]
+    public void PickUpObject()
+    {
+        this.rb.constraints = RigidbodyConstraints.FreezeRotation;
+        synLocalGrabity();
+        StartCoroutine(this.PickUp());
+    }
+
 
 
     private void OnCollisionEnter(Collision collision)
@@ -33,14 +108,9 @@ public class isPickUp : MonoBehaviour
 
     }
 
-    public void synLocalGrabity(int gravity)
+    public void synLocalGrabity()
     {
-        gravityObject = gravity;
-    }
-
-    private void FixedUpdate()
-    {
-        rb.AddForce(new Vector3(0,-10 * gravityObject, 0) , ForceMode.Acceleration);
+        gravityObject = player.playerController.gravity;
     }
 }
 

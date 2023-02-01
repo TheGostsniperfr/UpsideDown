@@ -48,7 +48,13 @@ public class Player : NetworkBehaviour
     private interactiveInterfaceObject currentInterfaceObject;
 
     [SerializeField] private float playerReatch = 3f;
-    [SerializeField] Camera cam;
+    [SerializeField] public Camera cam;
+
+    [Header("pickUp")]
+    [SerializeField] public Transform pickupParent;
+
+
+    [SerializeField] public playerController playerController;
 
 
 

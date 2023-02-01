@@ -2585,7 +2585,8 @@ MonoBehaviour:
   playerSprintSpeed: 4.5
   jumpForce: 7
   isSprinting: 0
-  playerInputControlBool: 1
+  playerInputControlKeyBoardBool: 1
+  playerInputControlMouseBool: 1
   currentSmoothInputSpeed: 0.05
   jumpSmoothInputSpeed: 0.45
   smoothInputSpeed: 0.2
@@ -2603,11 +2604,14 @@ MonoBehaviour:
     useKey: 102
     switchGravityKey: 101
     lockObjectKey: 324
+    NoGravityKey: 103
     nextDialogue: 119
     testKey: 111
     reponse1: 121
     reponse2: 110
     reponse3: 104
+  isNoGravity: 0
+  noGravitySmoothInputSpeed: 1
   playerSetup: {fileID: 0}
 --- !u!54 &1486211225457030816
 Rigidbody:
@@ -2651,6 +2655,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b065c8b3c5a9b14a8fd06e346d8d438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0.1
   sphereCastRadius: 1
   interactableLayerIndex: 8
   lookObject: {fileID: 0}
@@ -2738,6 +2745,7 @@ MonoBehaviour:
     useKey: 102
     switchGravityKey: 101
     lockObjectKey: 324
+    NoGravityKey: 103
     nextDialogue: 119
     testKey: 111
     reponse1: 121
@@ -2746,6 +2754,8 @@ MonoBehaviour:
   keyPositions: {fileID: 0}
   playerReatch: 3
   cam: {fileID: 6812435653995802223}
+  pickupParent: {fileID: 40883621074132310}
+  playerController: {fileID: -3974398621766229066}
 --- !u!114 &6284173179579822254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2790,7 +2800,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
-  clientAuthority: 0
+  clientAuthority: 1
   animator: {fileID: 1022297811457541833}
 --- !u!1 &6276221052763350486
 GameObject:

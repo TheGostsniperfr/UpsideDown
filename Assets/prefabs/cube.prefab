@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1044407086}
   - component: {fileID: 2263450509251643093}
   - component: {fileID: 8116685558262953886}
+  - component: {fileID: 439965758}
   m_Layer: 8
   m_Name: cube
   m_TagString: cube
@@ -80,11 +81,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c669e35af1604b7409ee89325d55b17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
   waitOnPickup: 0.2
   breakForce: 35
   pickedUp: 0
   playerInteractions: {fileID: 0}
   rb: {fileID: 7214338620512636760}
+  player: {fileID: 0}
+  minSpeed: 0
+  maxSpeed: 300
+  maxDistancePickUp: 10
+  maxDistance: 1
+  throwSpeed: 1.5
+  rotationSpeed: 100
 --- !u!114 &2263450509251643093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,7 +130,7 @@ MonoBehaviour:
   syncInterval: 0
   target: {fileID: 7214338620512636766}
   clientAuthority: 0
-  onlySyncOnChange: 1
+  onlySyncOnChange: 0
   bufferResetMultiplier: 5
   positionSensitivity: 0.01
   rotationSensitivity: 0.01
@@ -130,6 +141,14 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+--- !u!33 &439965758
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214338620512636765}
+  m_Mesh: {fileID: 0}
 --- !u!1 &7214338621731603702
 GameObject:
   m_ObjectHideFlags: 0
