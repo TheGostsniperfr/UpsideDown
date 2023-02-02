@@ -1799,12 +1799,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4020154217627782711}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0, y: 1.8, z: 0}
+  m_LocalScale: {x: 128.46657, y: 128.46658, z: 128.46658}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 858356719255514893}
-  m_RootOrder: 0
+  m_Father: {fileID: 4623228373134132322}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &3317288643842031101
 MeshFilter:
@@ -2232,38 +2232,6 @@ Transform:
   m_Father: {fileID: 1492893013983699245}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4885201282342172980
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 858356719255514893}
-  m_Layer: 7
-  m_Name: AppleContainer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &858356719255514893
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4885201282342172980}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
-  m_LocalScale: {x: 128.46657, y: 128.46655, z: 128.46655}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7092127992474261167}
-  m_Father: {fileID: 4623228373134132322}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5167666946066627468
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,7 +2364,7 @@ Transform:
   - {fileID: 1882629699670896984}
   - {fileID: 7614439042111239205}
   - {fileID: 2630932818154929509}
-  - {fileID: 858356719255514893}
+  - {fileID: 7092127992474261167}
   - {fileID: 3488180712273098095}
   - {fileID: 37188835346707998}
   - {fileID: 4089783936959998142}
@@ -2579,7 +2547,7 @@ MonoBehaviour:
   distanceIsGrounded: 0.88
   mouseSensitivityX: 5
   mouseSensitivityY: 5
-  gravitySphere: {fileID: 4885201282342172980}
+  gravitySphere: {fileID: 0}
   playerSpeed: 3
   playerCurrentSpeed: 3
   playerSprintSpeed: 4.5
@@ -2666,12 +2634,7 @@ MonoBehaviour:
   pickupParent: {fileID: 40883621074132310}
   currentlyPickedUpObject: {fileID: 0}
   player: {fileID: 5026844350038223918}
-  minSpeed: 0
-  maxSpeed: 300
   maxDistancePickUp: 2
-  maxDistance: 1
-  throwSpeed: 1.5
-  rotationSpeed: 100
 --- !u!114 &5830707951911622002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2781,6 +2744,7 @@ MonoBehaviour:
   body: {fileID: 3670669630100740519}
   hair: {fileID: 2335520399452074320}
   noBody: {fileID: 793233766609823889}
+  graviSphere: {fileID: 5432134007923580632}
   anim: {fileID: 1022297811457541833}
   playerUIPrefab: {fileID: 8748424250899838986, guid: db71166bcf805994cbc22da91b3c5b88, type: 3}
   playerUIInstance: {fileID: 0}

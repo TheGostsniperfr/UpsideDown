@@ -15,6 +15,7 @@ public class PlayerSetup : NetworkBehaviour
     [SerializeField] private GameObject body;
     [SerializeField] private GameObject hair;
     [SerializeField] private GameObject noBody;
+    [SerializeField] private GameObject graviSphere;
 
     Camera sceneCamera;
 
@@ -67,6 +68,14 @@ public class PlayerSetup : NetworkBehaviour
         body.layer = LayerMask.NameToLayer(rendering);
         hair.layer = LayerMask.NameToLayer(rendering);
         noBody.layer = LayerMask.NameToLayer(noRendering);
+        graviSphere.layer = LayerMask.NameToLayer(rendering);
+
+        //Apply layer to all child of graviSphere
+        foreach (Transform child in graviSphere.transform)
+        {
+            child.gameObject.layer = LayerMask.NameToLayer(rendering);
+        }
+
     }
 
     private void DisableComponents()

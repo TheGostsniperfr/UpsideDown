@@ -84,7 +84,7 @@ MonoBehaviour:
   syncDirection: 1
   syncMode: 0
   syncInterval: 0
-  waitOnPickup: 0.2
+  waitOnPickup: 0
   breakForce: 35
   pickedUp: 0
   playerInteractions: {fileID: 0}
@@ -92,7 +92,6 @@ MonoBehaviour:
   player: {fileID: 0}
   minSpeed: 0
   maxSpeed: 300
-  maxDistancePickUp: 10
   maxDistance: 1
   throwSpeed: 1.5
   rotationSpeed: 100
