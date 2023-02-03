@@ -36,7 +36,7 @@ public class playerController : NetworkBehaviour
     private Vector3 playerInputControl;
     [SerializeField] private float currentSmoothInputSpeed = 0.05f;
     [SerializeField] private float jumpSmoothInputSpeed = 1f;
-    [SerializeField] float smoothInputSpeed = 0.2f;
+    [SerializeField] private float smoothInputSpeed = 0.2f;
 
     [Header("Gravity switch")]
     [SerializeField] public int gravity = 1;
@@ -63,10 +63,12 @@ public class playerController : NetworkBehaviour
     [Header("Player No Gravity Mode")]
     [SerializeField] private bool isNoGravity = false;
     [SerializeField] private float noGravitySmoothInputSpeed = 1f;
+    [SerializeField] private CapsuleCollider capsuleCollider;
 
-
-
-    [SerializeField] private PlayerSetup playerSetup;
+    [SerializeField] private PhysicMaterial defaultPhysic;
+    [SerializeField] private PhysicMaterial bouncePhysic;
+    [SerializeField] private float decreaseVelocity = 1.3f;
+    private RigidbodyConstraints defaultContrain;
 
     private void Awake()
     {
@@ -75,6 +77,9 @@ public class playerController : NetworkBehaviour
 
         playerSpeed = playerCurrentSpeed;
         smoothInputSpeed = currentSmoothInputSpeed;
+
+
+        defaultContrain = rb.constraints;
     }
 
     private void Start()
@@ -110,7 +115,7 @@ public class playerController : NetworkBehaviour
 
     public void noGravityMode()
     {
-        if (Input.GetKeyDown(playerData.NoGravityKey))
+        if (isGrounded() && Input.GetKeyDown(playerData.NoGravityKey))
         {
             //check current mode of the player
             if (isNoGravity)
@@ -119,15 +124,24 @@ public class playerController : NetworkBehaviour
                 //smoothInputSpeed = currentSmoothInputSpeed;
                 //playerSpeed = playerCurrentSpeed;
                 isNoGravity = false;
+                rb.constraints = defaultContrain;
+
+                capsuleCollider.material = defaultPhysic;
+
             }
             else
             {
                 //Player sit down / no gravity enable
                 //currentSmoothInputSpeed = noGravitySmoothInputSpeed;
                 isNoGravity = true;
+                rb.constraints = (RigidbodyConstraints)(112 + 4);
+
+                capsuleCollider.material = bouncePhysic;
+
             }
             animator.SetBool("noGravity", isNoGravity);
-            playerInputControlKeyBoardBool = !isNoGravity;
+            //playerInputControlKeyBoardBool = !isNoGravity;
+
         }
     }
 
@@ -237,7 +251,6 @@ public class playerController : NetworkBehaviour
         }
 
 
-
         if (playerInputControlKeyBoardBool)
         {
             playerInputControl = new Vector3(Input.GetAxis("Horizontal") * gravity, 0f, Input.GetAxis("Vertical"));
@@ -247,35 +260,52 @@ public class playerController : NetworkBehaviour
             playerInputControl = new Vector3(0f, 0f, 0f);
         }
 
-        currentInputControl = Vector3.SmoothDamp(currentInputControl, playerInputControl, ref smoothInputVelocity, smoothInputSpeed);
 
 
-
-        Vector3 MoveVector = transform.TransformDirection(currentInputControl) * playerSpeed;
-        rb.velocity = new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
-
-        if (MoveVector.magnitude > 0.1)
+        if (!isNoGravity)
         {
-            animator.SetBool("isWalking", true);
+            Vector3 MoveVector = transform.TransformDirection(currentInputControl) * playerSpeed;
+
+            currentInputControl = Vector3.SmoothDamp(currentInputControl, playerInputControl, ref smoothInputVelocity, smoothInputSpeed);
+
+            rb.velocity = new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
+
+            if (MoveVector.magnitude > 0.1)
+            {
+                animator.SetBool("isWalking", true);
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
+
+            }
+
+            //jump
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (isGrounded())
+                {
+                    rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode.Impulse);
+                    netAnimator.SetTrigger("jump");
+                }
+            }
+
         }
         else
         {
-            animator.SetBool("isWalking", false);
+            Debug.Log("Velocity : " + rb.velocity);
 
+            Vector3 MoveVector = transform.TransformDirection(currentInputControl) * noGravitySmoothInputSpeed / 100;
+
+            currentInputControl = Vector3.SmoothDamp(currentInputControl, playerInputControl, ref smoothInputVelocity, smoothInputSpeed);
+
+            rb.velocity = new Vector3(MoveVector.x + rb.velocity.x, rb.velocity.y, MoveVector.z + rb.velocity.z);
+
+            //decrease the velocity
+            rb.velocity /= decreaseVelocity;
         }
 
 
-
-
-        //jump
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (isGrounded())
-            {
-                rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode.Impulse);
-                netAnimator.SetTrigger("jump");
-            }
-        }
 
     }
     private void rotationPlayer()

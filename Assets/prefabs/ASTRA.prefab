@@ -2580,7 +2580,9 @@ MonoBehaviour:
     reponse3: 104
   isNoGravity: 0
   noGravitySmoothInputSpeed: 1
-  playerSetup: {fileID: 0}
+  capsuleCollider: {fileID: 7603364667557003838}
+  defaultPhysic: {fileID: 13400000, guid: 5838b8d2f42c6514699e68ca4ea253a5, type: 2}
+  bouncePhysic: {fileID: 13400000, guid: e51cf9f527817a94eb4c82adb694d422, type: 2}
 --- !u!54 &1486211225457030816
 Rigidbody:
   m_ObjectHideFlags: 0
