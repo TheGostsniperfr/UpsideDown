@@ -69,6 +69,11 @@ public class playerController : NetworkBehaviour
     [SerializeField] private PhysicMaterial bouncePhysic;
     [SerializeField] private float decreaseVelocity = 1.3f;
     private RigidbodyConstraints defaultContrain;
+    [SerializeField] private float timeBeforeDisableNoGravity = 3f;
+    private float timeWithNoMoveWithNoGravity;
+    private bool isNoMovingWithNoGravity = false;
+
+
 
     private void Awake()
     {
@@ -115,34 +120,40 @@ public class playerController : NetworkBehaviour
 
     public void noGravityMode()
     {
-        if (isGrounded() && Input.GetKeyDown(playerData.NoGravityKey))
+        if ((isGrounded() || isNoGravity) && Input.GetKeyDown(playerData.NoGravityKey))
         {
             //check current mode of the player
             if (isNoGravity)
-            {
-                //Player stand up / no gravity disable
-                //smoothInputSpeed = currentSmoothInputSpeed;
-                //playerSpeed = playerCurrentSpeed;
-                isNoGravity = false;
-                rb.constraints = defaultContrain;
-
-                capsuleCollider.material = defaultPhysic;
+            {                
+                setNoGravity(false);
 
             }
             else
             {
-                //Player sit down / no gravity enable
-                //currentSmoothInputSpeed = noGravitySmoothInputSpeed;
-                isNoGravity = true;
-                rb.constraints = (RigidbodyConstraints)(112 + 4);
-
-                capsuleCollider.material = bouncePhysic;
-
+                setNoGravity(true);
             }
-            animator.SetBool("noGravity", isNoGravity);
-            //playerInputControlKeyBoardBool = !isNoGravity;
-
         }
+    }
+
+
+    private void setNoGravity(bool state)
+    {
+        if (state)
+        {
+            isNoGravity = true;
+            rb.constraints = (RigidbodyConstraints)(112 + 4);
+
+            capsuleCollider.material = bouncePhysic;
+        }
+        else
+        {
+            isNoGravity = false;
+            rb.constraints = defaultContrain;
+
+            capsuleCollider.material = defaultPhysic;
+        }
+        animator.SetBool("noGravity", isNoGravity);
+
     }
 
     public void EnablePlayerInput(bool status)
@@ -295,14 +306,42 @@ public class playerController : NetworkBehaviour
         {
             Debug.Log("Velocity : " + rb.velocity);
 
-            Vector3 MoveVector = transform.TransformDirection(currentInputControl) * noGravitySmoothInputSpeed / 100;
 
-            currentInputControl = Vector3.SmoothDamp(currentInputControl, playerInputControl, ref smoothInputVelocity, smoothInputSpeed);
 
-            rb.velocity = new Vector3(MoveVector.x + rb.velocity.x, rb.velocity.y, MoveVector.z + rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
 
             //decrease the velocity
             rb.velocity /= decreaseVelocity;
+
+            if(rb.velocity.magnitude < 0.1f)
+            {
+
+                //disable the no gravity is the player stay motionless after time 
+                if(!isNoMovingWithNoGravity)
+                {
+                    Debug.Log("test1");
+                    isNoMovingWithNoGravity = true;
+                    timeWithNoMoveWithNoGravity = Time.timeSinceLevelLoad;
+                }
+                else if(timeWithNoMoveWithNoGravity + timeBeforeDisableNoGravity < Time.timeSinceLevelLoad)
+                {
+                    Debug.Log("test2");
+
+                    setNoGravity(false);
+
+                    isNoMovingWithNoGravity = false;
+                }
+
+                rb.velocity = Vector3.zero;
+            }
+
+            //if the player get velocity after no moving ( ex : collision )
+            else if (isNoMovingWithNoGravity)
+            {
+                isNoMovingWithNoGravity = false;
+            }
+
+            
         }
 
 
