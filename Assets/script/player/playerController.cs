@@ -111,6 +111,9 @@ public class playerController : NetworkBehaviour
 
     private void FixedUpdate()
     {
+        if (isGrounded()) { return; }
+
+
         if (!isNoGravity)
         {
             rb.AddForce(Physics.gravity * rb.mass * gravity);
@@ -304,10 +307,6 @@ public class playerController : NetworkBehaviour
         }
         else
         {
-            Debug.Log("Velocity : " + rb.velocity);
-
-
-
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
 
             //decrease the velocity
