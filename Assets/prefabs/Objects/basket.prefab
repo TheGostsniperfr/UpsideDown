@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1138199442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1138199443}
+  m_Layer: 13
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1138199443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138199442}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1007024705135213566}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1007024703979789366
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007024703979789365}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pos2
   m_TagString: Untagged
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
@@ -40,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007024704163775016}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pos1
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
@@ -71,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007024704341189641}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ElectricVFXContainer (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +127,7 @@ Transform:
   - {fileID: 1007024705022142707}
   - {fileID: 1007024705143544439}
   m_Father: {fileID: 1007024705135213566}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1007024705022142700
 GameObject:
@@ -107,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007024705022142707}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pos3
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -139,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1007024705135213566}
   - component: {fileID: 924157374}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: basket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,6 +198,7 @@ Transform:
   - {fileID: 1007024705973072245}
   - {fileID: 1007024705622998733}
   - {fileID: 2063399440970400477}
+  - {fileID: 1138199443}
   - {fileID: 1007024704341189641}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -187,7 +219,8 @@ MonoBehaviour:
   - {x: 23.3, y: 7, z: 21}
   - {x: 33, y: 7, z: 21}
   isEneable: 1
-  speed: 3
+  speed: 1
+  waitWhenArrive: 2
 --- !u!1 &1007024705143544432
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1007024705143544439}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pos4
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -235,7 +268,7 @@ GameObject:
   - component: {fileID: 1007024705793026763}
   - component: {fileID: 1007024705793026756}
   - component: {fileID: 1007024705793026757}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2063399440970400477}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: turbineParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,6 +512,10 @@ PrefabInstance:
     - target: {fileID: 1030972278, guid: abc00000000002726280635467115827, type: 3}
       propertyPath: m_Name
       value: P_Barrier_01_Short (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972278, guid: abc00000000002726280635467115827, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1030972278, guid: abc00000000002726280635467115827, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -563,6 +600,10 @@ PrefabInstance:
       value: P_Barrier_01_Short (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1030972278, guid: abc00000000002726280635467115827, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972278, guid: abc00000000002726280635467115827, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -643,6 +684,10 @@ PrefabInstance:
     - target: {fileID: 1030972278, guid: abc00000000002726280635467115827, type: 3}
       propertyPath: m_Name
       value: P_Barrier_01_Short
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972278, guid: abc00000000002726280635467115827, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1030972278, guid: abc00000000002726280635467115827, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -727,6 +772,10 @@ PrefabInstance:
       value: P_Barrier_01_Short (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1030972278, guid: abc00000000002726280635467115827, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030972278, guid: abc00000000002726280635467115827, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -809,6 +858,10 @@ PrefabInstance:
       value: P_Pallet_01
       objectReference: {fileID: 0}
     - target: {fileID: 1030986435, guid: abc00000000005472921206347123055, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030986435, guid: abc00000000005472921206347123055, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -873,6 +926,10 @@ PrefabInstance:
     - target: {fileID: 1030986482, guid: abc00000000013804386013511674263, type: 3}
       propertyPath: m_Name
       value: P_Barrier_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030986482, guid: abc00000000013804386013511674263, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1030986482, guid: abc00000000013804386013511674263, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -957,6 +1014,10 @@ PrefabInstance:
       value: P_Barrier_02
       objectReference: {fileID: 0}
     - target: {fileID: 1030986482, guid: abc00000000013804386013511674263, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030986482, guid: abc00000000013804386013511674263, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -1039,6 +1100,10 @@ PrefabInstance:
       value: P_Ceiling_02
       objectReference: {fileID: 0}
     - target: {fileID: 1030973181, guid: abc00000000006929976942516155355, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030973181, guid: abc00000000006929976942516155355, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -1117,6 +1182,10 @@ PrefabInstance:
       value: P_Turbine_01
       objectReference: {fileID: 0}
     - target: {fileID: 1030982425, guid: abc00000000012734458214646510496, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1030982425, guid: abc00000000012734458214646510496, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
@@ -1181,8 +1250,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1677125022039993755, guid: abc00000000012734458214646510496, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677125022039993755, guid: abc00000000012734458214646510496, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3689425720943203259, guid: abc00000000012734458214646510496, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3689425720943203259, guid: abc00000000012734458214646510496, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1192,6 +1269,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300002, guid: abc00000000015310537430811033330, type: 3}
+    - target: {fileID: 6296535674869314603, guid: abc00000000012734458214646510496, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6296535674869314603, guid: abc00000000012734458214646510496, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0

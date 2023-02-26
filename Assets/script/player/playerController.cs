@@ -104,6 +104,9 @@ public class playerController : NetworkBehaviour
 
             noGravityMode();
 
+            //check if the player is on a plateform
+            playerOnMovingPlatform();
+
             //Debug.Log("is grounded : " + isGrounded());
         }
     }
@@ -231,6 +234,29 @@ public class playerController : NetworkBehaviour
         }
 
     }
+
+    private void playerOnMovingPlatform()
+    {
+        if(isGrounded() && !isNoGravity)
+        {
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down * gravity, out hit, distanceIsGrounded);
+
+
+
+            if(hit.collider != null && hit.collider.gameObject.layer == 13)
+            {
+                gameObject.transform.SetParent(hit.collider.gameObject.transform, true);
+            }
+            else
+            {
+                gameObject.transform.SetParent(null);
+            }           
+
+        }
+
+    }
+
     private void movePlayer()
     {
         if (isGrounded())
@@ -281,8 +307,9 @@ public class playerController : NetworkBehaviour
             Vector3 MoveVector = transform.TransformDirection(currentInputControl) * playerSpeed;
 
             currentInputControl = Vector3.SmoothDamp(currentInputControl, playerInputControl, ref smoothInputVelocity, smoothInputSpeed);
+                       
 
-            rb.velocity = new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
+            rb.velocity = new Vector3(MoveVector.x , rb.velocity.y , MoveVector.z );
 
             if (MoveVector.magnitude > 0.1)
             {
