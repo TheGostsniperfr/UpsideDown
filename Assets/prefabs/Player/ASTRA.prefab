@@ -2547,7 +2547,7 @@ MonoBehaviour:
   distanceIsGrounded: 1
   mouseSensitivityX: 5
   mouseSensitivityY: 5
-  gravitySphere: {fileID: 5432134007923580632}
+  gravitySphere: {fileID: 4020154217627782711}
   playerSpeed: 3
   playerCurrentSpeed: 3
   playerSprintSpeed: 4.5
