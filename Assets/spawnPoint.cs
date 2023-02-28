@@ -6,13 +6,13 @@ public class spawnPoint : MonoBehaviour
     [SerializeField] private GameObject[] spawnPointPads;
 
     //mirror spawning game object
-    private GameObject respawnPoint;
+    [SerializeField] private GameObject respawnPoint;
 
     private void Update()
     {
         if (allSpawnPointPadsIsGood())
         {
-            respawnPoint.gameObject.transform.position = gameObject.transform.position;
+            respawnPoint.gameObject.transform.position = gameObject.transform.position + new Vector3(0,2,0);
         }
 
 
