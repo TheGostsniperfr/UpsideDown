@@ -189,6 +189,8 @@ public class Player : NetworkBehaviour
     {
         if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit, playerReatch))
         {
+            Debug.Log("check action : " + hit.collider.gameObject);
+
             if (keyPositions == null)
             {
                 keyPositions = playerSetup.playerUIInstance.gameObject.GetComponent<KeyPositions>();

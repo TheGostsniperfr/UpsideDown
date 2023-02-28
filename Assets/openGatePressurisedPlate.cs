@@ -5,9 +5,9 @@ using UnityEngine;
 public class openGatePressurisedPlate : MonoBehaviour
 {
     public bool playerDetected { get; private set; } = false;
-    public DoorMovement OpenDoor;
-    public string[] listOfTagsToDetect;
-    public int[] listOfLayersToDetect;
+    [SerializeField] private DoorMovement OpenDoor;
+    [SerializeField] private string[] listOfTagsToDetect;
+    [SerializeField] private int[] listOfLayersToDetect;
 
 
 
