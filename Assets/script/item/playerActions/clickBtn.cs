@@ -46,20 +46,10 @@ public class clickBtn : interactiveInterfaceObject
             isWaiting = true;
             timeLastClick = Time.timeSinceLevelLoad;
         }
-
-
-
-
     }
 
     public override KeyCode getKey(PlayerData playerData)
     {
         return playerData.useKey;
     }
-
-
-
-
-
-
 }
