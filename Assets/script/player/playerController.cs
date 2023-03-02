@@ -73,7 +73,8 @@ public class playerController : NetworkBehaviour
     private float timeWithNoMoveWithNoGravity;
     private bool isNoMovingWithNoGravity = false;
 
-
+    //raycast of the player 
+    RaycastHit hit;
 
     private void Awake()
     {
@@ -114,7 +115,8 @@ public class playerController : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if (isGrounded()) { return; }
+        //check if the collider is a stair ( layer stair : 15 )
+        if (hit.collider != null && hit.collider.gameObject.layer == 15) { return; }
 
 
         if (!isNoGravity)
@@ -130,7 +132,7 @@ public class playerController : NetworkBehaviour
         {
             //check current mode of the player
             if (isNoGravity)
-            {                
+            {
                 setNoGravity(false);
 
             }
@@ -224,7 +226,7 @@ public class playerController : NetworkBehaviour
 
     private bool isGrounded()
     {
-        if (Physics.Raycast(transform.position, Vector3.down * gravity, distanceIsGrounded))
+        if (hit.collider != null)
         {
             return true;
         }
@@ -237,21 +239,16 @@ public class playerController : NetworkBehaviour
 
     private void playerOnMovingPlatform()
     {
-        if(isGrounded() && !isNoGravity)
+        if (isGrounded() && !isNoGravity)
         {
-            RaycastHit hit;
-            Physics.Raycast(transform.position, Vector3.down * gravity, out hit, distanceIsGrounded);
-
-
-
-            if(hit.collider != null && hit.collider.gameObject.layer == 13)
+            if (hit.collider != null && hit.collider.gameObject.layer == 13)
             {
                 gameObject.transform.SetParent(hit.collider.gameObject.transform, true);
             }
             else
             {
                 gameObject.transform.SetParent(null);
-            }           
+            }
 
         }
 
@@ -259,6 +256,8 @@ public class playerController : NetworkBehaviour
 
     private void movePlayer()
     {
+        Physics.Raycast(transform.position, Vector3.down * gravity, out hit, distanceIsGrounded);
+
         if (isGrounded())
         {
             smoothInputSpeed = currentSmoothInputSpeed;
@@ -307,9 +306,9 @@ public class playerController : NetworkBehaviour
             Vector3 MoveVector = transform.TransformDirection(currentInputControl) * playerSpeed;
 
             currentInputControl = Vector3.SmoothDamp(currentInputControl, playerInputControl, ref smoothInputVelocity, smoothInputSpeed);
-                       
 
-            rb.velocity = new Vector3(MoveVector.x , rb.velocity.y , MoveVector.z );
+
+            rb.velocity = new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
 
             if (MoveVector.magnitude > 0.1)
             {
@@ -339,17 +338,17 @@ public class playerController : NetworkBehaviour
             //decrease the velocity
             rb.velocity /= decreaseVelocity;
 
-            if(rb.velocity.magnitude < 0.1f)
+            if (rb.velocity.magnitude < 0.1f)
             {
 
                 //disable the no gravity is the player stay motionless after time 
-                if(!isNoMovingWithNoGravity)
+                if (!isNoMovingWithNoGravity)
                 {
                     Debug.Log("test1");
                     isNoMovingWithNoGravity = true;
                     timeWithNoMoveWithNoGravity = Time.timeSinceLevelLoad;
                 }
-                else if(timeWithNoMoveWithNoGravity + timeBeforeDisableNoGravity < Time.timeSinceLevelLoad)
+                else if (timeWithNoMoveWithNoGravity + timeBeforeDisableNoGravity < Time.timeSinceLevelLoad)
                 {
                     Debug.Log("test2");
 
@@ -367,7 +366,7 @@ public class playerController : NetworkBehaviour
                 isNoMovingWithNoGravity = false;
             }
 
-            
+
         }
 
 
