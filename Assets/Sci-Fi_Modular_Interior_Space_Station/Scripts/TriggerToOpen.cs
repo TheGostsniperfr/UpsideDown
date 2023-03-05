@@ -1,17 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerToOpen : MonoBehaviour
 {
     public DoorMovement OpenDoor;
+    [SerializeField] private string[] tagsToDetect;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider col)
     {
-        OpenDoor.startTime = Time.time;
-        OpenDoor.TriggerOpeningDoor = true;
-        OpenDoor.TriggerClosingDoor = false;
+        foreach (var tag in tagsToDetect)
+        {
+            if (col.gameObject.tag == tag)
+            {
+                OpenDoor.startTime = Time.time;
+                OpenDoor.TriggerOpeningDoor = true;
+                OpenDoor.TriggerClosingDoor = false;
+            }
+        }
+
+
     }
-        
+
 
 }
