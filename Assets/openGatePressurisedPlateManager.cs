@@ -7,6 +7,7 @@ public class openGatePressurisedPlateManager : MonoBehaviour
     [SerializeField] private string[] listOfTagsToDetect;
     [SerializeField] private int[] listOfLayersToDetect;
     [SerializeField] private openGatePressurisedPlate[] plates;
+    [SerializeField] private bool openWithOnlyAllDetected = false;
 
     private bool doorOpen = false;
 
@@ -23,7 +24,7 @@ public class openGatePressurisedPlateManager : MonoBehaviour
 
     private void Update()
     {
-        if (allPlatesIsActivate())
+        if ((openWithOnlyAllDetected && allPlatesIsActivate()) || (!openWithOnlyAllDetected && onePlateIsActivate()))
         {
             if (!doorOpen)
             {
@@ -51,6 +52,18 @@ public class openGatePressurisedPlateManager : MonoBehaviour
             }
         }
         return true;
+    }
+
+    private bool onePlateIsActivate()
+    {
+        foreach (var plate in plates)
+        {
+            if (plate.playerDetected)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 

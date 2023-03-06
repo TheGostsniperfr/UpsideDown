@@ -74,7 +74,7 @@ public class clickBtnManager : MonoBehaviour
             }
             else
             {
-                if (timeLastClick + timeToWait < Time.timeSinceLevelLoad)
+                if (!keepDoorOpen && timeLastClick + timeToWait < Time.timeSinceLevelLoad)
                 {
                     isWaiting = false;
                     closedDoor();

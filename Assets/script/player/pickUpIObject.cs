@@ -78,6 +78,7 @@ public class pickUpIObject : NetworkBehaviour
 
         physicsObject.BreakConnection();
         currentlyPickedUpObject = null;
+        physicsObject.player = null;
     }
 
 

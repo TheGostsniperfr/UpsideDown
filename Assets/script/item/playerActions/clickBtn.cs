@@ -23,7 +23,7 @@ public class clickBtn : interactiveInterfaceObject
 
     private void Update()
     {
-        if (timeLastClick + tickOfTheBtn < Time.timeSinceLevelLoad)
+        if (useTime && timeLastClick + tickOfTheBtn < Time.timeSinceLevelLoad)
         {
             isWaiting = false;
             isClicked = false;

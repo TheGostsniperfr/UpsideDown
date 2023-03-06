@@ -323,7 +323,7 @@ public class playerController : NetworkBehaviour
             //jump
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (isGrounded())
+                if (isGrounded() && (hit.collider.gameObject.tag != "cube" || hit.collider.gameObject.tag != "Player"))
                 {
                     rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode.Impulse);
                     netAnimator.SetTrigger("jump");

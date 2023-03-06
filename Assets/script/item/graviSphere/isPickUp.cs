@@ -82,7 +82,6 @@ public class isPickUp : NetworkBehaviour
     public void PickUpObject()
     {
         this.rb.constraints = RigidbodyConstraints.FreezeRotation;
-        synLocalGrabity();
         StartCoroutine(this.PickUp());
     }
 
@@ -108,9 +107,18 @@ public class isPickUp : NetworkBehaviour
 
     }
 
-    public void synLocalGrabity()
+    public void synLocalGravity()
     {
         gravityObject = player.playerController.gravity;
+    }
+
+
+    private void Update()
+    {
+        if (player != null)
+        {
+            synLocalGravity();
+        }
     }
 }
 
