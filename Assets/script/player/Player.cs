@@ -15,7 +15,7 @@ public class Player : NetworkBehaviour
     [Header("player hp")]
 
     [SyncVar]
-    [SerializeField] private float currentHealth;
+    public float currentHealth;
 
     [SerializeField] private int playerMaxHealth = 100;
 
@@ -31,9 +31,6 @@ public class Player : NetworkBehaviour
 
 
 
-    [SerializeField]
-    private Behaviour[] disableOnDeath;
-    private bool[] wasEnabledOnStart;
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerSetup playerSetup;
@@ -81,12 +78,6 @@ public class Player : NetworkBehaviour
 
     public void Start()
     {
-
-        wasEnabledOnStart = new bool[disableOnDeath.Length];
-        for (int i = 0; i < disableOnDeath.Length; i++)
-        {
-            wasEnabledOnStart[i] = disableOnDeath[i].enabled;
-        }
         SetDefaults();
     }
 
@@ -94,13 +85,6 @@ public class Player : NetworkBehaviour
     {
         isDead = false;
         currentHealth = playerMaxHealth;
-
-        for (int i = 0; i < disableOnDeath.Length; i++)
-        {
-            disableOnDeath[i].enabled = wasEnabledOnStart[i];
-        }
-
-
     }
 
     public ref PlayerData getPlayerData()
@@ -127,6 +111,8 @@ public class Player : NetworkBehaviour
         rb.transform.rotation = spawnPoint.rotation;
 
         //enable mouvement ? :
+        playerController.EnablePlayerInput(true);
+
     }
 
 
@@ -157,10 +143,9 @@ public class Player : NetworkBehaviour
     {
         isDead = true;
 
-        for (int i = 0; i < disableOnDeath.Length; i++)
-        {
-            disableOnDeath[i].enabled = false;
-        }
+        playerController.EnablePlayerInput(false);
+
+
 
         Debug.Log(transform.name + " a été éléminé.");
         StartCoroutine(Respawn());

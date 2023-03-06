@@ -43,6 +43,7 @@ public class playerController : NetworkBehaviour
     [SerializeField] private bool gravitySwited;
     [SerializeField] private CapsuleCollider playerCollider;
     [SerializeField] private GameObject playerGraphics;
+    [SerializeField] private bool eneableSwitchGravity = true;
 
 
     //gravity player rotation
@@ -171,12 +172,14 @@ public class playerController : NetworkBehaviour
             //enable player input 
             playerInputControlKeyBoardBool = true;
             playerInputControlMouseBool = true;
+            eneableSwitchGravity = true;
         }
         else
         {
             //disable player input
             playerInputControlKeyBoardBool = false;
             playerInputControlMouseBool = false;
+            eneableSwitchGravity = false;
 
             //disable sprint and reset speed sprint
             isSprinting = false;
@@ -390,7 +393,7 @@ public class playerController : NetworkBehaviour
     }
     private void gravitySwitcher()
     {
-        if (Input.GetKeyDown(playerData.switchGravityKey) && isGrounded())
+        if (eneableSwitchGravity && Input.GetKeyDown(playerData.switchGravityKey) && isGrounded())
         {
             gravitySwited = !gravitySwited;
             gravity *= -1;
