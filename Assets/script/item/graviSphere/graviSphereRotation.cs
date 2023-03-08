@@ -4,7 +4,7 @@ public class graviSphereRotation : MonoBehaviour
 {
     [SerializeField] private GameObject ring1;
     [SerializeField] private GameObject ring4;
-    [SerializeField] private GameObject ring3;
+
 
     [SerializeField] private Quaternion newPos1;
     private float speedX1 = 1f;    
@@ -16,17 +16,12 @@ public class graviSphereRotation : MonoBehaviour
     private float speedY4 = 1f;
     private float speedZ4 = 1f;
 
-    [SerializeField] private Quaternion newPos3;
-    private float speedX3 = 1f;
-    private float speedY3 = 1f;
-    private float speedZ3 = 1f;
 
 
     private void Start()
     {
         newPos1 = ring1.gameObject.transform.localRotation;
         newPos4 = ring4.gameObject.transform.localRotation;
-        newPos3 = ring3.gameObject.transform.localRotation;
         newPos4.w = 0.2f;
 
     }
@@ -52,15 +47,6 @@ public class graviSphereRotation : MonoBehaviour
             speedZ4 = Random.Range(0.2f, 2);
         }
 
-
-
-        if (t3 <= 0.01f && t3 >= -0.01f)
-        {
-            speedX3 = Random.Range(0.2f, 2);
-            speedY3 = Random.Range(0.2f, 2);
-            speedZ3 = Random.Range(0.2f, 2);
-        }
-
         newPos1.x = t1* speedX1;
         newPos1.y = t1* speedY1; 
         newPos1.z = t1* speedZ1;
@@ -69,14 +55,9 @@ public class graviSphereRotation : MonoBehaviour
         newPos4.y = t4 * speedY4;
         newPos4.z = t4 * speedZ4;
 
-        newPos3.x = t3 * speedX3;
-        newPos3.y = t3 * speedY3;
-        newPos3.z = t3 * speedZ3;
-
 
         ring1.gameObject.transform.localRotation = newPos1;
         ring4.gameObject.transform.localRotation = newPos4;
-        ring3.gameObject.transform.localRotation = newPos3;
 
   
     }
