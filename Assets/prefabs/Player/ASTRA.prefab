@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 3627003361388232034}
   - component: {fileID: 4566035356225120178}
   - component: {fileID: 4703449257033228807}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Anneau Interne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,9 +311,9 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7334181390699908162, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -1580535799172915004, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -905690159841262435, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
+  - {fileID: 2100000, guid: 5af78c1f8e2af5b4ca3b1c01f8e5fd5d, type: 2}
+  - {fileID: 2100000, guid: f22685e47653ae64e886f76d8cbbe772, type: 2}
+  - {fileID: 2100000, guid: ee9313db88bd20f40814abebeb84f978, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 1780014926795786795}
   - component: {fileID: 1434465693767529093}
   - component: {fileID: 4198050347293935166}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GraviSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -635,7 +635,7 @@ GameObject:
   - component: {fileID: 8941915638170792748}
   - component: {fileID: 4133251305372326416}
   - component: {fileID: 1213826735985987571}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plateforme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,11 +685,11 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1580535799172915004, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -5243988174349660497, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -905690159841262435, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -5167284721393031608, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -7334181390699908162, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
+  - {fileID: 2100000, guid: f22685e47653ae64e886f76d8cbbe772, type: 2}
+  - {fileID: 2100000, guid: 398b006844b0b59499c4d6d7f6957c56, type: 2}
+  - {fileID: 2100000, guid: ee9313db88bd20f40814abebeb84f978, type: 2}
+  - {fileID: 2100000, guid: 3a14bfde1fcd5e74abd480119a285bad, type: 2}
+  - {fileID: 2100000, guid: 5af78c1f8e2af5b4ca3b1c01f8e5fd5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1478,7 +1478,7 @@ MonoBehaviour:
         overrideMaterialPassIndex: 0
         overrideMaterialPassName: Forward
         overrideDepthState: 1
-        depthCompareFunction: 8
+        depthCompareFunction: 2
         depthWrite: 1
         shaderPass: 0
 --- !u!1 &3368209653209221994
@@ -1930,7 +1930,7 @@ GameObject:
   - component: {fileID: 5577066057594841318}
   - component: {fileID: 4780898954286906964}
   - component: {fileID: 3518929840614113700}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shepre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1980,12 +1980,12 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6727086725118381721, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -5243988174349660497, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: 8556262120643298411, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -905690159841262435, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -1580535799172915004, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -2243173160057533424, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
+  - {fileID: 2100000, guid: e328b0f6848776147b1299ddfcb9813f, type: 2}
+  - {fileID: 2100000, guid: 398b006844b0b59499c4d6d7f6957c56, type: 2}
+  - {fileID: 2100000, guid: 0d254a211f716a7428db4a2c2aff7d09, type: 2}
+  - {fileID: 2100000, guid: ee9313db88bd20f40814abebeb84f978, type: 2}
+  - {fileID: 2100000, guid: f22685e47653ae64e886f76d8cbbe772, type: 2}
+  - {fileID: 2100000, guid: 5abad6a3c8393f14d9d1dbd8fa6ac941, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2378,7 +2378,7 @@ MonoBehaviour:
   distanceIsGrounded: 1
   mouseSensitivityX: 5
   mouseSensitivityY: 5
-  gravitySphere: {fileID: 0}
+  gravitySphere: {fileID: 8021077404671443070}
   playerSpeed: 3
   playerCurrentSpeed: 3
   playerSprintSpeed: 4.5
@@ -3153,7 +3153,7 @@ GameObject:
   - component: {fileID: 4248776012104259814}
   - component: {fileID: 8544317928479175604}
   - component: {fileID: 6803176889800192575}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pomme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3203,8 +3203,8 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -4770390735465466038, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
+  - {fileID: 2100000, guid: 280f1acee418721498b515ff86aaffcf, type: 2}
+  - {fileID: 2100000, guid: 95376b79d62a27c40a27600dcfec95cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3332,7 +3332,7 @@ GameObject:
   - component: {fileID: 5230255190703769280}
   - component: {fileID: 8937711760138602799}
   - component: {fileID: 149075516956712643}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Anneau Externe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3382,9 +3382,9 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7334181390699908162, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -1580535799172915004, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
-  - {fileID: -905690159841262435, guid: 106b9f6b92970674e9ed55940089c1dc, type: 3}
+  - {fileID: 2100000, guid: 5af78c1f8e2af5b4ca3b1c01f8e5fd5d, type: 2}
+  - {fileID: 2100000, guid: f22685e47653ae64e886f76d8cbbe772, type: 2}
+  - {fileID: 2100000, guid: ee9313db88bd20f40814abebeb84f978, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -1,4 +1,3 @@
-using Knife.HDRPOutline.Core;
 using Mirror;
 using System.Collections;
 using UnityEngine;
@@ -191,9 +190,9 @@ public class Player : NetworkBehaviour
                 currentHit = hit.collider.gameObject;
 
                 currentInterfaceObject = currentHit.GetComponent<interactiveInterfaceObject>();
-                var outLine = currentHit.GetComponent<OutlineObject>();
+                //var outLine = currentHit.GetComponent<OutlineObject>();
 
-                outLine.enabled = true;
+                //outLine.enabled = true;
 
                 currentKey = currentInterfaceObject.getKey(playerData);
 
@@ -204,8 +203,8 @@ public class Player : NetworkBehaviour
         {
             if (currentHit != null)
             {
-                var outLine = currentHit.GetComponent<OutlineObject>();
-                outLine.enabled = false;
+                //var outLine = currentHit.GetComponent<OutlineObject>();
+                //outLine.enabled = false;
 
                 keyPositions.removeKeyUI(currentKey);
                 currentHit = null;
