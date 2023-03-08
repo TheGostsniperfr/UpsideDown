@@ -48,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenDoor: {fileID: 0}
   listBtn:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7746916582598484173}
+  - {fileID: 5667876385600194145}
   keepDoorOpen: 0
   useTime: 1
   timeToWait: 5

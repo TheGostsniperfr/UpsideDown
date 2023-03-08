@@ -6,7 +6,7 @@ public class isPickUp : NetworkBehaviour
 {
 
     public float waitOnPickup = 0.2f;
-    public float breakForce = 35f;
+    public float breakForce = 5f;
     private int gravityObject = 1;
     [SerializeField] public bool pickedUp = false;
     public pickUpIObject playerInteractions;
@@ -58,9 +58,11 @@ public class isPickUp : NetworkBehaviour
             currentSpeed *= Time.fixedDeltaTime;
             Vector3 direction = player.pickupParent.position - rb.position;
             rb.velocity = direction.normalized * currentSpeed;
-            //Rotation
+
+            //Rotation     
             lookRot = Quaternion.LookRotation(player.transform.position - rb.position);
             lookRot = Quaternion.Slerp(player.cam.transform.rotation, lookRot, rotationSpeed * Time.fixedDeltaTime);
+
             rb.MoveRotation(lookRot);
 
         }

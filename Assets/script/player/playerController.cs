@@ -191,8 +191,8 @@ public class playerController : NetworkBehaviour
         var playerOrigineRotation = playerGraphics.transform.localEulerAngles;
         var playerRotation = new Vector3(playerGraphics.transform.localEulerAngles.x + 180, playerGraphics.transform.localEulerAngles.y + 180, playerGraphics.transform.localEulerAngles.z);
 
-        var graviRotationOrigine = gravitySphere.transform.localEulerAngles;
-        var graviRotation = new Vector3(graviRotationOrigine.x + 180, graviRotationOrigine.y, graviRotationOrigine.z);
+        //var graviRotationOrigine = gravitySphere.transform.localEulerAngles;
+        //var graviRotation = new Vector3(graviRotationOrigine.x + 180, graviRotationOrigine.y, graviRotationOrigine.z);
 
 
         float time = 0f;
@@ -200,7 +200,7 @@ public class playerController : NetworkBehaviour
         while (time < 1f)
         {
             playerGraphics.transform.localEulerAngles = Vector3.Slerp(playerOrigineRotation, playerRotation, time);
-            gravitySphere.transform.eulerAngles = Vector3.Slerp(graviRotationOrigine, graviRotation, time);
+            //gravitySphere.transform.eulerAngles = Vector3.Slerp(graviRotationOrigine, graviRotation, time);
 
             time += Time.deltaTime * gravitRotationSpeed;
             yield return null;
@@ -212,13 +212,13 @@ public class playerController : NetworkBehaviour
         if (gravitySwited)
         {
             playerGraphics.transform.localRotation = Quaternion.Euler(0, 0, 180);
-            gravitySphere.transform.rotation = Quaternion.Euler(180, 0, 0);
+            //gravitySphere.transform.rotation = Quaternion.Euler(180, 0, 0);
 
         }
         else
         {
             playerGraphics.transform.localRotation = Quaternion.Euler(0, 0, 0);
-            gravitySphere.transform.rotation = Quaternion.Euler(0, 0, 0);
+            //gravitySphere.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
     }
