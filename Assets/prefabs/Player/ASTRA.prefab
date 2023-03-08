@@ -2485,6 +2485,7 @@ GameObject:
   - component: {fileID: 5026844350038223918}
   - component: {fileID: 6284173179579822254}
   - component: {fileID: -2887578985277000490}
+  - component: {fileID: 7744959435606929019}
   m_Layer: 3
   m_Name: ASTRA
   m_TagString: Player
@@ -2562,6 +2563,7 @@ MonoBehaviour:
   gravitySwited: 0
   playerCollider: {fileID: 7603364667557003838}
   playerGraphics: {fileID: 7347292531887473008}
+  eneableSwitchGravity: 1
   gravitRotationSpeed: 2.5
   cam: {fileID: 6812435653995802223}
   camRotMin: -50
@@ -2705,7 +2707,6 @@ MonoBehaviour:
   cooldownRegen: 1
   hpRegenByCycle: 10
   CooldownActiveRegenAfterDamage: 3
-  disableOnDeath: []
   rb: {fileID: 1486211225457030816}
   playerSetup: {fileID: 6284173179579822254}
   playerData:
@@ -2770,6 +2771,34 @@ MonoBehaviour:
   syncInterval: 0.1
   clientAuthority: 1
   animator: {fileID: 1022297811457541833}
+--- !u!114 &7744959435606929019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017954833772545545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 7730010600037892419}
+  clientAuthority: 0
+  onlySyncOnChange: 1
+  bufferResetMultiplier: 5
+  positionSensitivity: 0.01
+  rotationSensitivity: 0.01
+  scaleSensitivity: 0.01
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
 --- !u!1 &6276221052763350486
 GameObject:
   m_ObjectHideFlags: 0
