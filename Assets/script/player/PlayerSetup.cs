@@ -68,12 +68,16 @@ public class PlayerSetup : NetworkBehaviour
         body.layer = LayerMask.NameToLayer(rendering);
         hair.layer = LayerMask.NameToLayer(rendering);
         noBody.layer = LayerMask.NameToLayer(noRendering);
-        graviSphere.layer = LayerMask.NameToLayer(rendering);
-
-        //Apply layer to all child of graviSphere
-        foreach (Transform child in graviSphere.transform)
+        if (graviSphere != null)
         {
-            child.gameObject.layer = LayerMask.NameToLayer(rendering);
+
+            graviSphere.layer = LayerMask.NameToLayer(rendering);
+
+            //Apply layer to all child of graviSphere
+            foreach (Transform child in graviSphere.transform)
+            {
+                child.gameObject.layer = LayerMask.NameToLayer(rendering);
+            }
         }
 
     }
@@ -99,6 +103,7 @@ public class PlayerSetup : NetworkBehaviour
 
         GameManager.UnRegisterPlayer(transform.name);
     }
+
 
 
 }

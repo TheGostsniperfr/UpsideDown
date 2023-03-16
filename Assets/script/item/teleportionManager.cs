@@ -5,6 +5,7 @@ public class teleportionManager : NetworkBehaviour
 {
     [SerializeField] private triggerDetectObject[] portails;
     [SerializeField] private string sceneNameToLoad;
+    private bool isStartToTP = false;
 
     private bool allPortailsIsDetetected()
     {
@@ -17,13 +18,16 @@ public class teleportionManager : NetworkBehaviour
 
     private void Update()
     {
-        if (allPortailsIsDetetected())
+        if (allPortailsIsDetetected() && !isStartToTP)
         {
+            isStartToTP = true;
             Debug.Log("player go to tp in : " + sceneNameToLoad);
+
+            NetworkServer.SendToAll(new loadingScreenMSG());
+
+
+
             NetworkManager.singleton.ServerChangeScene(sceneNameToLoad);
-
-
-
 
         }
     }
