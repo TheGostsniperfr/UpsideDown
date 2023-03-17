@@ -316,11 +316,33 @@ public class playerController : NetworkBehaviour
             if (MoveVector.magnitude > 0.1)
             {
                 animator.SetBool("isWalking", true);
+
+                if (Input.GetKey(KeyCode.Q))
+                {
+                    animator.SetBool("walkLeft", true);
+                }
+                else
+                {
+                    animator.SetBool("walkLeft", false);
+
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    animator.SetBool("walkRight", true);
+                }
+                else
+                {
+                    animator.SetBool("walkRight", false);
+
+                }
+
             }
             else
             {
-                animator.SetBool("isWalking", false);
 
+                animator.SetBool("isWalking", false);
+                animator.SetBool("walkRight", false);
+                animator.SetBool("walkLeft", false);
             }
 
             //jump

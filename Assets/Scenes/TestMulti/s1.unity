@@ -807,7 +807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5231881752896537891, guid: bf002e95d9c8d9e4789e9813b34f8f5d, type: 3}
       propertyPath: sceneNameToLoad
-      value: Scenes/TestMulti/s2
+      value: Scenes/Tuto
       objectReference: {fileID: 0}
     - target: {fileID: 6666110343664438477, guid: bf002e95d9c8d9e4789e9813b34f8f5d, type: 3}
       propertyPath: m_Name

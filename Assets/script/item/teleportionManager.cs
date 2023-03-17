@@ -1,4 +1,5 @@
 using Mirror;
+using System.Collections;
 using UnityEngine;
 
 public class teleportionManager : NetworkBehaviour
@@ -25,12 +26,23 @@ public class teleportionManager : NetworkBehaviour
 
             NetworkServer.SendToAll(new loadingScreenMSG());
 
+            StartCoroutine(changeScene());
 
 
-            NetworkManager.singleton.ServerChangeScene(sceneNameToLoad);
+
 
         }
     }
+    private IEnumerator changeScene()
+    {
+
+        yield return new WaitForSeconds(1);
+        NetworkManager.singleton.ServerChangeScene(sceneNameToLoad);
+
+
+    }
+
+
 
 
 
