@@ -3,6 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField] private NetworkManagerLobby networkManager = null;
+
+    [Header("UI")]
+    [SerializeField] private GameObject landingPanePanel = null;
+
+    public void HostLobby()
+    {
+        networkManager.StartHost();
+        landingPanePanel.SetActive(false);
+    }
+
 
     public void play()
     {
