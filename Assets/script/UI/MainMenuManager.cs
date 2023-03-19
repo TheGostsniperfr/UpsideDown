@@ -12,6 +12,7 @@ public class MainMenuManager : MonoBehaviour
     {
         networkManager.StartHost();
         landingPanePanel.SetActive(false);
+
     }
 
 

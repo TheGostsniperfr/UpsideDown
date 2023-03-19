@@ -3,24 +3,24 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JoinLobbyMenu : MonoBehaviour
+public class JoinLobbyMenu : NetworkBehaviour
 {
     [SerializeField] private NetworkManagerLobby networkManager = null;
     [Header("UI")]
-    [SerializeField] private GameObject landingPanePanel = null;
+    [SerializeField] private GameObject landingPagePanel = null;
     [SerializeField] private TMP_InputField ipAddressInputField = null;
     [SerializeField] private Button joinButton = null;
 
     private void OnEnable()
     {
-        NetworkManagerLobby.OnClientConected += NetworkClient.OnConnectedEvent;
-        NetworkManagerLobby.OnClientDisconnected += NetworkClient.OnDisconnectedEvent;
+        NetworkManagerLobby.OnClientConected += HandleClientConnected;
+        NetworkManagerLobby.OnClientDisconnected += HandleClientDisconnected;
     }
 
     private void OnDisable()
     {
-        NetworkManagerLobby.OnClientConected -= NetworkClient.OnConnectedEvent;
-        NetworkManagerLobby.OnClientDisconnected -= NetworkClient.OnDisconnectedEvent;
+        NetworkManagerLobby.OnClientConected -= HandleClientConnected;
+        NetworkManagerLobby.OnClientDisconnected -= HandleClientDisconnected;
     }
 
     public void JoinLobby()
@@ -31,14 +31,14 @@ public class JoinLobbyMenu : MonoBehaviour
         joinButton.interactable = false;
     }
 
-    private void OnConnectedToServer()
+    private void HandleClientConnected()
     {
         joinButton.interactable = true;
         gameObject.SetActive(false);
-        landingPanePanel.SetActive(false);
+        landingPagePanel.SetActive(false);
     }
 
-    private void OnDisconnectedFromServer()
+    private void HandleClientDisconnected()
     {
         joinButton.interactable = true;
     }

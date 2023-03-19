@@ -8,8 +8,6 @@ public class NetworkManagerLobby : NetworkManager
 {
     [Scene][SerializeField] private string menuScene = string.Empty;
 
-    [Header("Room")]
-    [SerializeField] private NetWorkRoomPlayerLobby roomPlayerPrefab = null;
 
     public static event Action OnClientConected;
     public static event Action OnClientDisconnected;
@@ -28,24 +26,28 @@ public class NetworkManagerLobby : NetworkManager
 
     public override void OnClientConnect()
     {
-        if (!clientLoadedScene)
-        {
-            if (!NetworkClient.ready)
-            {
-                NetworkClient.Ready();
-            }
-        }
+        base.OnClientConnect();
+        OnClientConected?.Invoke();
     }
+
+    public override void OnClientDisconnect()
+    {
+        base.OnClientDisconnect();
+
+        OnClientDisconnected?.Invoke();
+    }
+
 
     public override void OnServerConnect(NetworkConnectionToClient conn)
     {
+        base.OnServerConnect(conn);
         if (numPlayers >= maxConnections)
         {
             conn.Disconnect();
             return;
         }
 
-        if (SceneManager.GetActiveScene().name != menuScene)
+        if (SceneManager.GetActiveScene().path != menuScene)
         {
             conn.Disconnect();
             return;
@@ -55,10 +57,13 @@ public class NetworkManagerLobby : NetworkManager
 
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
-        if (SceneManager.GetActiveScene().name == menuScene)
+
+
+
+        if (SceneManager.GetActiveScene().path == menuScene)
         {
-            NetWorkRoomPlayerLobby roomPlayerInstance = Instantiate(roomPlayerPrefab);
-            NetworkServer.AddPlayerForConnection(conn, roomPlayerInstance.gameObject);
+            Debug.Log("onServerAddPlayer");
+            NetworkServer.AddPlayerForConnection(conn, Instantiate(this.playerPrefab));
         }
     }
 
