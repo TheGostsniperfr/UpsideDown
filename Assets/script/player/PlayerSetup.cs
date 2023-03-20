@@ -26,8 +26,6 @@ public class PlayerSetup : NetworkBehaviour
 
     [SerializeField] private playerController playerController;
 
-
-
     private void Start()
     {
         if (!isLocalPlayer)
@@ -48,19 +46,12 @@ public class PlayerSetup : NetworkBehaviour
 
         }
     }
-
-
-
-
     public override void OnStartClient()
     {
         base.OnStartClient();
         GameManager.RegisterPlayer(GetComponent<NetworkIdentity>().netId.ToString(), GetComponent<Player>());
 
     }
-
-
-
     private void AssignRemoteLayer()
     {
         gameObject.layer = LayerMask.NameToLayer(remoteLayerName);

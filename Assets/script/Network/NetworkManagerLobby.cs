@@ -1,6 +1,5 @@
 using Mirror;
 using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,10 +7,15 @@ public class NetworkManagerLobby : NetworkManager
 {
     [Scene][SerializeField] private string menuScene = string.Empty;
 
+    [Header("Game")]
+    [SerializeField] private GameObject playerSpawnSystem = null;
+
 
     public static event Action OnClientConected;
     public static event Action OnClientDisconnected;
+    public static event Action<NetworkConnectionToClient> OnServerReadied;
 
+    /*
     public override void OnStartServer() => spawnPrefabs = Resources.LoadAll<GameObject>("SpawnablePrefabs").ToList();
 
     public override void OnStartClient()
@@ -23,6 +27,8 @@ public class NetworkManagerLobby : NetworkManager
             NetworkClient.RegisterPrefab(prefab);
         }
     }
+
+    */
 
     public override void OnClientConnect()
     {
@@ -57,14 +63,34 @@ public class NetworkManagerLobby : NetworkManager
 
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
-
-
-
         if (SceneManager.GetActiveScene().path == menuScene)
         {
             Debug.Log("onServerAddPlayer");
             NetworkServer.AddPlayerForConnection(conn, Instantiate(this.playerPrefab));
         }
     }
+
+
+    public override void OnServerSceneChanged(string sceneName)
+    {
+        Debug.Log("OnServerSceneChanged step 1");
+        if (sceneName.StartsWith(""))
+        {
+            Debug.Log("OnServerSceneChanged step 2");
+
+            GameObject playerSpawnSystemInstance = Instantiate(playerSpawnSystem);
+            NetworkServer.Spawn(playerSpawnSystemInstance);
+        }
+    }
+
+
+
+    public override void OnServerReady(NetworkConnectionToClient conn)
+    {
+        base.OnServerReady(conn);
+
+        OnServerReadied?.Invoke(conn);
+    }
+
 
 }
