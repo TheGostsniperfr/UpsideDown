@@ -26,11 +26,11 @@ public class PlayerSpawnSystem : NetworkBehaviour
     [Server]
     public void SpawnPlayer(NetworkConnection conn)
     {
-        Transform spawnPoint = spawnPoints.ElementAtOrDefault(nextIndex);
+        Transform spawnPoint = spawnPoints.ElementAtOrDefault(nextIndex % spawnPoints.Count);
 
         if (spawnPoint == null)
         {
-            Debug.LogError($"Missing spawn point for player {nextIndex}");
+            Debug.LogError($"Missing spawn point for player {nextIndex % spawnPoints.Count}");
             return;
         }
 
