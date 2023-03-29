@@ -8,7 +8,7 @@ public class PlayerNameInput : MonoBehaviour
     [SerializeField] private TMP_InputField nameInputField = null;
     [SerializeField] private Button continueButton = null;
 
-    public static string DisplayName { get; private set; }
+    public static string DisplayName;
 
     private const string PlayerPrefsNameKey = "PlayerName";
 
@@ -32,7 +32,9 @@ public class PlayerNameInput : MonoBehaviour
 
     public void SavePlayerName()
     {
+
         DisplayName = nameInputField.text;
         PlayerPrefs.SetString(PlayerPrefsNameKey, DisplayName);
+        Debug.Log("SavePlayerName : " + PlayerPrefs.GetString(PlayerPrefsNameKey));
     }
 }

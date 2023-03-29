@@ -43,9 +43,18 @@ public class PlayerSetup : NetworkBehaviour
             //create ui
             playerUIInstance = Instantiate(playerUIPrefab);
             playerUIInstance.GetComponent<PauseMenu>().setup(gameObject.GetComponent<Player>());
-
         }
+
+
     }
+
+
+
+
+
+
+
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -85,6 +94,8 @@ public class PlayerSetup : NetworkBehaviour
 
     private void OnDisable()
     {
+
+
         Destroy(playerUIInstance);
 
         if (sceneCamera != null)

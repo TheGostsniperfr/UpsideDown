@@ -14,26 +14,24 @@ public class NetworkManagerLobby : NetworkManager
     public static event Action OnClientConected;
     public static event Action OnClientDisconnected;
     public static event Action<NetworkConnectionToClient> OnServerReadied;
+    public static event Action OnNewPlayerConnected;
 
-    /*
-    public override void OnStartServer() => spawnPrefabs = Resources.LoadAll<GameObject>("SpawnablePrefabs").ToList();
+
 
     public override void OnStartClient()
     {
-        var spawnablePrefabs = Resources.LoadAll<GameObject>("SpawnablePrefabs");
+        base.OnStartClient();
 
-        foreach (var prefab in spawnablePrefabs)
-        {
-            NetworkClient.RegisterPrefab(prefab);
-        }
+
     }
 
-    */
 
     public override void OnClientConnect()
     {
         base.OnClientConnect();
         OnClientConected?.Invoke();
+        OnNewPlayerConnected?.Invoke();
+
     }
 
     public override void OnClientDisconnect()
@@ -58,6 +56,7 @@ public class NetworkManagerLobby : NetworkManager
             conn.Disconnect();
             return;
         }
+
     }
 
 
@@ -65,18 +64,17 @@ public class NetworkManagerLobby : NetworkManager
     {
         if (SceneManager.GetActiveScene().path == menuScene)
         {
-            Debug.Log("onServerAddPlayer");
             NetworkServer.AddPlayerForConnection(conn, Instantiate(this.playerPrefab));
         }
+
+
     }
 
 
     public override void OnServerSceneChanged(string sceneName)
     {
-        Debug.Log("OnServerSceneChanged step 1");
         if (sceneName.StartsWith(""))
         {
-            Debug.Log("OnServerSceneChanged step 2");
 
             GameObject playerSpawnSystemInstance = Instantiate(playerSpawnSystem);
             NetworkServer.Spawn(playerSpawnSystemInstance);
@@ -91,6 +89,7 @@ public class NetworkManagerLobby : NetworkManager
 
         OnServerReadied?.Invoke(conn);
     }
+
 
 
 }

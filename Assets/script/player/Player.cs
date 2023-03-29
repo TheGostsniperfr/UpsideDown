@@ -25,6 +25,7 @@ public class Player : NetworkBehaviour
     [SerializeField] private float cooldownRegen = 1f;
     [SerializeField] private float hpRegenByCycle = 10f;
     [SerializeField] private float CooldownActiveRegenAfterDamage = 3f;
+    public BillBoard billBoard;
 
     private float timeLastCycle;
     private float timeLastDamage;
