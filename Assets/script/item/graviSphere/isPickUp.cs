@@ -18,7 +18,6 @@ public class isPickUp : NetworkBehaviour
     [SerializeField] private float minSpeed = 0;
     [SerializeField] private float maxSpeed = 300f;
     [SerializeField] private float maxDistance = 10f;
-    [SerializeField] private float throwSpeed = 1f;
 
     private float currentSpeed = 0f;
     private float currentDist = 0f;

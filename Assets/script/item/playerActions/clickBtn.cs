@@ -5,14 +5,12 @@ public class clickBtn : interactiveInterfaceObject
 {
     [Header("Global settings")]
     public bool isClicked = false;
-    [SerializeField] private bool reverseMode = false;
 
 
     [Header("Time settings")]
     public bool useTime = false;
     public float tickOfTheBtn = 1f;
     private float timeLastClick;
-    private bool isWaiting = false;
 
 
     public override string getDescription()
@@ -25,7 +23,6 @@ public class clickBtn : interactiveInterfaceObject
     {
         if (useTime && timeLastClick + tickOfTheBtn < Time.timeSinceLevelLoad)
         {
-            isWaiting = false;
             isClicked = false;
         }
     }
@@ -43,7 +40,6 @@ public class clickBtn : interactiveInterfaceObject
         else
         {
             isClicked = true;
-            isWaiting = true;
             timeLastClick = Time.timeSinceLevelLoad;
         }
     }

@@ -63,7 +63,6 @@ public class playerController : NetworkBehaviour
 
     [Header("Player No Gravity Mode")]
     [SerializeField] private bool isNoGravity = false;
-    [SerializeField] private float noGravitySmoothInputSpeed = 1f;
     [SerializeField] private CapsuleCollider capsuleCollider;
 
     [SerializeField] private PhysicMaterial defaultPhysic;
@@ -76,6 +75,11 @@ public class playerController : NetworkBehaviour
 
     //raycast of the player 
     RaycastHit hit;
+
+
+    [Header("Sound")]
+    [SerializeField] private playerSoundManager soundManager;
+
 
     private void Awake()
     {
@@ -278,7 +282,6 @@ public class playerController : NetworkBehaviour
             {
                 isSprinting = true;
                 playerSpeed = playerSprintSpeed;
-                animator.SetBool("isRunning", true);
             }
         }
         else
@@ -287,11 +290,22 @@ public class playerController : NetworkBehaviour
             {
                 playerSpeed = playerCurrentSpeed;
                 isSprinting = false;
-                animator.SetBool("isRunning", false);
 
             }
         }
 
+
+        if (!animator.GetBool("isRunning") && isSprinting && isGrounded())
+        {
+            animator.SetBool("isRunning", true);
+            soundManager.isRunning(true);
+            soundManager.isWalking(false);
+        }
+        else if (animator.GetBool("isRunning") && !isSprinting || !isGrounded())
+        {
+            animator.SetBool("isRunning", false);
+            soundManager.isRunning(false);
+        }
 
         if (playerInputControlKeyBoardBool)
         {
@@ -315,30 +329,40 @@ public class playerController : NetworkBehaviour
 
             if (MoveVector.magnitude > 0.1)
             {
-                animator.SetBool("isWalking", true);
+                if (!animator.GetBool("isWalking") && isGrounded())
+                {
+                    soundManager.isWalking(true);
+                    animator.SetBool("isWalking", true);
 
-                if (Input.GetKey(KeyCode.Q))
-                {
-                    animator.SetBool("walkLeft", true);
-                }
-                else
-                {
-                    animator.SetBool("walkLeft", false);
+                    if (Input.GetKey(KeyCode.Q))
+                    {
+                        animator.SetBool("walkLeft", true);
+                    }
+                    else
+                    {
+                        animator.SetBool("walkLeft", false);
 
-                }
-                if (Input.GetKey(KeyCode.D))
-                {
-                    animator.SetBool("walkRight", true);
-                }
-                else
-                {
-                    animator.SetBool("walkRight", false);
+                    }
+                    if (Input.GetKey(KeyCode.D))
+                    {
+                        animator.SetBool("walkRight", true);
+                    }
+                    else
+                    {
+                        animator.SetBool("walkRight", false);
+
+                    }
 
                 }
 
             }
             else
             {
+                if (animator.GetBool("isWalking"))
+                {
+                    soundManager.isWalking(false);
+                }
+
 
                 animator.SetBool("isWalking", false);
                 animator.SetBool("walkRight", false);
@@ -352,6 +376,13 @@ public class playerController : NetworkBehaviour
                 {
                     rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode.Impulse);
                     netAnimator.SetTrigger("jump");
+
+                    animator.SetBool("isWalking", false);
+                    animator.SetBool("walkRight", false);
+                    animator.SetBool("walkLeft", false);
+
+                    soundManager.isRunning(false);
+                    soundManager.isWalking(false);
                 }
             }
 
@@ -369,13 +400,11 @@ public class playerController : NetworkBehaviour
                 //disable the no gravity is the player stay motionless after time 
                 if (!isNoMovingWithNoGravity)
                 {
-                    Debug.Log("test1");
                     isNoMovingWithNoGravity = true;
                     timeWithNoMoveWithNoGravity = Time.timeSinceLevelLoad;
                 }
                 else if (timeWithNoMoveWithNoGravity + timeBeforeDisableNoGravity < Time.timeSinceLevelLoad)
                 {
-                    Debug.Log("test2");
 
                     setNoGravity(false);
 
@@ -417,6 +446,7 @@ public class playerController : NetworkBehaviour
     {
         if (eneableSwitchGravity && Input.GetKeyDown(playerData.switchGravityKey) && isGrounded())
         {
+            soundManager.isSwitchingGragity();
             gravitySwited = !gravitySwited;
             gravity *= -1;
             netAnimator.SetTrigger("flip");
