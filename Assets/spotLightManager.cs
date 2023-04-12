@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class spotLightManager : MonoBehaviour
@@ -8,67 +5,80 @@ public class spotLightManager : MonoBehaviour
     [SerializeField] private GameObject spotlightBase;
     [SerializeField] private GameObject spotlight;
 
-    [SerializeField] private Quaternion newPosBase;
-    private float speedY = 1f;
+    [SerializeField] private float speedSpotightBase = 1f;
+    [SerializeField] private float speedSpotight = 1f;
 
-    [SerializeField] private Quaternion newPos;
-    private float speedX = 1f;
+    [SerializeField] private Vector2 angleSpotlightBase = new Vector2(0f, 360f);
+    [SerializeField] private Vector2 angleSpotlight = new Vector2(0f, 360f);
 
-    int rdspotlightBase;
-    int rdspotlight;
+    private Vector2 rdAngleSpotlightBase;
+    private Vector2 rdAngleSpotlight;
 
-    private float time1;
-    private float time2;
-    [SerializeField] private float delay = 5f;
+    [SerializeField] private float refDelay = 3f;
 
+    private float delaySpotlightBase = 3f;
+    private float delaySpotlight = 3f;
+
+
+    private float timeSpotlightBase;
+    private float timeSpotlight;
+
+
+
+    //generate a random angle to turn the object
+    private void GenNewAngle(ref Vector2 rdAngle, Vector2 limitAngle)
+    {
+        rdAngle.x = rdAngle.y;
+        rdAngle.y = Random.Range(limitAngle.x, limitAngle.y);
+    }
 
 
     private void Start()
     {
-        rdspotlightBase = Random.Range(0, 10);
-        rdspotlight = Random.Range(0, 10);
+        timeSpotlightBase = Time.timeSinceLevelLoad;
+        timeSpotlight = Time.timeSinceLevelLoad;
 
-        newPosBase = spotlightBase.gameObject.transform.localRotation;
-        newPos = spotlight.gameObject.transform.localRotation;
 
-        time1 = Time.timeSinceLevelLoad;
-        time2 = Time.timeSinceLevelLoad;
+        GenNewAngle(ref rdAngleSpotlightBase, angleSpotlightBase);
+        GenNewAngle(ref rdAngleSpotlight, angleSpotlight);
+
+    }
+
+    private void GenNewRdDelay(ref float delay)
+    {
+        delay = Random.Range(refDelay - refDelay / 3, refDelay + refDelay / 3);
     }
 
 
-    private void FixedUpdate()
+    private void checkTime()
     {
-        var t1 = Mathf.Sin(Time.timeSinceLevelLoad + rdspotlightBase);
-        var t4 = Mathf.Sin(Time.timeSinceLevelLoad + rdspotlight);
-
-        if (t1 <= 0.01f && t1 >= -0.01f)
+        if (timeSpotlightBase + delaySpotlightBase < Time.timeSinceLevelLoad)
         {
-            speedY = Random.Range(0.2f, 2);
-        }
-        else if(time1 + delay < Time.timeSinceLevelLoad)
-        {
-            time1 = Time.timeSinceLevelLoad;
-            rdspotlightBase = Random.Range(0, 10);
-
+            timeSpotlightBase = Time.timeSinceLevelLoad;
+            GenNewAngle(ref rdAngleSpotlightBase, angleSpotlightBase);
+            GenNewRdDelay(ref delaySpotlightBase);
         }
 
-        if (t4 <= 0.01f && t4 >= -0.01f)
+        if (timeSpotlight + delaySpotlight < Time.timeSinceLevelLoad)
         {
-            speedX = Random.Range(0.2f, 2);
+            timeSpotlight = Time.timeSinceLevelLoad;
+            GenNewAngle(ref rdAngleSpotlight, angleSpotlight);
+            GenNewRdDelay(ref delaySpotlight);
         }
-        else if(time2 + delay < Time.timeSinceLevelLoad)
-        {
-            time2 = Time.timeSinceLevelLoad;
-            rdspotlight = Random.Range(0, 10);
+    }
 
-        }
-
+    private void Update()
+    {
+        checkTime();
 
 
-        newPosBase.y = t1 * speedY;
-        newPos.x = t4 * speedX;
+        Vector3 vectSpotlightBase = spotlightBase.transform.localEulerAngles;
+        Vector3 vectSpotlight = spotlight.transform.localEulerAngles;
 
-        spotlight.gameObject.transform.localRotation = newPos;
-        spotlightBase.gameObject.transform.localRotation = newPosBase;       
+        vectSpotlightBase.y = Mathf.Lerp(rdAngleSpotlightBase.x, rdAngleSpotlightBase.y, (Time.timeSinceLevelLoad - timeSpotlightBase) / delaySpotlightBase);
+        vectSpotlight.x = Mathf.Lerp(rdAngleSpotlight.x, rdAngleSpotlight.y, (Time.timeSinceLevelLoad - timeSpotlight) / delaySpotlight);
+
+        spotlightBase.transform.localEulerAngles = vectSpotlightBase;
+        spotlight.transform.localEulerAngles = vectSpotlight;
     }
 }
