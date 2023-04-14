@@ -55,7 +55,11 @@ public class Player : NetworkBehaviour
 
 
 
-    [SerializeField] public playerController playerController;
+    public playerController playerController;
+
+    [SerializeField] private Vector3 spawnPointPosition;
+    [SerializeField] private Quaternion spawnPointQuaternion;
+
 
 
 
@@ -64,6 +68,14 @@ public class Player : NetworkBehaviour
     {
         timeLastCycle = Time.time;
         timeLastDamage = Time.time;
+    }
+
+    public void Start()
+    {
+        SetDefaults();
+        checkGravity();
+
+        setSpawnPoint(this.gameObject.transform.position, this.gameObject.transform.rotation);
     }
 
     private void Update()
@@ -93,11 +105,10 @@ public class Player : NetworkBehaviour
         }
     }
 
-    public void Start()
+    public void setSpawnPoint(Vector3 position, Quaternion rotation)
     {
-        SetDefaults();
-        checkGravity();
-
+        spawnPointPosition = position;
+        spawnPointQuaternion = rotation;
     }
 
     public void SetDefaults()
@@ -121,17 +132,14 @@ public class Player : NetworkBehaviour
     {
         yield return new WaitForSeconds(GameManager.instance.gameSettings.respawnTimer);
         SetDefaults();
-        Transform spawnPoint = NetworkManager.singleton.GetStartPosition();
 
-        //disable mouvement ? :
 
         //set new position
-        rb.transform.position = spawnPoint.position;
-        rb.transform.rotation = spawnPoint.rotation;
+        rb.transform.position = spawnPointPosition;
+        rb.transform.rotation = spawnPointQuaternion;
 
         //enable mouvement ? :
         playerController.EnablePlayerInput(true);
-
     }
 
 
