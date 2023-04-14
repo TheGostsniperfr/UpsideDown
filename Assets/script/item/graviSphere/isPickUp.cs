@@ -30,7 +30,6 @@ public class isPickUp : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void setPickUpIObject(Player _player)
     {
-        //Debug.Log("test set pick up" + player);
         this.player = _player;
 
         playerInteractions = _player.GetComponent<pickUpIObject>();
@@ -43,9 +42,6 @@ public class isPickUp : NetworkBehaviour
     {
         this.player = null;
     }
-
-
-
 
     //Velocity movement toward pickup parent and rotation
     private void FixedUpdate()
@@ -63,10 +59,7 @@ public class isPickUp : NetworkBehaviour
             lookRot = Quaternion.Slerp(player.cam.transform.rotation, lookRot, rotationSpeed * Time.fixedDeltaTime);
 
             rb.MoveRotation(lookRot);
-
         }
-
-
 
         rb.AddForce(new Vector3(0, -10 * gravityObject, 0), ForceMode.Acceleration);
     }
@@ -120,6 +113,8 @@ public class isPickUp : NetworkBehaviour
         {
             synLocalGravity();
         }
+
+
     }
 }
 

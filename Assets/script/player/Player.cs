@@ -49,7 +49,10 @@ public class Player : NetworkBehaviour
     [SerializeField] public Camera cam;
 
     [Header("pickUp")]
-    [SerializeField] public Transform pickupParent;
+    public Transform pickupParent;
+    [SerializeField] private Transform pickupParent1;
+    [SerializeField] private Transform pickupParent2;
+
 
 
     [SerializeField] public playerController playerController;
@@ -74,12 +77,27 @@ public class Player : NetworkBehaviour
             {
                 RpcTakeDamage(30);
             }
+            checkGravity();
+        }
+    }
+
+    private void checkGravity()
+    {
+        if (playerController.gravity == 1)
+        {
+            pickupParent = pickupParent1;
+        }
+        else
+        {
+            pickupParent = pickupParent2;
         }
     }
 
     public void Start()
     {
         SetDefaults();
+        checkGravity();
+
     }
 
     public void SetDefaults()
