@@ -1,6 +1,7 @@
 using Mirror;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : NetworkBehaviour
 {
@@ -30,9 +31,6 @@ public class Player : NetworkBehaviour
     private float timeLastCycle;
     private float timeLastDamage;
 
-
-
-
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerSetup playerSetup;
 
@@ -53,16 +51,14 @@ public class Player : NetworkBehaviour
     [SerializeField] private Transform pickupParent1;
     [SerializeField] private Transform pickupParent2;
 
-
-
     public playerController playerController;
 
     [SerializeField] private Vector3 spawnPointPosition;
     [SerializeField] private Quaternion spawnPointQuaternion;
 
-
-
-
+    [Header("blood screen")]
+    [SerializeField] private float speedChangeOpacity = 3f;
+    private Image bloodScreenImg;
 
     private void Awake()
     {
@@ -76,6 +72,7 @@ public class Player : NetworkBehaviour
         checkGravity();
 
         setSpawnPoint(this.gameObject.transform.position, this.gameObject.transform.rotation);
+
     }
 
     private void Update()
@@ -90,6 +87,11 @@ public class Player : NetworkBehaviour
                 RpcTakeDamage(30);
             }
             checkGravity();
+
+            if (bloodScreenImg == null && playerSetup.playerUIInstance != null)
+            {
+                bloodScreenImg = playerSetup.playerUIInstance.gameObject.GetComponent<bloodScreenManager>().image;
+            }
         }
     }
 
@@ -151,13 +153,14 @@ public class Player : NetworkBehaviour
         {
             return;
         }
-
+        float bloodScreenCurrentHealth = currentHealth;
         currentHealth -= amount;
 
         //reset regen cooldown
         timeLastDamage = Time.time;
 
         Debug.Log(transform.name + " a maintenant : " + currentHealth + " points de vies.");
+        StartCoroutine(changeHealth(bloodScreenCurrentHealth, currentHealth));
 
 
         if (currentHealth <= 0)
@@ -181,8 +184,10 @@ public class Player : NetworkBehaviour
 
     private void playerRegen()
     {
-        if (regenActivate && !isDead && (timeLastCycle + cooldownRegen < Time.time) && (timeLastDamage + CooldownActiveRegenAfterDamage < Time.time))
+        if (currentHealth != playerMaxHealth && regenActivate && !isDead && (timeLastCycle + cooldownRegen < Time.time) && (timeLastDamage + CooldownActiveRegenAfterDamage < Time.time))
         {
+            float bloodScreenCurrentHealth = currentHealth;
+
             if (currentHealth + hpRegenByCycle >= playerMaxHealth)
             {
                 currentHealth = playerMaxHealth;
@@ -192,9 +197,41 @@ public class Player : NetworkBehaviour
                 currentHealth += hpRegenByCycle;
             }
 
+            StartCoroutine(changeHealth(bloodScreenCurrentHealth, currentHealth));
+
             timeLastCycle = Time.time;
         }
     }
+
+    private IEnumerator changeHealth(float currentHealth, float newCurrentHealth)
+    {
+        float time = 0;
+
+
+        while (time < 1f)
+        {
+            float alpha = 1f - (Mathf.Lerp(currentHealth, newCurrentHealth, time) / playerMaxHealth);
+
+            if (alpha > 1)
+            {
+                alpha = 1;
+            }
+
+            if (alpha < 0.1f)
+            {
+                alpha = 0;
+            }
+
+            bloodScreenImg.color = new Color(bloodScreenImg.color.r, bloodScreenImg.color.g, bloodScreenImg.color.b, alpha);
+
+
+            time += Time.deltaTime * speedChangeOpacity;
+            yield return null;
+        }
+        StopCoroutine(changeHealth(0, 0));
+
+    }
+
 
 
     private void checkPlayerActions()
