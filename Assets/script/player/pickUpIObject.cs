@@ -19,6 +19,9 @@ public class pickUpIObject : NetworkBehaviour
     [SerializeField] private Player player;
     [SerializeField] private float maxDistancePickUp = 10f;
 
+    [Header("SFX")]
+    [SerializeField] private playerSoundManager soundManager;
+
 
     //A simple visualization of the point we're following in the scene view
     private void OnDrawGizmos()
@@ -59,14 +62,16 @@ public class pickUpIObject : NetworkBehaviour
                 //and we are looking an interactable object
                 if (lookObject != null)
                 {
-
+                    soundManager.isGrab();
                     PickUpObject();
+
                 }
 
             }
             //if we press the pickup button and have something, we drop it
             else
             {
+                soundManager.isGrab();
                 BreakConnection();
             }
         }

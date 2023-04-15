@@ -12,6 +12,9 @@ public class clickBtn : interactiveInterfaceObject
     public float tickOfTheBtn = 1f;
     private float timeLastClick;
 
+    [Header("Sound")]
+    [SerializeField] private AudioSource pressBtn;
+
 
     public override string getDescription()
     {
@@ -32,6 +35,11 @@ public class clickBtn : interactiveInterfaceObject
     public override void onAction()
     {
         Debug.Log("Btn pressed ! ");
+
+        if (pressBtn != null)
+        {
+            pressBtn.Play();
+        }
 
         if (!useTime)
         {

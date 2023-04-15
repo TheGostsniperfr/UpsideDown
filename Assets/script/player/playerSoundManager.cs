@@ -8,6 +8,7 @@ public class playerSoundManager : MonoBehaviour
 
     [Header("hand Sound")]
     [SerializeField] private AudioSource switchingGragity;
+    [SerializeField] private AudioSource grabSomethings;
 
     [Header("Ambient Sound")]
     [SerializeField] private AudioSource ambientSound;
@@ -81,6 +82,11 @@ public class playerSoundManager : MonoBehaviour
     public void isSwitchingGragity()
     {
         switchingGragity.Play();
+    }
+
+    public void isGrab()
+    {
+        grabSomethings.Play();
     }
 
 }
