@@ -114,6 +114,22 @@ public class playerController : NetworkBehaviour
             playerOnMovingPlatform();
 
             //Debug.Log("is grounded : " + isGrounded());
+
+
+            //cheat code for portails
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                try
+                {
+                    var portails = GameObject.Find("portails").GetComponent<portailsManager>();
+
+                    portails.levelDeblocked = 7;
+                    portails.refreshPortails();
+                }
+                catch { }
+
+            }
+
         }
     }
 

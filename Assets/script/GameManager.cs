@@ -1,7 +1,8 @@
+using Mirror;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : NetworkBehaviour
 {
     private const string playerIdPrefix = "Player";
 
@@ -11,11 +12,15 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    //game level : progression of the player 
+    [SyncVar] public int currentGameLevel = 1;
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
             return;
         }
 

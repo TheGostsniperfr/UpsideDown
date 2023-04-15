@@ -217,7 +217,7 @@ public class Player : NetworkBehaviour
                 alpha = 1;
             }
 
-            if (alpha < 0.1f)
+            if (alpha < 0.01f)
             {
                 alpha = 0;
             }
