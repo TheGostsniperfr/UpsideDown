@@ -55,7 +55,7 @@ public class playerSoundManager : MonoBehaviour
     public void isWalking(bool state)
     {
 
-        if (state && !walkSound.isPlaying)
+        if (state && !walkSound.isPlaying && !runSound.isPlaying)
         {
             walkSound.Play();
         }
@@ -72,6 +72,7 @@ public class playerSoundManager : MonoBehaviour
         if (state && !runSound.isPlaying)
         {
             runSound.Play();
+            walkSound.Stop();
         }
         else
         {

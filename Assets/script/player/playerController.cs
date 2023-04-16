@@ -315,12 +315,16 @@ public class playerController : NetworkBehaviour
         {
             animator.SetBool("isRunning", true);
             soundManager.isRunning(true);
-            soundManager.isWalking(false);
         }
         else if (animator.GetBool("isRunning") && !isSprinting || !isGrounded())
         {
             animator.SetBool("isRunning", false);
             soundManager.isRunning(false);
+
+            if (animator.GetBool("isWalking"))
+            {
+                soundManager.isWalking(true);
+            }
         }
 
         if (playerInputControlKeyBoardBool)
@@ -374,10 +378,8 @@ public class playerController : NetworkBehaviour
             }
             else
             {
-                if (animator.GetBool("isWalking"))
-                {
-                    soundManager.isWalking(false);
-                }
+
+                soundManager.isWalking(false);
 
 
                 animator.SetBool("isWalking", false);
