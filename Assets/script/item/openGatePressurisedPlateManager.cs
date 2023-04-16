@@ -72,6 +72,7 @@ public class openGatePressurisedPlateManager : MonoBehaviour
         OpenDoor.startTime = Time.time;
         OpenDoor.TriggerOpeningDoor = true;
         OpenDoor.TriggerClosingDoor = false;
+        OpenDoor.gateSound.Play();
     }
 
     private void closedDoor()

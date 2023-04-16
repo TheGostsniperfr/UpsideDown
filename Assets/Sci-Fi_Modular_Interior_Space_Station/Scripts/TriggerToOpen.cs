@@ -7,6 +7,7 @@ public class TriggerToOpen : MonoBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
+
         foreach (var tag in tagsToDetect)
         {
             if (col.gameObject.tag == tag)
@@ -14,6 +15,7 @@ public class TriggerToOpen : MonoBehaviour
                 OpenDoor.startTime = Time.time;
                 OpenDoor.TriggerOpeningDoor = true;
                 OpenDoor.TriggerClosingDoor = false;
+                OpenDoor.gateSound.Play();
             }
         }
 

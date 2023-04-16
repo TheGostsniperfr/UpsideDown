@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorMovement : MonoBehaviour
@@ -15,7 +13,9 @@ public class DoorMovement : MonoBehaviour
     private Vector3 MainDoorOpen, LeftDoorOpen, RightDoorOpen;
     public float startTime;
     private float totalDistanceToCover;
-    
+
+    public AudioSource gateSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,12 +35,12 @@ public class DoorMovement : MonoBehaviour
     void MovementOfTheDoor()
     {
         MainDoorClose = MainDoor.localPosition;
-        LeftDoorClose = LeftDoor.localPosition; 
+        LeftDoorClose = LeftDoor.localPosition;
         RightDoorClose = RightDoor.localPosition;
 
         MainDoorOpen = new Vector3(
             MainDoor.localPosition.x,
-            MainDoor.localPosition.y +(sizeOfDoor * amountOfDoorInFrame),
+            MainDoor.localPosition.y + (sizeOfDoor * amountOfDoorInFrame),
             MainDoor.localPosition.z);
 
         LeftDoorOpen = new Vector3(
@@ -61,7 +61,7 @@ public class DoorMovement : MonoBehaviour
         if (TriggerOpeningDoor)
         {
             float distanceCovered = (Time.time - startTime) * moveSpeed;
-            float fractionOfJourney = distanceCovered/ totalDistanceToCover;
+            float fractionOfJourney = distanceCovered / totalDistanceToCover;
             MainDoor.localPosition = Vector3.LerpUnclamped(MainDoor.localPosition, MainDoorOpen, fractionOfJourney);
             LeftDoor.localPosition = Vector3.LerpUnclamped(LeftDoor.localPosition, LeftDoorOpen, fractionOfJourney);
             RightDoor.localPosition = Vector3.LerpUnclamped(RightDoor.localPosition, RightDoorOpen, fractionOfJourney);
@@ -70,21 +70,21 @@ public class DoorMovement : MonoBehaviour
             {
                 Debug.Log("Doors Opened");
             }
-            
+
         }
     }
 
     void CloseDoors()
     {
-        if(TriggerClosingDoor)
+        if (TriggerClosingDoor)
         {
             float distanceCovered = (Time.time - startTime) * moveSpeed;
             float fractionOfJourney = distanceCovered / totalDistanceToCover;
             MainDoor.localPosition = Vector3.LerpUnclamped(MainDoor.localPosition, MainDoorClose, fractionOfJourney);
             LeftDoor.localPosition = Vector3.LerpUnclamped(LeftDoor.localPosition, LeftDoorClose, fractionOfJourney);
             RightDoor.localPosition = Vector3.LerpUnclamped(RightDoor.localPosition, RightDoorClose, fractionOfJourney);
-            
-            if(Mathf.Approximately(MainDoor.localPosition.y, MainDoorClose.y))
+
+            if (Mathf.Approximately(MainDoor.localPosition.y, MainDoorClose.y))
             {
                 Debug.Log("Doors Closed");
             }
