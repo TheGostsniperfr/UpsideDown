@@ -43,9 +43,21 @@ public class settingsManager : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetVolume(float volume)
+    public void SetMasterVolume(float volume)
     {
-        audioMixer.SetFloat("volume", volume);
+        audioMixer.SetFloat("masterVol", Mathf.Log10(volume) * 20);
+    }
+    public void SetSFXVolume(float volume)
+    {
+        audioMixer.SetFloat("SFXVol", Mathf.Log10(volume) * 20);
+    }
+    public void SetMusicVolume(float volume)
+    {
+        audioMixer.SetFloat("musicVol", Mathf.Log10(volume) * 20);
+    }
+    public void SetVoiceVolume(float volume)
+    {
+        audioMixer.SetFloat("voiceVol", Mathf.Log10(volume) * 20);
     }
 
     public void SetQuality(int qualityIndex)
