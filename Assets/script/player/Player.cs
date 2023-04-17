@@ -116,6 +116,7 @@ public class Player : NetworkBehaviour
     public void SetDefaults()
     {
         isDead = false;
+        newHealth(playerMaxHealth);
         currentHealth = playerMaxHealth;
     }
 
@@ -142,11 +143,9 @@ public class Player : NetworkBehaviour
 
         //enable mouvement ? :
         playerController.EnablePlayerInput(true);
+        StartCoroutine(changeHealth(0));
     }
 
-
-
-    [ClientRpc]
     public void RpcTakeDamage(int amount)
     {
         if (isDead)
@@ -154,19 +153,32 @@ public class Player : NetworkBehaviour
             return;
         }
         float bloodScreenCurrentHealth = currentHealth;
-        currentHealth -= amount;
+        newHealth(bloodScreenCurrentHealth - amount);
+        currentHealth = bloodScreenCurrentHealth - amount;
+
 
         //reset regen cooldown
         timeLastDamage = Time.time;
 
+
+        //pb here
         Debug.Log(transform.name + " a maintenant : " + currentHealth + " points de vies.");
-        StartCoroutine(changeHealth(bloodScreenCurrentHealth, currentHealth));
+        StartCoroutine(changeHealth(bloodScreenCurrentHealth));
 
 
         if (currentHealth <= 0)
         {
             Die();
         }
+
+
+    }
+
+
+    [Command(requiresAuthority = false)]
+    private void newHealth(float hp)
+    {
+        currentHealth = hp;
     }
 
     private void Die()
@@ -179,6 +191,7 @@ public class Player : NetworkBehaviour
 
         Debug.Log(transform.name + " a été éléminé.");
         StartCoroutine(Respawn());
+
     }
 
 
@@ -190,27 +203,34 @@ public class Player : NetworkBehaviour
 
             if (currentHealth + hpRegenByCycle >= playerMaxHealth)
             {
+                newHealth(playerMaxHealth);
                 currentHealth = playerMaxHealth;
             }
             else
             {
-                currentHealth += hpRegenByCycle;
+                var result = currentHealth + hpRegenByCycle;
+                newHealth(result);
+                currentHealth = result;
             }
 
-            StartCoroutine(changeHealth(bloodScreenCurrentHealth, currentHealth));
+            //pb here
+            StartCoroutine(changeHealth(bloodScreenCurrentHealth));
 
             timeLastCycle = Time.time;
         }
     }
 
-    private IEnumerator changeHealth(float currentHealth, float newCurrentHealth)
+    private IEnumerator changeHealth(float _currentHealth)
     {
+        yield return new WaitForSeconds(0.1f);
+
+
         float time = 0;
 
 
         while (time < 1f)
         {
-            float alpha = 1f - (Mathf.Lerp(currentHealth, newCurrentHealth, time) / playerMaxHealth);
+            float alpha = 1f - (Mathf.Lerp(_currentHealth, currentHealth, time) / playerMaxHealth);
 
             if (alpha > 1)
             {
@@ -228,7 +248,7 @@ public class Player : NetworkBehaviour
             time += Time.deltaTime * speedChangeOpacity;
             yield return null;
         }
-        StopCoroutine(changeHealth(0, 0));
+        StopCoroutine(changeHealth(0));
 
     }
 

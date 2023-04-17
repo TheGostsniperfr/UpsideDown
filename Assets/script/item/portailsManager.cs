@@ -6,18 +6,33 @@ public class portailsManager : MonoBehaviour
 
     public int levelDeblocked = 1;
 
+    [SerializeField] private GameManager gameManager;
 
-
-    private void Start()
+    private void Update()
     {
 
-        GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (gameManager == null)
+        {
+            try
+            {
+                gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+                levelDeblocked = gameManager.currentGameLevel;
+                refreshPortails();
+            }
+            catch { }
+        }
 
-        levelDeblocked = gameManager.currentGameLevel;
-        refreshPortails();
+        if (gameManager != null && levelDeblocked < gameManager.currentGameLevel)
+        {
+            levelDeblocked = gameManager.currentGameLevel;
+            refreshPortails();
 
-        Debug.Log("level deblocked : " + levelDeblocked);
+            Debug.Log("level deblocked : " + levelDeblocked);
+        }
+
     }
+
+
 
     public void refreshPortails()
     {

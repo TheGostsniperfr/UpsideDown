@@ -5,9 +5,6 @@ public class spotLightManager : MonoBehaviour
     [SerializeField] private GameObject spotlightBase;
     [SerializeField] private GameObject spotlight;
 
-    [SerializeField] private float speedSpotightBase = 1f;
-    [SerializeField] private float speedSpotight = 1f;
-
     [SerializeField] private Vector2 angleSpotlightBase = new Vector2(0f, 360f);
     [SerializeField] private Vector2 angleSpotlight = new Vector2(0f, 360f);
 

@@ -18,6 +18,7 @@ public class NetworkManagerLobby : NetworkManager
 
 
 
+
     public override void OnStartClient()
     {
         base.OnStartClient();
@@ -56,6 +57,7 @@ public class NetworkManagerLobby : NetworkManager
             conn.Disconnect();
             return;
         }
+
 
     }
 

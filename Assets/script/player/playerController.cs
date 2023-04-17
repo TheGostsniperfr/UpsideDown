@@ -121,10 +121,7 @@ public class playerController : NetworkBehaviour
             {
                 try
                 {
-                    var portails = GameObject.Find("portails").GetComponent<portailsManager>();
-
-                    portails.levelDeblocked = 7;
-                    portails.refreshPortails();
+                    GameObject.Find("GameManager").GetComponent<GameManager>().currentGameLevel = 7;
                 }
                 catch { }
 
