@@ -430,6 +430,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   isPickUpComponent: {fileID: 2893397281176623728}
+  orbEmitterSupportManager: {fileID: 0}
 --- !u!114 &3565467389732141196
 MonoBehaviour:
   m_ObjectHideFlags: 0
