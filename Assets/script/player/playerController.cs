@@ -2,6 +2,7 @@
 using Mirror;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerController : NetworkBehaviour
 {
@@ -459,7 +460,7 @@ public class playerController : NetworkBehaviour
     }
     private void gravitySwitcher()
     {
-        if (eneableSwitchGravity && Input.GetKeyDown(playerData.switchGravityKey) && isGrounded())
+        if (eneableSwitchGravity && Input.GetKeyDown(playerData.switchGravityKey) && isGrounded() && SceneManager.GetActiveScene().name != "Hub")
         {
             soundManager.isSwitchingGragity();
             gravitySwited = !gravitySwited;
