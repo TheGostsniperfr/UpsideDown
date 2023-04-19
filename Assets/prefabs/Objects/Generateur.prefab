@@ -356,7 +356,8 @@ GameObject:
   - component: {fileID: 7532753605249417577}
   - component: {fileID: 6899457666074085059}
   - component: {fileID: 6491543878033716358}
-  m_Layer: 0
+  - component: {fileID: 4090246973937853123}
+  m_Layer: 16
   m_Name: Support
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,6 +451,28 @@ MonoBehaviour:
   ring2: {fileID: 534341435524453816}
   ring3: {fileID: 1109032680913507526}
   ring4: {fileID: 2011025801274295204}
+--- !u!64 &4090246973937853123
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401688609745871843}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3320184997738873532, guid: 6c5255c245818f6439caf516027aca45, type: 3}
 --- !u!1 &6727617206923350346
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +510,7 @@ Transform:
   - {fileID: 5693525228333558347}
   - {fileID: 3235892322609009480}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8560954851945948667
 MonoBehaviour:
