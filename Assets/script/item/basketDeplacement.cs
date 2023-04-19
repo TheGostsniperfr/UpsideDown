@@ -5,7 +5,7 @@ using UnityEngine;
 public class basketDeplacement : MonoBehaviour
 {
     [SerializeField] private List<Vector3> positions;
-    [SerializeField] private bool isEneable = true;
+    public bool isEneable = true;
     [SerializeField] private float speed = 1f;
     [SerializeField] private float waitWhenArrive = 2f;
 
