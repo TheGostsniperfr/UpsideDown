@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 
 public class Active_Generator : MonoBehaviour
@@ -15,8 +16,50 @@ public class Active_Generator : MonoBehaviour
     private float speed = 50f;
     
 
-    // Update is called once per frame
+    [SerializeField] private GameObject orbObj;
+    [SerializeField] private GameObject orbSpawnArea;
+
+    //receiver mode : 
+    [SerializeField] private DoorMovement doorMovement;
+    private GameObject orbEmitInstance;
+    private bool anim = false;
+
     void Update()
+    {
+        if (anim)
+            activeGenerator();
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "orb" && (orbEmitInstance == null || col.gameObject != orbEmitInstance))
+        {
+
+            openDoor();
+            anim = true;
+
+            NetworkServer.Destroy(col.gameObject);
+
+            orbEmitInstance = Instantiate(orbObj);
+            orbEmitInstance.transform.position = orbSpawnArea.transform.position;
+            orbEmitInstance.GetComponent<Rigidbody>().constraints=RigidbodyConstraints.FreezeAll;
+
+
+            NetworkServer.Spawn(orbEmitInstance);
+        }
+    }
+
+    private void openDoor()
+    {
+        if (doorMovement != null)
+        {
+            doorMovement.startTime = Time.time;
+            doorMovement.TriggerOpeningDoor = true;
+            doorMovement.TriggerClosingDoor = false;
+        }
+    }
+
+    private void activeGenerator()
     {
         ring1.transform.Rotate(axeY * speed * Time.deltaTime);
         ring2.transform.Rotate(axeX * speed * Time.deltaTime);
