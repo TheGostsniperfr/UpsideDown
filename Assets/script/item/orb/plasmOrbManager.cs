@@ -8,9 +8,9 @@ public class plasmOrbManager : NetworkBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (isPickUpComponent.player == null && col.gameObject.tag != "Player" && col.gameObject.layer != 16)
+        if (isPickUpComponent.player == null && col.gameObject.tag != "Player" && col.gameObject.layer != 16 && col.gameObject.tag != "volume")
         {
-            Debug.Log("EXPLOSION");
+            Debug.Log("EXPLOSION : " + col.gameObject.name);
 
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
