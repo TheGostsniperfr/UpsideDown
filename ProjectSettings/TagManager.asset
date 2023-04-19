@@ -7,6 +7,7 @@ TagManager:
   - interactive
   - cube
   - orb
+  - volume
   layers:
   - Default
   - TransparentFX

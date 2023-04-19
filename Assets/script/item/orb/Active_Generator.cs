@@ -1,0 +1,69 @@
+using Mirror;
+using UnityEngine;
+
+public class Active_Generator : MonoBehaviour
+{
+    
+    [SerializeField] private GameObject ring1;
+    [SerializeField] private GameObject ring2;
+    [SerializeField] private GameObject ring3;
+    [SerializeField] private GameObject ring4;
+
+    private Vector3 axeY = new Vector3 (0,1,0);
+    private Vector3 axeX = new Vector3 (1,0,0);
+    private Vector3 axeDiag = new Vector3 (1,1,0);
+
+    private float speed = 50f;
+    
+
+    [SerializeField] private GameObject orbObj;
+    [SerializeField] private GameObject orbSpawnArea;
+
+    //receiver mode : 
+    [SerializeField] private DoorMovement doorMovement;
+    private GameObject orbEmitInstance;
+    private bool anim = false;
+
+    void Update()
+    {
+        if (anim)
+            activeGenerator();
+    }
+
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "orb" && (orbEmitInstance == null || col.gameObject != orbEmitInstance))
+        {
+
+            openDoor();
+            anim = true;
+
+            NetworkServer.Destroy(col.gameObject);
+
+            orbEmitInstance = Instantiate(orbObj);
+            orbEmitInstance.transform.position = orbSpawnArea.transform.position;
+            orbEmitInstance.GetComponent<Rigidbody>().constraints=RigidbodyConstraints.FreezeAll;
+
+
+            NetworkServer.Spawn(orbEmitInstance);
+        }
+    }
+
+    private void openDoor()
+    {
+        if (doorMovement != null)
+        {
+            doorMovement.startTime = Time.time;
+            doorMovement.TriggerOpeningDoor = true;
+            doorMovement.TriggerClosingDoor = false;
+        }
+    }
+
+    private void activeGenerator()
+    {
+        ring1.transform.Rotate(axeY * speed * Time.deltaTime);
+        ring2.transform.Rotate(axeX * speed * Time.deltaTime);
+        ring3.transform.Rotate(axeDiag * speed * Time.deltaTime);
+        ring4.transform.Rotate(axeDiag * -speed * Time.deltaTime);
+    }
+}
