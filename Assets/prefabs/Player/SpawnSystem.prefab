@@ -65,4 +65,4 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
-  playerPrefab: {fileID: 2676913481156184817, guid: 1682db025104a7940b23767b6cdcb84c, type: 3}
+  playerPrefab: {fileID: 6017954833772545545, guid: 1682db025104a7940b23767b6cdcb84c, type: 3}

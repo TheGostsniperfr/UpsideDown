@@ -3793,7 +3793,7 @@ MonoBehaviour:
   spawnPrefabs:
   - {fileID: 7214338620512636765, guid: 7634079e4dc736d4fb7dee5be6dac7f3, type: 3}
   - {fileID: 529339326472014709, guid: 13c8a8d938355994ebc5af75b02f2995, type: 3}
-  - {fileID: 6017954833772545545, guid: 1682db025104a7940b23767b6cdcb84c, type: 3}
+  - {fileID: 2676913481156184817, guid: 1682db025104a7940b23767b6cdcb84c, type: 3}
   timeInterpolationGui: 0
   menuScene: Assets/Scenes/Hub.unity
   playerSpawnSystem: {fileID: 529339326472014709, guid: 13c8a8d938355994ebc5af75b02f2995, type: 3}
