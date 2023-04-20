@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,8 +38,6 @@ public class GameManager : MonoBehaviour
 
         if (networkSync == null)
         {
-            Debug.Log("get scene name " + SceneManager.GetActiveScene());
-
             try
             {
                 networkSync = GameObject.Find("networkSyncObj").GetComponent<NetworkSync>();

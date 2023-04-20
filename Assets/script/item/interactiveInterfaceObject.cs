@@ -1,6 +1,8 @@
+using Mirror;
 using UnityEngine;
 
-public abstract class interactiveInterfaceObject : MonoBehaviour 
+
+public abstract class interactiveInterfaceObject : NetworkBehaviour
 {
     //name of item, not used
     //[SerializeField] private string name = "unknown";

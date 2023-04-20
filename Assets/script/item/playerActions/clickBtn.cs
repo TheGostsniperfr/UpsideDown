@@ -1,19 +1,21 @@
 
+using Mirror;
 using UnityEngine;
 
 public class clickBtn : interactiveInterfaceObject
 {
     [Header("Global settings")]
-    public bool isClicked = false;
+    [SyncVar] public bool isClicked = false;
 
 
     [Header("Time settings")]
     public bool useTime = false;
     public float tickOfTheBtn = 1f;
-    private float timeLastClick;
+    public float timeLastClick = -1000f;
 
     [Header("Sound")]
     [SerializeField] private AudioSource pressBtn;
+    private bool check = false;
 
 
     public override string getDescription()
@@ -21,16 +23,34 @@ public class clickBtn : interactiveInterfaceObject
         return "Press the button";
     }
 
+    [Command(requiresAuthority = false)]
+    public void CmdisClicked(bool state)
+    {
+        isClicked = state;
+    }
 
     private void Update()
     {
-        if (useTime && timeLastClick + tickOfTheBtn < Time.timeSinceLevelLoad)
+        if (isClicked && !check)
         {
-            isClicked = false;
+            timeLastClick = Time.timeSinceLevelLoad;
+            check = true;
+        }
+
+        if (useTime)
+        {
+            if (check && timeLastClick + tickOfTheBtn < Time.timeSinceLevelLoad)
+            {
+                check = false;
+                CmdisClicked(false);
+            }
+
+            if (!isClicked)
+            {
+                check = false;
+            }
         }
     }
-
-
 
     public override void onAction()
     {
@@ -40,16 +60,7 @@ public class clickBtn : interactiveInterfaceObject
         {
             pressBtn.Play();
         }
-
-        if (!useTime)
-        {
-            isClicked = !isClicked;
-        }
-        else
-        {
-            isClicked = true;
-            timeLastClick = Time.timeSinceLevelLoad;
-        }
+        CmdisClicked(true);
     }
 
     public override KeyCode getKey(PlayerData playerData)
