@@ -36,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 4344075742977126226}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &1637102713944538126
 MeshFilter:
@@ -132,7 +132,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.04
+  m_Radius: 0.025
   m_Center: {x: 0, y: 0, z: 0.03}
 --- !u!114 &5836360142954839330
 MonoBehaviour:
@@ -149,13 +149,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
-  isEmitter: 1
-  orbObj: {fileID: 8045817780113592525, guid: eba84d06c05ec3044a6d29754dbb8836, type: 3}
   orbSpawnArea: {fileID: 8979219478343779546}
-  orbSupportEmitter: {fileID: 0}
-  doorMovement: {fileID: 0}
-  isOpening: 0
-  orbEmitInstance: {fileID: 0}
 --- !u!114 &3390194103083345576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8979219478343779546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0.03}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

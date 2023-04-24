@@ -1,5 +1,4 @@
 using Mirror;
-using System.Collections;
 using UnityEngine;
 
 public class isPickUp : NetworkBehaviour
@@ -7,12 +6,13 @@ public class isPickUp : NetworkBehaviour
 
     public float waitOnPickup = 0.2f;
     public float breakForce = 5f;
-    private int gravityObject = 1;
-    [SerializeField] public bool pickedUp = false;
-    public pickUpIObject playerInteractions;
+
     [SerializeField] private Rigidbody rb;
 
+    [SyncVar] public int gravityObject = 1;
     [SyncVar] public Player player;
+    [SyncVar] public bool pickedUp = false;
+    [SyncVar] public pickUpIObject playerInteractions;
 
     [Header("ObjectFollow")]
     [SerializeField] private float minSpeed = 0;
@@ -26,28 +26,21 @@ public class isPickUp : NetworkBehaviour
     public float rotationSpeed = 100f;
     Quaternion lookRot;
 
-
     [Command(requiresAuthority = false)]
     public void setPickUpIObject(Player _player)
     {
         this.player = _player;
+        playerInteractions = player.GetComponent<pickUpIObject>();
 
-        playerInteractions = _player.GetComponent<pickUpIObject>();
-
-        PickUpObject();
+        pickedUp = true;
     }
 
-    [Command(requiresAuthority = false)]
-    public void resetPickUpObject()
-    {
-        this.player = null;
-    }
-
-    //Velocity movement toward pickup parent and rotation
     private void FixedUpdate()
     {
         if (pickedUp)
         {
+            this.rb.constraints = RigidbodyConstraints.FreezeRotation;
+
             currentDist = Vector3.Distance(player.pickupParent.position, rb.position);
             currentSpeed = Mathf.SmoothStep(minSpeed, maxSpeed, currentDist / maxDistance);
             currentSpeed *= Time.fixedDeltaTime;
@@ -70,15 +63,10 @@ public class isPickUp : NetworkBehaviour
     {
         rb.constraints = RigidbodyConstraints.None;
         this.pickedUp = false;
+        playerInteractions = null;
+        this.player = null;
         currentDist = 0;
     }
-    [Command(requiresAuthority = false)]
-    public void PickUpObject()
-    {
-        this.rb.constraints = RigidbodyConstraints.FreezeRotation;
-        StartCoroutine(this.PickUp());
-    }
-
 
 
     private void OnCollisionEnter(Collision collision)
@@ -93,28 +81,11 @@ public class isPickUp : NetworkBehaviour
         }
     }
 
-    //this is used to prevent the connection from breaking when you just picked up the object as it sometimes fires a collision with the ground or whatever it is touching
-    public IEnumerator PickUp()
+    [Command(requiresAuthority = false)]
+    public void synLocalGravity(int newGravity)
     {
-        yield return new WaitForSecondsRealtime(waitOnPickup);
-        pickedUp = true;
-
+        gravityObject = newGravity;
     }
 
-    public void synLocalGravity()
-    {
-        gravityObject = player.playerController.gravity;
-    }
-
-
-    private void Update()
-    {
-        if (player != null)
-        {
-            synLocalGravity();
-        }
-
-
-    }
 }
 

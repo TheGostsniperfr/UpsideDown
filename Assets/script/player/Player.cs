@@ -97,6 +97,7 @@ public class Player : NetworkBehaviour
 
     private void checkGravity()
     {
+
         if (playerController.gravity == 1)
         {
             pickupParent = pickupParent1;
@@ -105,6 +106,7 @@ public class Player : NetworkBehaviour
         {
             pickupParent = pickupParent2;
         }
+
     }
 
     public void setSpawnPoint(Vector3 position, Quaternion rotation)
@@ -146,32 +148,34 @@ public class Player : NetworkBehaviour
         StartCoroutine(changeHealth(0));
     }
 
+    [ClientRpc]
     public void RpcTakeDamage(int amount)
     {
-        if (isDead)
+        if (isLocalPlayer)
         {
-            return;
+            if (isDead)
+            {
+                return;
+            }
+            float bloodScreenCurrentHealth = currentHealth;
+            newHealth(bloodScreenCurrentHealth - amount);
+            currentHealth = bloodScreenCurrentHealth - amount;
+
+
+            //reset regen cooldown
+            timeLastDamage = Time.time;
+
+
+            //pb here
+            Debug.Log(transform.name + " a maintenant : " + currentHealth + " points de vies.");
+            StartCoroutine(changeHealth(bloodScreenCurrentHealth));
+
+
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
-        float bloodScreenCurrentHealth = currentHealth;
-        newHealth(bloodScreenCurrentHealth - amount);
-        currentHealth = bloodScreenCurrentHealth - amount;
-
-
-        //reset regen cooldown
-        timeLastDamage = Time.time;
-
-
-        //pb here
-        Debug.Log(transform.name + " a maintenant : " + currentHealth + " points de vies.");
-        StartCoroutine(changeHealth(bloodScreenCurrentHealth));
-
-
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-
-
     }
 
 

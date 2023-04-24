@@ -8,21 +8,33 @@ public class plasmOrbManager : NetworkBehaviour
 
     private void OnTriggerEnter(Collider col)
     {
-        if (isPickUpComponent.player == null && col.gameObject.tag != "Player" && col.gameObject.layer != 16 && col.gameObject.tag != "volume")
+
+        if (isPickUpComponent.player == null && col.gameObject.tag != "Player" && col.gameObject.layer != 16 && col.gameObject.tag != "volume" && col.gameObject.tag != "orb")
         {
+
             Debug.Log("EXPLOSION : " + col.gameObject.name);
 
             GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
             foreach (GameObject player in players)
             {
-                Player playerComponent = player.GetComponent<Player>();
+                CmdExplosion(player);
 
-                playerComponent.RpcTakeDamage((int)playerComponent.currentHealth + 1);
             }
 
-            orbEmitterSupportManager.enabled = true;
-            NetworkServer.Destroy(this.gameObject);
+            //teleport the orb at the start
+            this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            this.gameObject.transform.position = orbEmitterSupportManager.orbSpawnArea.transform.position;
+            this.gameObject.GetComponent<isPickUp>().BreakConnection();
+
         }
+    }
+
+    [Command(requiresAuthority = false)]
+    private void CmdExplosion(GameObject player)
+    {
+        Player playerComponent = player.GetComponent<Player>();
+
+        playerComponent.RpcTakeDamage((int)playerComponent.currentHealth + 1);
     }
 }

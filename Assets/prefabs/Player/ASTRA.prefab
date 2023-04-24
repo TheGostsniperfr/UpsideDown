@@ -2991,6 +2991,7 @@ GameObject:
   - component: {fileID: -2887578985277000490}
   - component: {fileID: 7744959435606929019}
   - component: {fileID: 5499479794042957154}
+  - component: {fileID: 4098073198510734904}
   m_Layer: 3
   m_Name: ASTRA
   m_TagString: Player
@@ -3354,6 +3355,34 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0d86b13054e55e24e9013b90137b4b96, type: 3}
   - {fileID: 8300000, guid: 7907cc2bfcde270499ccf1dba39b280e, type: 3}
   - {fileID: 8300000, guid: 871b952fcd3aee145a5dede44b60ad00, type: 3}
+--- !u!114 &4098073198510734904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017954833772545545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 6806689894837912038}
+  clientAuthority: 0
+  onlySyncOnChange: 1
+  bufferResetMultiplier: 5
+  positionSensitivity: 0.01
+  rotationSensitivity: 0.01
+  scaleSensitivity: 0.01
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
 --- !u!1 &6276221052763350486
 GameObject:
   m_ObjectHideFlags: 0

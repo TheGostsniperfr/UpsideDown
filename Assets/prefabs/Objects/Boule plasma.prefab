@@ -119,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 8045817780113592525}
   m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 13.301996, y: 4.79, z: 8.5670395}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 30.000002, y: 30.000002, z: 30.000002}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5656991800399221409}
@@ -190,15 +190,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c669e35af1604b7409ee89325d55b17b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0
   waitOnPickup: 0
   breakForce: 35
+  rb: {fileID: 6971376636217461985}
+  gravityObject: 1
+  player: {fileID: 0}
   pickedUp: 0
   playerInteractions: {fileID: 0}
-  rb: {fileID: 6971376636217461985}
-  player: {fileID: 0}
   minSpeed: 0
   maxSpeed: 300
   maxDistance: 1

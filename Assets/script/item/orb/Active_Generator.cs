@@ -1,53 +1,46 @@
 using Mirror;
 using UnityEngine;
 
-public class Active_Generator : MonoBehaviour
+public class Active_Generator : NetworkBehaviour
 {
-    
+
     [SerializeField] private GameObject ring1;
     [SerializeField] private GameObject ring2;
     [SerializeField] private GameObject ring3;
     [SerializeField] private GameObject ring4;
 
-    private Vector3 axeY = new Vector3 (0,1,0);
-    private Vector3 axeX = new Vector3 (1,0,0);
-    private Vector3 axeDiag = new Vector3 (1,1,0);
+    private Vector3 axeY = new Vector3(0, 1, 0);
+    private Vector3 axeX = new Vector3(1, 0, 0);
+    private Vector3 axeDiag = new Vector3(1, 1, 0);
 
     private float speed = 50f;
-    
 
-    [SerializeField] private GameObject orbObj;
     [SerializeField] private GameObject orbSpawnArea;
 
     //receiver mode : 
     [SerializeField] private DoorMovement doorMovement;
-    private GameObject orbEmitInstance;
     private bool anim = false;
 
     void Update()
     {
-        if (anim)
-            activeGenerator();
+        if (anim) { activeGenerator(); }
     }
 
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "orb" && (orbEmitInstance == null || col.gameObject != orbEmitInstance))
+        if (col.gameObject.tag == "orb")
         {
 
             openDoor();
             anim = true;
 
-            NetworkServer.Destroy(col.gameObject);
+            col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            col.gameObject.transform.position = orbSpawnArea.transform.position;
+            col.gameObject.GetComponent<isPickUp>().BreakConnection();
 
-            orbEmitInstance = Instantiate(orbObj);
-            orbEmitInstance.transform.position = orbSpawnArea.transform.position;
-            orbEmitInstance.GetComponent<Rigidbody>().constraints=RigidbodyConstraints.FreezeAll;
-
-
-            NetworkServer.Spawn(orbEmitInstance);
         }
     }
+
 
     private void openDoor()
     {

@@ -48,33 +48,44 @@ public class pickUpIObject : NetworkBehaviour
             {
                 lookObject = null;
             }
-        }
 
-        //get key for action
-        PlayerData playerData = player.playerData;
-
-        //if we press the button of choice
-        if (Input.GetKeyDown(playerData.lockObjectKey))
-        {
-            //and we're not holding anything
-            if (currentlyPickedUpObject == null)
+            if (physicsObject != null && physicsObject.player == this.player)
             {
-                //and we are looking an interactable object
-                if (lookObject != null)
+                if (physicsObject.gravityObject != this.playerController.gravity)
                 {
-                    soundManager.isGrab();
-                    PickUpObject();
+                    physicsObject.synLocalGravity(this.playerController.gravity);
+                }
+            }
+
+            //get key for action
+            PlayerData playerData = player.playerData;
+
+            //if we press the button of choice
+            if (Input.GetKeyDown(playerData.lockObjectKey))
+            {
+                //and we're not holding anything
+                if (currentlyPickedUpObject == null)
+                {
+                    //and we are looking an interactable object
+                    if (lookObject != null)
+                    {
+                        soundManager.isGrab();
+                        PickUpObject();
+
+                    }
 
                 }
+                //if we press the pickup button and have something, we drop it
+                else
+                {
+                    soundManager.isGrab();
+                    BreakConnection();
+                }
+            }
 
-            }
-            //if we press the pickup button and have something, we drop it
-            else
-            {
-                soundManager.isGrab();
-                BreakConnection();
-            }
         }
+
+
     }
 
     //Release the object
@@ -86,11 +97,15 @@ public class pickUpIObject : NetworkBehaviour
         physicsObject.player = null;
     }
 
-
     public void PickUpObject()
     {
         physicsObject = lookObject.GetComponentInChildren<isPickUp>();
-        physicsObject.setPickUpIObject(player);
+        physicsObject.setPickUpIObject(this.player);
         currentlyPickedUpObject = lookObject;
+
     }
+
+
+
+
 }
