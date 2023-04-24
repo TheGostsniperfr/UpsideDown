@@ -18,13 +18,17 @@ public class isPickUp : NetworkBehaviour
     [SerializeField] private float minSpeed = 0;
     [SerializeField] private float maxSpeed = 300f;
     [SerializeField] private float maxDistance = 10f;
+    [SerializeField] private int defaultGravity = 1;
 
     private float currentSpeed = 0f;
     private float currentDist = 0f;
 
+
     [Header("Rotation")]
     public float rotationSpeed = 100f;
     Quaternion lookRot;
+
+
 
     [Command(requiresAuthority = false)]
     public void setPickUpIObject(Player _player)
@@ -57,7 +61,7 @@ public class isPickUp : NetworkBehaviour
         rb.AddForce(new Vector3(0, -10 * gravityObject, 0), ForceMode.Acceleration);
     }
 
-    //Release the objec
+    //Release the object
     [Command(requiresAuthority = false)]
     public void BreakConnection()
     {
@@ -87,5 +91,10 @@ public class isPickUp : NetworkBehaviour
         gravityObject = newGravity;
     }
 
+
+    public void resetGravity()
+    {
+        synLocalGravity(defaultGravity);
+    }
 }
 

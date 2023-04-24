@@ -25,7 +25,9 @@ public class plasmOrbManager : NetworkBehaviour
             //teleport the orb at the start
             this.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             this.gameObject.transform.position = orbEmitterSupportManager.orbSpawnArea.transform.position;
-            this.gameObject.GetComponent<isPickUp>().BreakConnection();
+            isPickUpComponent.BreakConnection();
+            isPickUpComponent.resetGravity();
+
 
         }
     }
