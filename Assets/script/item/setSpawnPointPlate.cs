@@ -4,6 +4,8 @@ public class setSpawnPointPlate : MonoBehaviour
 {
     [SerializeField] private GameObject areaSpawnPoint;
 
+    [Header("normal gravity = 1, inversed gravity = -1")]
+    [SerializeField] private int gravityOfTheSpawnPoint = 1;
 
     private void OnTriggerEnter(Collider col)
     {
@@ -11,6 +13,7 @@ public class setSpawnPointPlate : MonoBehaviour
         {
             Player player = col.gameObject.GetComponent<Player>();
             player.setSpawnPoint(areaSpawnPoint.transform.position, areaSpawnPoint.transform.rotation);
+            player.defaultGravity = gravityOfTheSpawnPoint;
         }
     }
 

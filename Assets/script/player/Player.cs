@@ -13,6 +13,8 @@ public class Player : NetworkBehaviour
         protected set { _isDead = value; }
     }
 
+    public int defaultGravity = 1;
+
     [Header("player hp")]
 
     [SyncVar]
@@ -120,6 +122,23 @@ public class Player : NetworkBehaviour
         isDead = false;
         newHealth(playerMaxHealth);
         currentHealth = playerMaxHealth;
+
+        //check gravity
+        if (playerController.gravity != defaultGravity)
+        {
+            if (defaultGravity == 1)
+            {
+                playerController.playerGraphics.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+            }
+            else
+            {
+                playerController.playerGraphics.transform.localRotation = Quaternion.Euler(0, 0, 180);
+            }
+
+            playerController.gravitySwited = !playerController.gravitySwited;
+            playerController.gravity *= -1;
+        }
     }
 
     public ref PlayerData getPlayerData()
