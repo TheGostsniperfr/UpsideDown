@@ -8,6 +8,7 @@ public class openGatePressurisedPlateManager : MonoBehaviour
     [SerializeField] private int[] listOfLayersToDetect;
     [SerializeField] private openGatePressurisedPlate[] plates;
     [SerializeField] private bool openWithOnlyAllDetected = false;
+    [SerializeField] private bool keepDoorOpen = false;
 
     private bool doorOpen = false;
 
@@ -32,7 +33,7 @@ public class openGatePressurisedPlateManager : MonoBehaviour
                 openDoor();
             }
         }
-        else
+        else if (!keepDoorOpen)
         {
             if (doorOpen)
             {

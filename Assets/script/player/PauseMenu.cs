@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject keyBinding;
     [SerializeField] private KeyBindingManager keyBindingsManager;
     [SerializeField] private GameObject settingsMenu;
+    public dialogueSystem _dialogueSystem;
     public Player player;
 
 

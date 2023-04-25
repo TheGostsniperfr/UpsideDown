@@ -8,7 +8,16 @@ public class loadingScreenManager : MonoBehaviour
 
     private void Start()
     {
-        NetworkClient.RegisterHandler<loadingScreenMSG>(showLoadingScreen);
+        if (NetworkClient.ready)
+        {
+            NetworkClient.ReplaceHandler<loadingScreenMSG>(showLoadingScreen);
+        }
+        else
+        {
+            NetworkClient.RegisterHandler<loadingScreenMSG>(showLoadingScreen);
+
+        }
+
     }
 
     public void showLoadingScreen(loadingScreenMSG msg)

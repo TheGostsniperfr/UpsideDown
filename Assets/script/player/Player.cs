@@ -326,4 +326,19 @@ public class Player : NetworkBehaviour
 
 
     }
+
+
+    public void showDialogue(DialogueObject dialogueObject)
+    {
+        if (isLocalPlayer)
+        {
+            dialogueSystem dialogue = playerSetup.playerUIInstance.gameObject.GetComponent<PauseMenu>()._dialogueSystem;
+
+            //show the new dialogue if no dialogue is playing
+            if (!dialogue.dialogueIsPlaying)
+            {
+                dialogue.ShowDialogue(dialogueObject);
+            }
+        }
+    }
 }
