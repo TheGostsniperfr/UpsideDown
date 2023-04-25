@@ -2989,8 +2989,8 @@ GameObject:
   - component: {fileID: 5026844350038223918}
   - component: {fileID: 6284173179579822254}
   - component: {fileID: -2887578985277000490}
-  - component: {fileID: 7744959435606929019}
   - component: {fileID: 5499479794042957154}
+  - component: {fileID: 7744959435606929019}
   - component: {fileID: 4098073198510734904}
   m_Layer: 3
   m_Name: ASTRA
@@ -3230,6 +3230,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
+  defaultGravity: 1
   currentHealth: 0
   playerMaxHealth: 100
   regenActivate: 1
@@ -3306,6 +3307,27 @@ MonoBehaviour:
   syncInterval: 0.1
   clientAuthority: 1
   animator: {fileID: 1022297811457541833}
+--- !u!114 &5499479794042957154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017954833772545545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92e577c2db9e9044952552ac02e49c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSound: {fileID: 6306391349952387353}
+  runSound: {fileID: 1801663865160897272}
+  switchingGragity: {fileID: 4682173200299677535}
+  grabSomethings: {fileID: 3570668611447879546}
+  ambientSound: {fileID: 2161576430398846524}
+  ambientMusiks:
+  - {fileID: 8300000, guid: 0d86b13054e55e24e9013b90137b4b96, type: 3}
+  - {fileID: 8300000, guid: 7907cc2bfcde270499ccf1dba39b280e, type: 3}
+  - {fileID: 8300000, guid: 871b952fcd3aee145a5dede44b60ad00, type: 3}
 --- !u!114 &7744959435606929019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3334,27 +3356,6 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
---- !u!114 &5499479794042957154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6017954833772545545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f92e577c2db9e9044952552ac02e49c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkSound: {fileID: 6306391349952387353}
-  runSound: {fileID: 1801663865160897272}
-  switchingGragity: {fileID: 4682173200299677535}
-  grabSomethings: {fileID: 3570668611447879546}
-  ambientSound: {fileID: 2161576430398846524}
-  ambientMusiks:
-  - {fileID: 8300000, guid: 0d86b13054e55e24e9013b90137b4b96, type: 3}
-  - {fileID: 8300000, guid: 7907cc2bfcde270499ccf1dba39b280e, type: 3}
-  - {fileID: 8300000, guid: 871b952fcd3aee145a5dede44b60ad00, type: 3}
 --- !u!114 &4098073198510734904
 MonoBehaviour:
   m_ObjectHideFlags: 0

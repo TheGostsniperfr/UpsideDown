@@ -12,10 +12,12 @@ public class dialogueSystem : MonoBehaviour
     private PlayerData playerData;
     [SerializeField] private ResponceHandler responceHandler;
 
+    public bool dialogueIsPlaying;
+
     private void Start()
     {
         CloseDialogue();
-        ShowDialogue(testDialogue);
+        //ShowDialogue(testDialogue);
 
         player = gameObject.GetComponentInParent<PauseMenu>().player;
 
@@ -24,8 +26,11 @@ public class dialogueSystem : MonoBehaviour
 
     public void ShowDialogue(DialogueObject dialogueObject)
     {
+
         dialogueBox.SetActive(true);
         StartCoroutine(StepThroughDialogue(dialogueObject));
+        dialogueIsPlaying = true;
+
     }
 
     private IEnumerator StepThroughDialogue(DialogueObject dialogueObject)
@@ -46,6 +51,7 @@ public class dialogueSystem : MonoBehaviour
         }
         else
         {
+            dialogueIsPlaying = false;
             CloseDialogue();
         }
     }

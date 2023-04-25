@@ -7183,7 +7183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6431165174314840931
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20393,6 +20393,7 @@ MonoBehaviour:
   keyBinding: {fileID: 7159317797672548255}
   keyBindingsManager: {fileID: 1174615744446356436}
   settingsMenu: {fileID: 885384013667181442}
+  _dialogueSystem: {fileID: 5992591509404150012}
   player: {fileID: 0}
 --- !u!114 &8299970399369926680
 MonoBehaviour:
