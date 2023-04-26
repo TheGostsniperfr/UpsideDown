@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class FindMissingScript
 {
-    [MenuItem("My Menu/Find Missing Scripts In projects")]
+    [MenuItem("Tools/Find Missing Scripts In projects")]
     static void FindMissingScriptsInProjectMenuItem()
     {
         string[] prefabPaths = AssetDatabase.GetAllAssetPaths().Where(path => path.EndsWith(".prefab", System.StringComparison.OrdinalIgnoreCase)).ToArray();
@@ -24,12 +24,9 @@ public static class FindMissingScript
         }
     }
 
-    [MenuItem("My Menu/Find Missing Scripts In Scene")]
+    [MenuItem("Tools/Find Missing Scripts In Scene")]
     static void FindMissingScriptsInSceneMenuItem()
     {
-        var obj = GameObject.Find("SceneIDMap");
-        Object.DestroyImmediate(obj);
-
 
         foreach (GameObject gameObject in GameObject.FindObjectsOfType<GameObject>(true))
         {
