@@ -286,24 +286,30 @@ public class Player : NetworkBehaviour
                 keyPositions = playerSetup.playerUIInstance.gameObject.GetComponent<KeyPositions>();
             }
 
-            //check new interactif object ( ex: door, tv, ... )
-            if (hit.collider != null && hit.collider.gameObject.tag == "interactive" && hit.collider.gameObject != currentHit)
+            if (hit.collider != null)
             {
-                if (currentHit != null)
+                Tags tags;
+                hit.collider.gameObject.TryGetComponent<Tags>(out tags);
+
+                //check new interactif object ( ex: door, tv, ... )
+                if ((hit.collider.gameObject.tag == "interactive" || (tags != null && tags.HasTag("interactive"))) && hit.collider.gameObject != currentHit)
                 {
-                    keyPositions.removeKeyUI(currentKey);
+                    if (currentHit != null)
+                    {
+                        keyPositions.removeKeyUI(currentKey);
+                    }
+
+                    currentHit = hit.collider.gameObject;
+
+                    currentInterfaceObject = currentHit.GetComponent<interactiveInterfaceObject>();
+                    //var outLine = currentHit.GetComponent<OutlineObject>();
+
+                    //outLine.enabled = true;
+
+                    currentKey = currentInterfaceObject.getKey(playerData);
+
+                    keyPositions.ShowKeyUI(currentKey, currentInterfaceObject.getDescription());
                 }
-
-                currentHit = hit.collider.gameObject;
-
-                currentInterfaceObject = currentHit.GetComponent<interactiveInterfaceObject>();
-                //var outLine = currentHit.GetComponent<OutlineObject>();
-
-                //outLine.enabled = true;
-
-                currentKey = currentInterfaceObject.getKey(playerData);
-
-                keyPositions.ShowKeyUI(currentKey, currentInterfaceObject.getDescription());
             }
         }
         else
