@@ -8,6 +8,7 @@ public class settingsManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
+    [SerializeField] private PauseMenu pauseMenu;
     private Resolution[] resolutions;
 
     private void Start()
@@ -68,5 +69,20 @@ public class settingsManager : MonoBehaviour
     public void SetFullScreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+    }
+
+    public void SetRorationSpeed(float speed)
+    {
+        pauseMenu.playerController.gravitRotationSpeed = speed;
+    }
+
+    public void SetMouseSensiX(float X)
+    {
+        pauseMenu.playerController.mouseSensitivityX = X;
+    }
+
+    public void SetMouseSensiY(float Y)
+    {
+        pauseMenu.playerController.mouseSensitivityY = Y;
     }
 }

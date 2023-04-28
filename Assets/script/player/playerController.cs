@@ -14,8 +14,8 @@ public class playerController : NetworkBehaviour
     [SerializeField] private float distanceIsGrounded = 1f;
 
     //rotation
-    [SerializeField] private float mouseSensitivityX = 5f;
-    [SerializeField] private float mouseSensitivityY = 5f;
+    public float mouseSensitivityX = 5f;
+    public float mouseSensitivityY = 5f;
     private float rotationX = 0f;
 
     //Sphere rotation
@@ -48,7 +48,7 @@ public class playerController : NetworkBehaviour
 
 
     //gravity player rotation
-    [SerializeField] private float gravitRotationSpeed = 1f;
+    public float gravitRotationSpeed = 1f;
 
     [Header("camera")]
     [SerializeField] private Camera cam;
