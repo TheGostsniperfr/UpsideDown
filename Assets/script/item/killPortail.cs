@@ -4,7 +4,6 @@ public class killPortail : MonoBehaviour
 {
     [SerializeField] private string[] tagsToDestroy;
     [SerializeField] private int[] layersToDestroy;
-    [SerializeField] private GameObject laser;
 
     private void OnTriggerEnter(Collider col)
     {
