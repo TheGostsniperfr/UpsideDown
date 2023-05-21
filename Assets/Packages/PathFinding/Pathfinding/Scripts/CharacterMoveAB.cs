@@ -7,39 +7,50 @@ using UnityEngine;
 public class CharacterMoveAB : MonoBehaviour
 {
     AStarAgent _Agent;
-    [SerializeField] Transform pointA;
-    [SerializeField] Transform pointB;
+
+    [SerializeField] List<Transform> rdPoints = new List<Transform>();
+    [SerializeField] private Transform currentPoint;
+    private int index = 0;
+
 
     private void Start()
     {
-        _Agent = GetComponent<AStarAgent>();
-        transform.position = pointA.position;
-        StartCoroutine(Coroutine_MoveAB());
+        _Agent = GetComponent<AStarAgent>();       
+
+        chooseNewRandomPoint();
     }
 
-    IEnumerator Coroutine_MoveAB()
+    
+
+    private void Update()
     {
-        yield return null;
-        while (true)
+        if(_Agent.Status != AStarAgentStatus.Finished)
         {
-            _Agent.Pathfinding(pointB.position);
-            while (_Agent.Status == AStarAgentStatus.Invalid)
-            {
-                Transform pom1 = pointA;
-                pointA = pointB;
-                pointB = pom1;
-                transform.position = pointA.position;
-                _Agent.Pathfinding(pointB.position);
-                yield return new WaitForSeconds(0.2f);
-            }
-            while (_Agent.Status != AStarAgentStatus.Finished)
-            {
-                yield return null;
-            }
-            Transform pom = pointA;
-            pointA = pointB;
-            pointB = pom;
-            yield return null;
+            return;
         }
+
+        while (_Agent.Status == AStarAgentStatus.Invalid)
+        {            
+            chooseNewRandomPoint();    
+            _Agent.Pathfinding(currentPoint.position);        
+        }
+
+        if(_Agent.Status == AStarAgentStatus.Finished)
+        {
+            chooseNewRandomPoint();
+            _Agent.Pathfinding(currentPoint.position);
+        }
+    }
+
+
+    private void chooseNewRandomPoint()
+    {
+        int tempIndex = index;
+        while(tempIndex == index)
+        {
+            index = Random.Range(0, rdPoints.Count);
+        }
+
+        currentPoint = rdPoints[tempIndex]; 
     }
 }

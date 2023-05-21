@@ -1,7 +1,6 @@
-using Mirror;
 using UnityEngine;
 
-public class Active_Generator : NetworkBehaviour
+public class Active_Generator : MonoBehaviour
 {
 
     [SerializeField] private GameObject ring1;
@@ -15,7 +14,7 @@ public class Active_Generator : NetworkBehaviour
 
     private float speed = 50f;
 
-    [SerializeField] private GameObject orbSpawnArea;
+    [SerializeField] private GameObject orbTexture;
 
     //receiver mode : 
     [SerializeField] private DoorMovement doorMovement;
@@ -34,9 +33,9 @@ public class Active_Generator : NetworkBehaviour
             openDoor();
             anim = true;
 
-            col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            col.gameObject.transform.position = orbSpawnArea.transform.position;
-            col.gameObject.GetComponent<isPickUp>().BreakConnection();
+
+            Destroy(col.gameObject);
+            orbTexture.SetActive(true);            
 
         }
     }

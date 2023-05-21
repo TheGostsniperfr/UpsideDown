@@ -30,6 +30,14 @@ public class killPortail : MonoBehaviour
         {
             Player player = gameObject.GetComponent<Player>();
             player.RpcTakeDamage((int)player.currentHealth + 1);
+
+            //check if the player grab the orb
+            pickUpIObject pickUp = player.gameObject.GetComponent<pickUpIObject>();
+
+            if (pickUp.gameObject != null &&  pickUp.lookObject.gameObject.tag == "orb")
+            {
+                pickUp.gameObject.GetComponent<plasmOrbManager>().explosion();
+            }
         }
         else
         {
@@ -39,6 +47,4 @@ public class killPortail : MonoBehaviour
 
         Debug.Log(gameObject.name + " has been kill by " + this.name);
     }
-
-
 }

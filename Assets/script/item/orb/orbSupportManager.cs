@@ -13,7 +13,7 @@ public class orbSupportManager : NetworkBehaviour
             col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             col.gameObject.transform.position = orbSpawnArea.transform.position;
             col.gameObject.GetComponent<isPickUp>().BreakConnection();
-
+            
         }
     }
 }
