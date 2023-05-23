@@ -164,7 +164,7 @@ public class Player : NetworkBehaviour
 
         //enable mouvement ? :
         playerController.EnablePlayerInput(true);
-        StartCoroutine(changeHealth(0));
+        StartCoroutine(changeHealth(playerMaxHealth));
     }
 
     [ClientRpc]
@@ -210,15 +210,11 @@ public class Player : NetworkBehaviour
 
         playerController.EnablePlayerInput(false);
 
-
-        //check if the player grab the orb
-        pickUpIObject pickUpIObject = this.gameObject.GetComponent<pickUpIObject>();
-        if (pickUpIObject != null && pickUpIObject.currentlyPickedUpObject.gameObject.tag == "orb")
+        pickUpIObject pickUpIObjectComponent = this.gameObject.GetComponent<pickUpIObject>();
+        if (pickUpIObjectComponent.currentlyPickedUpObject != null)
         {
-            //active the explosion
-            pickUpIObject.currentlyPickedUpObject.gameObject.GetComponent<plasmOrbManager>().explosion();
+            pickUpIObjectComponent.BreakConnection();
         }
-
 
         Debug.Log(transform.name + " a été éléminé.");
         StartCoroutine(Respawn());
