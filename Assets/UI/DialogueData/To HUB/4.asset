@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778d33917ee50ce49ad6eca4dd6a2bc5, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  dialogue:
+  - "Bien jou\xE9 vous avez r\xE9ussi la salle la plus longue !\r\nMais c'\xE9tait
+    clairement pas la plus compliqu\xE9e..."
+  - "Est-ce que vous avez trouv\xE9 une salle\r\nparticuli\xE8re avant de revenir
+    de la Salle 3 ?"
+  responces:
+  - reponseText: "Yes, c'\xE9tait quoi ?"
+    dialogueObject: {fileID: 11400000, guid: f15ba2c2af6ab264c9a34856f9b70d35, type: 2}
+  - reponseText: "Nan, juste des salles avec des \xE9nigmes \xE0 r\xE9soudre"
+    dialogueObject: {fileID: 11400000, guid: 19db0a9f9645eab46a009fad8c8241ae, type: 2}

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778d33917ee50ce49ad6eca4dd6a2bc5, type: 3}
+  m_Name: 1.1
+  m_EditorClassIdentifier: 
+  dialogue:
+  - Ah ! Tu es sourd. Laisse moi te raconter mon histoire.
+  - "Je fus un jeune gar\xE7on plein de r\xEAves a cette \xE9poque... Mais maintenant,
+    maintenant j'ai pu faire connaissance d'une tr\xE8s dure amie : la VIE !"
+  - "Naaan, je vous taquine je suis l\xE0 depuis je ne sais pas combien de temps,
+    ma m\xE9moire me fait d\xE9fault parfois, et malheureusement je suis coinc\xE9
+    et je ne peux plus accomplir mon r\xEAve..."
+  - "Bon c'est pas tout \xE7a mais parl\xE9 m'a donn\xE9 soif vous voulez un truc
+    ?"
+  responces:
+  - reponseText: Je veux bien !
+    dialogueObject: {fileID: 11400000, guid: b601e32f9b472bf40b13569c18e7c75c, type: 2}
+  - reponseText: "Non, c'est quoi ce r\xEAve dont vous parlez ?"
+    dialogueObject: {fileID: 11400000, guid: a443ee70517385b4ba80b9327391bdf8, type: 2}
