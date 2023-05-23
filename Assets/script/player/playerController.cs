@@ -62,18 +62,6 @@ public class playerController : NetworkBehaviour
     [Header("player keyBind")]
     public PlayerData playerData;
 
-    [Header("Player No Gravity Mode")]
-    [SerializeField] private bool isNoGravity = false;
-    [SerializeField] private CapsuleCollider capsuleCollider;
-
-    [SerializeField] private PhysicMaterial defaultPhysic;
-    [SerializeField] private PhysicMaterial bouncePhysic;
-    [SerializeField] private float decreaseVelocity = 1.3f;
-    private RigidbodyConstraints defaultContrain;
-    [SerializeField] private float timeBeforeDisableNoGravity = 3f;
-    private float timeWithNoMoveWithNoGravity;
-    private bool isNoMovingWithNoGravity = false;
-
     //raycast of the player 
     RaycastHit hit;
 
@@ -89,9 +77,6 @@ public class playerController : NetworkBehaviour
 
         playerSpeed = playerCurrentSpeed;
         smoothInputSpeed = currentSmoothInputSpeed;
-
-
-        defaultContrain = rb.constraints;
     }
 
     private void Start()
@@ -109,7 +94,6 @@ public class playerController : NetworkBehaviour
 
             gravitySwitcher();
 
-            noGravityMode();
 
             //check if the player is on a plateform
             playerOnMovingPlatform();
@@ -138,50 +122,11 @@ public class playerController : NetworkBehaviour
         if (hit.collider != null && hit.collider.gameObject.layer == 15) { return; }
 
 
-        if (!isNoGravity)
-        {
-            rb.AddForce(Physics.gravity * rb.mass * gravity);
-        }
+        
+        rb.AddForce(Physics.gravity * rb.mass * gravity);
+        
     }
 
-
-    public void noGravityMode()
-    {
-        if ((isGrounded() || isNoGravity) && Input.GetKeyDown(playerData.NoGravityKey))
-        {
-            //check current mode of the player
-            if (isNoGravity)
-            {
-                setNoGravity(false);
-
-            }
-            else
-            {
-                setNoGravity(true);
-            }
-        }
-    }
-
-
-    private void setNoGravity(bool state)
-    {
-        if (state)
-        {
-            isNoGravity = true;
-            rb.constraints = (RigidbodyConstraints)(112 + 4);
-
-            capsuleCollider.material = bouncePhysic;
-        }
-        else
-        {
-            isNoGravity = false;
-            rb.constraints = defaultContrain;
-
-            capsuleCollider.material = defaultPhysic;
-        }
-        animator.SetBool("noGravity", isNoGravity);
-
-    }
 
     public void EnablePlayerInput(bool status)
     {
@@ -253,7 +198,7 @@ public class playerController : NetworkBehaviour
 
     private void playerOnMovingPlatform()
     {
-        if (isGrounded() && !isNoGravity)
+        if (isGrounded())
         {
             if (hit.collider != null && hit.collider.gameObject.layer == 13)
             {
@@ -329,111 +274,70 @@ public class playerController : NetworkBehaviour
 
 
 
-        if (!isNoGravity)
+        
+        Vector3 MoveVector = transform.TransformDirection(currentInputControl) * playerSpeed;
+
+        currentInputControl = Vector3.SmoothDamp(currentInputControl, playerInputControl, ref smoothInputVelocity, smoothInputSpeed);
+
+
+        rb.velocity = new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
+
+        if (MoveVector.magnitude > 0.1)
         {
-            Vector3 MoveVector = transform.TransformDirection(currentInputControl) * playerSpeed;
-
-            currentInputControl = Vector3.SmoothDamp(currentInputControl, playerInputControl, ref smoothInputVelocity, smoothInputSpeed);
-
-
-            rb.velocity = new Vector3(MoveVector.x, rb.velocity.y, MoveVector.z);
-
-            if (MoveVector.magnitude > 0.1)
+            if (!animator.GetBool("isWalking") && isGrounded())
             {
-                if (!animator.GetBool("isWalking") && isGrounded())
+                soundManager.isWalking(true);
+                animator.SetBool("isWalking", true);
+
+                if (Input.GetKey(KeyCode.Q))
                 {
-                    soundManager.isWalking(true);
-                    animator.SetBool("isWalking", true);
-
-                    if (Input.GetKey(KeyCode.Q))
-                    {
-                        animator.SetBool("walkLeft", true);
-                    }
-                    else
-                    {
-                        animator.SetBool("walkLeft", false);
-
-                    }
-                    if (Input.GetKey(KeyCode.D))
-                    {
-                        animator.SetBool("walkRight", true);
-                    }
-                    else
-                    {
-                        animator.SetBool("walkRight", false);
-
-                    }
-
+                    animator.SetBool("walkLeft", true);
                 }
-
-            }
-            else
-            {
-
-                soundManager.isWalking(false);
-
-
-                animator.SetBool("isWalking", false);
-                animator.SetBool("walkRight", false);
-                animator.SetBool("walkLeft", false);
-            }
-
-            //jump
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (isGrounded() && (hit.collider.gameObject.tag != "cube" || hit.collider.gameObject.tag != "Player"))
+                else
                 {
-                    rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode.Impulse);
-                    netAnimator.SetTrigger("jump");
-
-                    animator.SetBool("isWalking", false);
-                    animator.SetBool("walkRight", false);
                     animator.SetBool("walkLeft", false);
 
-                    soundManager.isRunning(false);
-                    soundManager.isWalking(false);
                 }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    animator.SetBool("walkRight", true);
+                }
+                else
+                {
+                    animator.SetBool("walkRight", false);
+
+                }
+
             }
 
         }
         else
         {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
 
-            //decrease the velocity
-            rb.velocity /= decreaseVelocity;
-
-            if (rb.velocity.magnitude < 0.1f)
-            {
-
-                //disable the no gravity is the player stay motionless after time 
-                if (!isNoMovingWithNoGravity)
-                {
-                    isNoMovingWithNoGravity = true;
-                    timeWithNoMoveWithNoGravity = Time.timeSinceLevelLoad;
-                }
-                else if (timeWithNoMoveWithNoGravity + timeBeforeDisableNoGravity < Time.timeSinceLevelLoad)
-                {
-
-                    setNoGravity(false);
-
-                    isNoMovingWithNoGravity = false;
-                }
-
-                rb.velocity = Vector3.zero;
-            }
-
-            //if the player get velocity after no moving ( ex : collision )
-            else if (isNoMovingWithNoGravity)
-            {
-                isNoMovingWithNoGravity = false;
-            }
+            soundManager.isWalking(false);
 
 
+            animator.SetBool("isWalking", false);
+            animator.SetBool("walkRight", false);
+            animator.SetBool("walkLeft", false);
         }
 
+        //jump
+        if (Input.GetKeyDown(KeyCode.Space) && playerInputControlKeyBoardBool)
+        {
+            if (isGrounded() && (hit.collider.gameObject.tag != "cube" || hit.collider.gameObject.tag != "Player"))
+            {
+                rb.AddForce(Vector3.up * jumpForce * gravity, ForceMode.Impulse);
+                netAnimator.SetTrigger("jump");
 
+                animator.SetBool("isWalking", false);
+                animator.SetBool("walkRight", false);
+                animator.SetBool("walkLeft", false);
 
+                soundManager.isRunning(false);
+                soundManager.isWalking(false);
+            }
+        }
     }
     private void rotationPlayer()
     {
