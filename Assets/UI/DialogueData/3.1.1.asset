@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778d33917ee50ce49ad6eca4dd6a2bc5, type: 3}
+  m_Name: 3.1.1
+  m_EditorClassIdentifier: 
+  dialogue:
+  - "Bienvenue dans la 3e salle ! Ici vous allez devoir vous s\xE9parer pour que
+    chacun trouve des indices, donc il en faut un qui parte \xE0 gauche et un \xE0
+    droite !"
+  - "Ensuite, il faudra soit r\xE9soudre qui vous sera pr\xE9sent\xE9 ou alors chercher
+    dans le d\xE9cor un num\xE9ro de porte ! Dans les deux cas, il vous faut transmettre
+    l'info \xE0 votre camarade, qui vous transmettra ce qu'il aura trouv\xE9 \xE9galement
+    !"
+  - 'Car les indices que vous trouverez concernent votre
+
+    camarade, et inversement
+    !
+
+    Aller, bonne chance !'
+  responces: []
