@@ -211,6 +211,14 @@ public class Player : NetworkBehaviour
         playerController.EnablePlayerInput(false);
 
 
+        //check if the player grab the orb
+        pickUpIObject pickUpIObject = this.gameObject.GetComponent<pickUpIObject>();
+        if (pickUpIObject != null && pickUpIObject.currentlyPickedUpObject.gameObject.tag == "orb")
+        {
+            //active the explosion
+            pickUpIObject.currentlyPickedUpObject.gameObject.GetComponent<plasmOrbManager>().explosion();
+        }
+
 
         Debug.Log(transform.name + " a été éléminé.");
         StartCoroutine(Respawn());
