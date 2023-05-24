@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778d33917ee50ce49ad6eca4dd6a2bc5, type: 3}
+  m_Name: 5S
+  m_EditorClassIdentifier: 
+  dialogue:
+  - "Rebonjour dans l'avant derni\xE8re salle et oui bient\xF4t la fin et vous allez
+    voir que vous voudriez que \xE7a soit plus simple ! Je vais vous avou\xE9 que
+    non !"
+  - "Dans cette salle vous allez rencontr\xE9 une boule de plasma que vous allez
+    devoir transporter jusqu'\xE0 un g\xE9n\xE9rateur qui se trouve quelque part,
+    mais faites attention un choc et c'est la mort."
+  - "Bien sur \xE7a serait trop facile d'avoir que \xE7a, alors attention \xE0 l'oeil
+    qui bouge, car il est attir\xE9 par l'orbe si vous le tenez et il fera tout pour
+    entrer en contact avec l'orbe pour vous tuer !"
+  - "Bien sur pour \xE9viter vous pouvez trouver un leurre, si vous l'activer le
+    robot sera alors attir\xE9 par ce dernier mais attention le temps vous est compter
+    et vous pouvez vous en servir qu'une seule fois !"
+  responces: []

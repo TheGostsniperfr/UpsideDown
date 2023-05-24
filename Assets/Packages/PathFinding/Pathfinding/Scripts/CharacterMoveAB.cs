@@ -2,6 +2,7 @@ using Mirror;
 using PathCreation;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(AStarAgent))]
@@ -24,6 +25,11 @@ public class CharacterMoveAB : NetworkBehaviour
     private bool GoToLeurre = false;
 
 
+    [SerializeField] private float cooldownToUpdatePath = 3f;
+    private float lastUpdatePath = 0f;
+
+
+
     private void Start()
     {
         _Agent = GetComponent<AStarAgent>();       
@@ -31,7 +37,8 @@ public class CharacterMoveAB : NetworkBehaviour
         chooseNewRandomPoint();
     }
 
-    
+
+
 
     private void Update()
     {
@@ -65,7 +72,22 @@ public class CharacterMoveAB : NetworkBehaviour
             if (isPickUp != null && isPickUp.pickedUp)
             {
                 //go to player
-                _Agent.Pathfinding(isPickUp.gameObject.transform.position);
+
+                if (lastUpdatePath + cooldownToUpdatePath < Time.timeSinceLevelLoad)
+                {
+                    lastUpdatePath = Time.timeSinceLevelLoad;
+                    
+                    _Agent.Pathfinding(isPickUp.gameObject.transform.position);
+
+                    while (_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
+                    {
+                        chooseNewRandomPoint();
+                        _Agent.Pathfinding(currentPoint.position);
+                    }
+
+
+                }
+
                 return;
             }
             else
@@ -73,7 +95,7 @@ public class CharacterMoveAB : NetworkBehaviour
                 //normal mode
                 if (_Agent.Status != AStarAgentStatus.Finished)
                 {
-                    return;
+                   return;                    
                 }
 
                 while (_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)

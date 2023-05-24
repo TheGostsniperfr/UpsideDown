@@ -164,7 +164,7 @@ public class Player : NetworkBehaviour
 
         //enable mouvement ? :
         playerController.EnablePlayerInput(true);
-        StartCoroutine(changeHealth(0));
+        StartCoroutine(changeHealth(playerMaxHealth));
     }
 
     [ClientRpc]
@@ -210,7 +210,11 @@ public class Player : NetworkBehaviour
 
         playerController.EnablePlayerInput(false);
 
-
+        pickUpIObject pickUpIObjectComponent = this.gameObject.GetComponent<pickUpIObject>();
+        if (pickUpIObjectComponent.currentlyPickedUpObject != null)
+        {
+            pickUpIObjectComponent.BreakConnection();
+        }
 
         Debug.Log(transform.name + " a été éléminé.");
         StartCoroutine(Respawn());
