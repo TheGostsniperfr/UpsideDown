@@ -20,9 +20,13 @@ public class Active_Generator : MonoBehaviour
     [SerializeField] private DoorMovement doorMovement;
     private bool anim = false;
 
+    [SerializeField] private bool cheatMode = false;
+
     void Update()
     {
         if (anim) { activeGenerator(); }
+
+        if(cheatMode) { anim = true; orbTexture.SetActive(true); }
     }
 
     private void OnTriggerEnter(Collider col)
