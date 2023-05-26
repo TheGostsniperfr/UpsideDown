@@ -451,8 +451,9 @@ MonoBehaviour:
   ring2: {fileID: 534341435524453816}
   ring3: {fileID: 1109032680913507526}
   ring4: {fileID: 2011025801274295204}
-  orbTexture: {fileID: 0}
+  orbTexture: {fileID: 7830269846311283707}
   doorMovement: {fileID: 0}
+  cheatMode: 0
 --- !u!64 &4090246973937853123
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -553,6 +554,7 @@ MonoBehaviour:
   ring4: {fileID: 2011025801274295204}
   orbTexture: {fileID: 7830269846311283707}
   doorMovement: {fileID: 0}
+  cheatMode: 0
 --- !u!1 &7219850516813071202
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +738,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.7568628, g: 0.9803922, b: 1, a: 1}
-  m_Intensity: 4774.648
+  m_Intensity: 397.88736
   m_Range: 2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -798,7 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 60000
+  m_Intensity: 5000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
