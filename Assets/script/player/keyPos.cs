@@ -36,7 +36,7 @@ public class keyPos : MonoBehaviour
 
         if (isPlayingAnimation)
         {
-            animator.Play("");
+            //animator.Play("");
         }
     }
 

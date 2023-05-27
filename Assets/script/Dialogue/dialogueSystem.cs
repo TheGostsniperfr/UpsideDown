@@ -14,9 +14,14 @@ public class dialogueSystem : MonoBehaviour
 
     public bool dialogueIsPlaying;
 
-    private void Start()
+
+    private void Awake()
     {
         CloseDialogue();
+    }
+
+    private void Start()
+    {
         //ShowDialogue(testDialogue);
 
         player = gameObject.GetComponentInParent<PauseMenu>().player;
