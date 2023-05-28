@@ -20,7 +20,6 @@ public class Active_Generator : NetworkBehaviour
     //receiver mode : 
     [SerializeField] private DoorMovement doorMovement;
 
-    [SerializeField] private bool cheatMode = false;
     [SerializeField, SyncVar] private bool isActive = false;
 
     void Update()
@@ -42,7 +41,7 @@ public class Active_Generator : NetworkBehaviour
         if (col.gameObject.tag == "orb")
         {
             CmdActiveGenerator();
-            NetworkManager.Destroy(col.gameObject);
+            NetworkServer.Destroy(col.gameObject);
         }
     }
 

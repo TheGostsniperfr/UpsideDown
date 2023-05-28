@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 
 public class killPortail : MonoBehaviour
@@ -34,14 +35,14 @@ public class killPortail : MonoBehaviour
             //check if the player grab the orb
             pickUpIObject pickUp = player.gameObject.GetComponent<pickUpIObject>();
 
-            if (pickUp.gameObject != null &&  pickUp.lookObject.gameObject.tag == "orb")
+            if (pickUp.gameObject != null && pickUp.lookObject.gameObject.tag == "orb")
             {
                 pickUp.gameObject.GetComponent<plasmOrbManager>().explosion();
             }
         }
         else
         {
-            Destroy(gameObject);
+            NetworkServer.Destroy(gameObject);
         }
 
 
