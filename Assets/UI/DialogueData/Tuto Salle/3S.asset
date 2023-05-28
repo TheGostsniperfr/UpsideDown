@@ -13,14 +13,17 @@ MonoBehaviour:
   m_Name: 3S
   m_EditorClassIdentifier: 
   dialogue:
-  - "Bienvenue dans la 3e salle ! Ici vous allez devoir vous s\xE9parer pour que
-    chacun trouve des indices, donc il en faut un qui parte \xE0 gauche et un \xE0
-    droite !"
-  - "Ensuite, il faudra soit r\xE9soudre qui vous sera pr\xE9sent\xE9 ou alors chercher
-    dans le d\xE9cor un num\xE9ro de porte ! Dans les deux cas, il vous faut transmettre
-    l'info \xE0 votre camarade, qui vous transmettra ce qu'il aura trouv\xE9 \xE9galement
-    !"
-  - 'Car les indices que vous trouverez concernent votre
+  - "Bienvenue dans la troisi\xE8me salle ! Ici vous allez devoir vous s\xE9parer
+    pour que chacun trouve des indices, donc il en faut un qui parte \xE0 gauche
+    et un \xE0 droite !"
+  - "Ensuite, il faudra soit r\xE9soudre ce qui vous sera pr\xE9sent\xE9 ou alors
+    chercher dans votre environnement un num\xE9ro de porte ! Dans les deux cas,
+    il vous faut transmettre l'info \xE0 votre camarade, qui vous transmettra ce
+    qu'il aura trouv\xE9 \xE9galement !"
+  - "Les portes sont num\xE9rot\xE9es de gauche \xE0 droite commen\xE7ant par un.\nParfois
+    les portes sont d\xE9j\xE0 num\xE9rot\xE9es et peuvent influer l'\xE9nigme de
+    la salle o\xF9 vous vous trouvez !"
+  - 'Car les indices que vous trouverez concerne votre
 
     camarade, et inversement
     !
