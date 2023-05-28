@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Salle 3.unity
     guid: b41125ea0f1aabd459829a679a226b57
   - enabled: 1
@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Hub.unity
     guid: ab97b7e8635c5ea4d8ec93fd644dd85e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Salle 4.unity
     guid: 5d517cbf39bde9042b847bdce72e1bcc
   - enabled: 1
