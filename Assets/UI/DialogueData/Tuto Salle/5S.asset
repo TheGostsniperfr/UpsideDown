@@ -23,6 +23,7 @@ MonoBehaviour:
     qui bouge, car il est attir\xE9 par l'orbe si vous le tenez et il fera tout pour
     entrer en contact avec l'orbe pour vous tuer !"
   - "Bien sur pour \xE9viter vous pouvez trouver un leurre, si vous l'activer le
-    robot sera alors attir\xE9 par ce dernier mais attention le temps vous est compter
-    et vous pouvez vous en servir qu'une seule fois !"
+    robot sera alors attir\xE9 par ce dernier mais attention le temps vous est compt\xE9
+    et vous pouvez vous en servir plusieurs fois avec un laps de temps entre chaque
+    utilisations !"
   responces: []
