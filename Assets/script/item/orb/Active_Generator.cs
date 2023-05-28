@@ -1,6 +1,7 @@
+using Mirror;
 using UnityEngine;
 
-public class Active_Generator : MonoBehaviour
+public class Active_Generator : NetworkBehaviour
 {
 
     [SerializeField] private GameObject ring1;
@@ -18,30 +19,37 @@ public class Active_Generator : MonoBehaviour
 
     //receiver mode : 
     [SerializeField] private DoorMovement doorMovement;
-    private bool anim = false;
 
     [SerializeField] private bool cheatMode = false;
+    [SerializeField, SyncVar] private bool isActive = false;
 
     void Update()
     {
-        if (anim) { activeGenerator(); }
+        if (isActive)
+        {
+            activeGenerator();
+            orbTexture.SetActive(true);
 
-        if(cheatMode) { anim = true; orbTexture.SetActive(true); }
+            if (!doorMovement.TriggerOpeningDoor)
+            {
+                openDoor();
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "orb")
         {
-
-            openDoor();
-            anim = true;
-
-
-            Destroy(col.gameObject);
-            orbTexture.SetActive(true);            
-
+            CmdActiveGenerator();
+            NetworkManager.Destroy(col.gameObject);
         }
+    }
+
+    [Command(requiresAuthority = false)]
+    private void CmdActiveGenerator()
+    {
+        isActive = true;
     }
 
 
