@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 
 public class LeurreManager : interactiveInterfaceObject
@@ -21,6 +22,7 @@ public class LeurreManager : interactiveInterfaceObject
         return playerData.useKey;
     }
 
+    [Command(requiresAuthority = false)]
     public override void onAction()
     {
         //check cooldown
@@ -30,6 +32,7 @@ public class LeurreManager : interactiveInterfaceObject
             CharacterMoveAB.StartLeurre(point1, point2, timeToWait);
         }
     }
+
 
 
 }

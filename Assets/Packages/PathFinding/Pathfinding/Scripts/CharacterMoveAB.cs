@@ -116,7 +116,6 @@ public class CharacterMoveAB : NetworkBehaviour
         currentPoint = rdPoints[tempIndex];
     }
 
-    [Command(requiresAuthority = false)]
     public void StartLeurre(Transform _point1, Transform _point2, float timeToWait)
     {
         this.point1 = _point1;
