@@ -61,6 +61,7 @@ public class Player : NetworkBehaviour
     [Header("blood screen")]
     [SerializeField] private float speedChangeOpacity = 3f;
     private Image bloodScreenImg;
+    [SerializeField] private AudioSource hitSound;
 
     private void Awake()
     {
@@ -184,8 +185,9 @@ public class Player : NetworkBehaviour
             //reset regen cooldown
             timeLastDamage = Time.time;
 
+            //play sound damage
+            hitSound.Play();
 
-            //pb here
             Debug.Log(transform.name + " a maintenant : " + currentHealth + " points de vies.");
             StartCoroutine(changeHealth(bloodScreenCurrentHealth));
 
