@@ -3088,12 +3088,6 @@ MonoBehaviour:
     reponse1: 121
     reponse2: 110
     reponse3: 104
-  isNoGravity: 0
-  capsuleCollider: {fileID: 7603364667557003838}
-  defaultPhysic: {fileID: 13400000, guid: 5838b8d2f42c6514699e68ca4ea253a5, type: 2}
-  bouncePhysic: {fileID: 13400000, guid: e51cf9f527817a94eb4c82adb694d422, type: 2}
-  decreaseVelocity: 1.008
-  timeBeforeDisableNoGravity: 3
   soundManager: {fileID: 5499479794042957154}
 --- !u!54 &1486211225457030816
 Rigidbody:
@@ -3285,7 +3279,7 @@ MonoBehaviour:
   body: {fileID: 3670669630100740519}
   hair: {fileID: 2335520399452074320}
   noBody: {fileID: 793233766609823889}
-  graviSphere: {fileID: 0}
+  graviSphere: {fileID: 1438955647155441809}
   anim: {fileID: 1022297811457541833}
   playerUIPrefab: {fileID: 8748424250899838986, guid: db71166bcf805994cbc22da91b3c5b88, type: 3}
   playerUIInstance: {fileID: 0}
