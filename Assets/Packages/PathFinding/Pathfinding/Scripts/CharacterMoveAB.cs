@@ -1,8 +1,5 @@
 using Mirror;
-using PathCreation;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(AStarAgent))]
@@ -32,7 +29,7 @@ public class CharacterMoveAB : NetworkBehaviour
 
     private void Start()
     {
-        _Agent = GetComponent<AStarAgent>();       
+        _Agent = GetComponent<AStarAgent>();
 
         chooseNewRandomPoint();
     }
@@ -76,7 +73,7 @@ public class CharacterMoveAB : NetworkBehaviour
                 if (lastUpdatePath + cooldownToUpdatePath < Time.timeSinceLevelLoad)
                 {
                     lastUpdatePath = Time.timeSinceLevelLoad;
-                    
+
                     _Agent.Pathfinding(isPickUp.gameObject.transform.position);
 
                     while (_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
@@ -95,14 +92,14 @@ public class CharacterMoveAB : NetworkBehaviour
                 //normal mode
                 if (_Agent.Status != AStarAgentStatus.Finished)
                 {
-                   return;                    
+                    return;
                 }
 
                 while (_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
                 {
                     chooseNewRandomPoint();
                     _Agent.Pathfinding(currentPoint.position);
-                }                
+                }
             }
         }
     }
@@ -111,14 +108,15 @@ public class CharacterMoveAB : NetworkBehaviour
     private void chooseNewRandomPoint()
     {
         int tempIndex = index;
-        while(tempIndex == index)
+        while (tempIndex == index)
         {
             index = Random.Range(0, rdPoints.Count);
         }
 
-        currentPoint = rdPoints[tempIndex]; 
+        currentPoint = rdPoints[tempIndex];
     }
 
+    [Command(requiresAuthority = false)]
     public void StartLeurre(Transform _point1, Transform _point2, float timeToWait)
     {
         this.point1 = _point1;
@@ -139,6 +137,6 @@ public class CharacterMoveAB : NetworkBehaviour
         {
             LeurrePosition = point1.position;
         }
-        
+
     }
 }

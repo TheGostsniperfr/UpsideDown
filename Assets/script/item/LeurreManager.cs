@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LeurreManager : interactiveInterfaceObject
@@ -26,12 +24,12 @@ public class LeurreManager : interactiveInterfaceObject
     public override void onAction()
     {
         //check cooldown
-        if(lastTimeUsed < Time.timeSinceLevelLoad)
+        if (lastTimeUsed + cooldownTime < Time.timeSinceLevelLoad)
         {
             lastTimeUsed = Time.timeSinceLevelLoad;
             CharacterMoveAB.StartLeurre(point1, point2, timeToWait);
         }
     }
 
-   
+
 }
