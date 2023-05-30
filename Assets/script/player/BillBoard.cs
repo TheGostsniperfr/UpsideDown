@@ -1,16 +1,14 @@
-using TMPro;
 using UnityEngine;
 
 public class BillBoard : MonoBehaviour
 {
-
-    [SerializeField] TMP_Text text;
     public Transform mainCameraTransform;
     [SerializeField] private Camera cam;
 
+
     private void Start()
     {
-        text.text = PlayerPrefs.GetString("PlayerName", "Unknown");
+
     }
 
     private void Update()
@@ -33,5 +31,9 @@ public class BillBoard : MonoBehaviour
             }
 
         }
+
     }
+
+
+
 }

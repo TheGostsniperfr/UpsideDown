@@ -1,5 +1,6 @@
 using Mirror;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +29,7 @@ public class Player : NetworkBehaviour
     [SerializeField] private float cooldownRegen = 1f;
     [SerializeField] private float hpRegenByCycle = 10f;
     [SerializeField] private float CooldownActiveRegenAfterDamage = 3f;
-    public BillBoard billBoard;
+    [SerializeField] public BillBoard billBoard;
 
     private float timeLastCycle;
     private float timeLastDamage;
@@ -63,6 +64,12 @@ public class Player : NetworkBehaviour
     private Image bloodScreenImg;
     [SerializeField] private AudioSource hitSound;
 
+    [Header("username")]
+    [SerializeField, SyncVar] private string syncPlayerName;
+    [SerializeField] TMP_Text text;
+
+
+
     private void Awake()
     {
         timeLastCycle = Time.time;
@@ -96,6 +103,23 @@ public class Player : NetworkBehaviour
                 bloodScreenImg = playerSetup.playerUIInstance.gameObject.GetComponent<bloodScreenManager>().image;
             }
         }
+
+        if (isLocalPlayer && syncPlayerName == string.Empty)
+        {
+            changePlayerName(PlayerPrefs.GetString("PlayerName", "Unknown"));
+        }
+
+
+        if (text.text != syncPlayerName)
+        {
+            text.text = syncPlayerName;
+        }
+    }
+
+    [Command(requiresAuthority = false)]
+    private void changePlayerName(string newName)
+    {
+        syncPlayerName = newName;
     }
 
     private void checkGravity()

@@ -3384,6 +3384,8 @@ MonoBehaviour:
   spawnPointQuaternion: {x: 0, y: 0, z: 0, w: 0}
   speedChangeOpacity: 3
   hitSound: {fileID: 6987003841840385667}
+  syncPlayerName: 
+  text: {fileID: 5060975961308458951}
 --- !u!114 &6284173179579822254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3655,7 +3657,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0c466c6753bf944923f101e6070003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 5060975961308458951}
   mainCameraTransform: {fileID: 0}
   cam: {fileID: 6812435653995802223}
 --- !u!1 &6480062434717441195
