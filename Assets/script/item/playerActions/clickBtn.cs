@@ -17,6 +17,9 @@ public class clickBtn : interactiveInterfaceObject
     [SerializeField] private AudioSource pressBtn;
     private bool check = false;
 
+    [SerializeField] private string actionForUseKey = "useKey";
+
+
 
     public override string getDescription()
     {
@@ -63,8 +66,8 @@ public class clickBtn : interactiveInterfaceObject
         CmdisClicked(true);
     }
 
-    public override KeyCode getKey(PlayerData playerData)
+    public override KeyCode getKey()
     {
-        return playerData.useKey;
+        return (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(actionForUseKey));
     }
 }

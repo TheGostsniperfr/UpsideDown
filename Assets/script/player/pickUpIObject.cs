@@ -23,6 +23,7 @@ public class pickUpIObject : NetworkBehaviour
     [SerializeField] private playerSoundManager soundManager;
 
 
+
     //A simple visualization of the point we're following in the scene view
     private void OnDrawGizmos()
     {
@@ -57,11 +58,11 @@ public class pickUpIObject : NetworkBehaviour
                 }
             }
 
-            //get key for action
-            PlayerData playerData = player.playerData;
+
 
             //if we press the button of choice
-            if (Input.GetKeyDown(playerData.lockObjectKey))
+            if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.lockObjectKey))
+))
             {
                 //and we're not holding anything
                 if (currentlyPickedUpObject == null)

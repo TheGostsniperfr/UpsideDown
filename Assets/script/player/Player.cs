@@ -39,7 +39,6 @@ public class Player : NetworkBehaviour
 
 
     [Header("player keyBind")]
-    public PlayerData playerData;
     [SerializeField] private KeyPositions keyPositions;
     private RaycastHit hit;
     private GameObject currentHit = null;
@@ -165,17 +164,6 @@ public class Player : NetworkBehaviour
             playerController.gravity *= -1;
         }
     }
-
-    public ref PlayerData getPlayerData()
-    {
-        return ref playerData;
-    }
-
-    public void reLoadPlayerSettings()
-    {
-        playerData = JSONSaving.loadData();
-    }
-
 
     private IEnumerator Respawn()
     {
@@ -336,7 +324,7 @@ public class Player : NetworkBehaviour
 
                     //outLine.enabled = true;
 
-                    currentKey = currentInterfaceObject.getKey(playerData);
+                    currentKey = currentInterfaceObject.getKey();
 
                     keyPositions.ShowKeyUI(currentKey, currentInterfaceObject.getDescription());
                 }

@@ -4,11 +4,14 @@ public class ResponceHandler : MonoBehaviour
 {
     [SerializeField] private KeyPositions keyPositions;
     [SerializeField] private Player player;
-    private PlayerData playerData;
     private KeyCode[] responsesKeys;
     private Responce[] responces;
     [SerializeField] private dialogueSystem dialogueSystem;
     [SerializeField] private PauseMenu pauseMenu;
+
+
+
+
 
     public bool isResponceShow = false;
     private int nbResponce = 0;
@@ -17,8 +20,12 @@ public class ResponceHandler : MonoBehaviour
     {
         player = pauseMenu.player;
 
-        playerData = player.getPlayerData();
-        responsesKeys = new KeyCode[3] { playerData.reponse1, playerData.reponse2, playerData.reponse3 };
+        responsesKeys = new KeyCode[3]
+        {
+            (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.actionKeyreponse1)),
+            (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.actionKeyreponse2)),
+            (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.actionKeyreponse3))
+        };
     }
 
     public void showResponce(Responce[] _responces)

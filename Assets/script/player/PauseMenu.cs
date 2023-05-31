@@ -9,7 +9,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject reticule;
     [SerializeField] private GameObject keyPositions;
     [SerializeField] private GameObject keyBinding;
-    [SerializeField] private KeyBindingManager keyBindingsManager;
     [SerializeField] private GameObject settingsMenu;
     public dialogueSystem _dialogueSystem;
     public Player player;
@@ -82,7 +81,6 @@ public class PauseMenu : MonoBehaviour
     public void showKeyBindMenu()
     {
         keyBinding.SetActive(true);
-        keyBindingsManager.showKey();
         settingsMenu.SetActive(false);
     }
 

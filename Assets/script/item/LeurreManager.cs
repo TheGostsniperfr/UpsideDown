@@ -12,14 +12,17 @@ public class LeurreManager : interactiveInterfaceObject
     [SerializeField] Transform point1;
     [SerializeField] Transform point2;
 
+
+
     public override string getDescription()
     {
         return "Attracted the drone";
     }
 
-    public override KeyCode getKey(PlayerData playerData)
+    public override KeyCode getKey()
     {
-        return playerData.useKey;
+        return (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.useKey));
+
     }
 
     [Command(requiresAuthority = false)]

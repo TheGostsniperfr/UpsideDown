@@ -47,6 +47,7 @@ public class playerController : NetworkBehaviour
     [SerializeField] private bool eneableSwitchGravity = true;
 
 
+
     //gravity player rotation
     public float gravitRotationSpeed = 1f;
 
@@ -58,9 +59,6 @@ public class playerController : NetworkBehaviour
     [Header("Animator")]
     [SerializeField] private Animator animator;
     [SerializeField] private NetworkAnimator netAnimator;
-
-    [Header("player keyBind")]
-    public PlayerData playerData;
 
     //raycast of the player 
     RaycastHit hit;
@@ -77,11 +75,6 @@ public class playerController : NetworkBehaviour
 
         playerSpeed = playerCurrentSpeed;
         smoothInputSpeed = currentSmoothInputSpeed;
-    }
-
-    private void Start()
-    {
-        playerData = JSONSaving.loadSettings();
     }
 
     void Update()
@@ -122,9 +115,9 @@ public class playerController : NetworkBehaviour
         if (hit.collider != null && hit.collider.gameObject.layer == 15) { return; }
 
 
-        
+
         rb.AddForce(Physics.gravity * rb.mass * gravity);
-        
+
     }
 
 
@@ -274,7 +267,7 @@ public class playerController : NetworkBehaviour
 
 
 
-        
+
         Vector3 MoveVector = transform.TransformDirection(currentInputControl) * playerSpeed;
 
         currentInputControl = Vector3.SmoothDamp(currentInputControl, playerInputControl, ref smoothInputVelocity, smoothInputSpeed);
@@ -357,8 +350,11 @@ public class playerController : NetworkBehaviour
     }
     private void gravitySwitcher()
     {
-        if (eneableSwitchGravity && Input.GetKeyDown(playerData.switchGravityKey) && isGrounded() && SceneManager.GetActiveScene().name != "Hub")
+        if (eneableSwitchGravity && Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.switchGravity))) && isGrounded() && SceneManager.GetActiveScene().name != "Hub")
         {
+
+
+
             soundManager.isSwitchingGragity();
             gravitySwited = !gravitySwited;
             gravity *= -1;

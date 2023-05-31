@@ -9,10 +9,10 @@ public class dialogueSystem : MonoBehaviour
     [SerializeField] typeWriterEffect writerEffect;
     [SerializeField] private DialogueObject testDialogue;
     private Player player;
-    private PlayerData playerData;
     [SerializeField] private ResponceHandler responceHandler;
 
     public bool dialogueIsPlaying;
+
 
 
     private void Awake()
@@ -26,7 +26,6 @@ public class dialogueSystem : MonoBehaviour
 
         player = gameObject.GetComponentInParent<PauseMenu>().player;
 
-        playerData = player.getPlayerData();
     }
 
     public void ShowDialogue(DialogueObject dialogueObject)
@@ -47,7 +46,7 @@ public class dialogueSystem : MonoBehaviour
 
             if (i == dialogueObject.Dialogue.Length - 1 && dialogueObject.hasResponses) { break; }
 
-            yield return new WaitUntil(() => Input.GetKeyDown(playerData.nextDialogue));
+            yield return new WaitUntil(() => Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.nextDialogue))));
         }
 
         if (dialogueObject.hasResponses)

@@ -7,7 +7,7 @@ public abstract class interactiveInterfaceObject : NetworkBehaviour
 
 
     //type of the interaction : open, dring, eat, ... 
-    public abstract KeyCode getKey(PlayerData playerData);
+    public abstract KeyCode getKey();
 
     //description of the object show on ui 
 
