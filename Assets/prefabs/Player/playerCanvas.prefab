@@ -22085,6 +22085,14 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 669f3f7c34283bc429c6415ded5bf2a3, type: 2}
   resolutionDropdown: {fileID: 3461587827250976695}
   pauseMenu: {fileID: 4609612489160422335}
+  masterVol: {fileID: 2885258077518965373}
+  SFXVol: {fileID: 6234229923244187000}
+  musicVol: {fileID: 5104477035962037184}
+  voiceVol: {fileID: 5649215779626650529}
+  qualityIndex: {fileID: 271839483390736434}
+  rorationSpeed: {fileID: 3017388321345843384}
+  mouseSensiX: {fileID: 4899671223180504341}
+  mouseSensiY: {fileID: 2989869051162828921}
 --- !u!114 &7654808724961467203
 MonoBehaviour:
   m_ObjectHideFlags: 0
