@@ -8,7 +8,6 @@ public class settingsManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
-    [SerializeField] private PauseMenu pauseMenu;
     private Resolution[] resolutions;
 
 
@@ -49,8 +48,7 @@ public class settingsManager : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
 
         //set saved configuration :
-
-
+        //if the PlayerPref doesn't exist, save and load the default configuration
 
         if (PlayerPrefs.HasKey("masterVol"))
         {
@@ -59,12 +57,22 @@ public class settingsManager : MonoBehaviour
             SetMasterVolume(PlayerPrefs.GetFloat("masterVol"));
 
         }
+        else
+        {
+            masterVol.value = 1;
+            SetMasterVolume(1);
+        }
         if (PlayerPrefs.HasKey("SFXVol"))
         {
             SFXVol.value = PlayerPrefs.GetFloat("SFXVol");
 
             SetSFXVolume(PlayerPrefs.GetFloat("SFXVol"));
 
+        }
+        else
+        {
+            SFXVol.value = 1;
+            SetSFXVolume(1);
         }
         if (PlayerPrefs.HasKey("musicVol"))
         {
@@ -73,12 +81,22 @@ public class settingsManager : MonoBehaviour
             SetMusicVolume(PlayerPrefs.GetFloat("musicVol"));
 
         }
+        else
+        {
+            musicVol.value = 1;
+            SetMusicVolume(1);
+        }
         if (PlayerPrefs.HasKey("voiceVol"))
         {
             voiceVol.value = PlayerPrefs.GetFloat("voiceVol");
 
             SetVoiceVolume(PlayerPrefs.GetFloat("voiceVol"));
 
+        }
+        else
+        {
+            voiceVol.value = 1;
+            SetVoiceVolume(1);
         }
         if (PlayerPrefs.HasKey("qualityIndex"))
         {
@@ -87,18 +105,33 @@ public class settingsManager : MonoBehaviour
             SetQuality(PlayerPrefs.GetInt("qualityIndex"));
 
         }
+        else
+        {
+            qualityIndex.value = 0;
+            SetQuality(0);
+        }
         if (PlayerPrefs.HasKey("rorationSpeed"))
         {
             rorationSpeed.value = PlayerPrefs.GetFloat("rorationSpeed");
 
             SetRorationSpeed(PlayerPrefs.GetFloat("rorationSpeed"));
         }
+        else
+        {
+            rorationSpeed.value = 1.8f;
+            SetRorationSpeed(1.8f);
+        }
 
         if (PlayerPrefs.HasKey("mouseSensiX"))
-        {
+        {   
             mouseSensiX.value = PlayerPrefs.GetFloat("mouseSensiX");
 
             SetMouseSensiX(PlayerPrefs.GetFloat("mouseSensiX"));
+        }
+        else
+        {
+            mouseSensiX.value = 1;
+            SetMouseSensiX(1);
         }
 
         if (PlayerPrefs.HasKey("mouseSensiY"))
@@ -106,6 +139,11 @@ public class settingsManager : MonoBehaviour
             mouseSensiY.value = PlayerPrefs.GetFloat("mouseSensiY");
 
             SetMouseSensiY(PlayerPrefs.GetFloat("mouseSensiY"));
+        }
+        else
+        {
+            mouseSensiY.value = 1;
+            SetMouseSensiY(1);
         }
 
     }
@@ -118,8 +156,7 @@ public class settingsManager : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
-        float vol = Mathf.Log10(volume) * 20;
-        audioMixer.SetFloat("masterVol", vol);
+        audioMixer.SetFloat("masterVol", Mathf.Log10(volume) * 20);
 
 
         PlayerPrefs.SetFloat("masterVol", volume);
@@ -128,7 +165,6 @@ public class settingsManager : MonoBehaviour
     }
     public void SetSFXVolume(float volume)
     {
-        float vol = Mathf.Log10(volume) * 20;
 
         audioMixer.SetFloat("SFXVol", Mathf.Log10(volume) * 20);
 
@@ -139,7 +175,6 @@ public class settingsManager : MonoBehaviour
     }
     public void SetMusicVolume(float volume)
     {
-        float vol = Mathf.Log10(volume) * 20;
 
         audioMixer.SetFloat("musicVol", Mathf.Log10(volume) * 20);
 
@@ -149,7 +184,7 @@ public class settingsManager : MonoBehaviour
     }
     public void SetVoiceVolume(float volume)
     {
-        float vol = Mathf.Log10(volume) * 20;
+       
 
         audioMixer.SetFloat("voiceVol", Mathf.Log10(volume) * 20);
 
@@ -175,7 +210,6 @@ public class settingsManager : MonoBehaviour
 
     public void SetRorationSpeed(float speed)
     {
-        pauseMenu.playerController.gravitRotationSpeed = speed;
 
         PlayerPrefs.SetFloat("rorationSpeed", speed);
 
@@ -184,9 +218,6 @@ public class settingsManager : MonoBehaviour
 
     public void SetMouseSensiX(float X)
     {
-        pauseMenu.playerController.mouseSensitivityX = X;
-
-
         PlayerPrefs.SetFloat("mouseSensiX", X);
 
 
@@ -194,11 +225,6 @@ public class settingsManager : MonoBehaviour
 
     public void SetMouseSensiY(float Y)
     {
-        pauseMenu.playerController.mouseSensitivityY = Y;
-
-
         PlayerPrefs.SetFloat("mouseSensiY", Y);
-
-
     }
 }

@@ -14,8 +14,6 @@ public class playerController : NetworkBehaviour
     [SerializeField] private float distanceIsGrounded = 1f;
 
     //rotation
-    public float mouseSensitivityX = 5f;
-    public float mouseSensitivityY = 5f;
     private float rotationX = 0f;
 
     //Sphere rotation
@@ -45,11 +43,6 @@ public class playerController : NetworkBehaviour
     [SerializeField] private CapsuleCollider playerCollider;
     public GameObject playerGraphics;
     [SerializeField] private bool eneableSwitchGravity = true;
-
-
-
-    //gravity player rotation
-    public float gravitRotationSpeed = 1f;
 
     [Header("camera")]
     [SerializeField] private Camera cam;
@@ -153,7 +146,7 @@ public class playerController : NetworkBehaviour
         {
             playerGraphics.transform.localEulerAngles = Vector3.Slerp(playerOrigineRotation, playerRotation, time);
 
-            time += Time.deltaTime * gravitRotationSpeed;
+            time += Time.deltaTime * PlayerPrefs.GetFloat("rorationSpeed");
             yield return null;
         }
         StopCoroutine(smoothRotation());
@@ -336,14 +329,14 @@ public class playerController : NetworkBehaviour
     {
         if (playerInputControlMouseBool)
         {
-            transform.rotation *= Quaternion.Euler(0f, Input.GetAxis("Mouse X") * mouseSensitivityX * gravity, 0f);
+            transform.rotation *= Quaternion.Euler(0f, Input.GetAxis("Mouse X") * PlayerPrefs.GetFloat("mouseSensiX") * gravity, 0f);
         }
     }
     private void rotationCamera()
     {
         if (playerInputControlMouseBool)
         {
-            rotationX -= Input.GetAxis("Mouse Y") * mouseSensitivityY;
+            rotationX -= Input.GetAxis("Mouse Y") * PlayerPrefs.GetFloat("mouseSensiY");
             rotationX = Mathf.Clamp(rotationX, camRotMin, camRotMax);
             cam.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
         }
