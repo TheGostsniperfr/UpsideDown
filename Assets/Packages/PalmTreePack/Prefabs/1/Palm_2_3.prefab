@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8925254164272826729}
   - component: {fileID: 6645105326173339043}
   - component: {fileID: 1863360847476716226}
+  - component: {fileID: 4649326179085984739}
   m_Layer: 0
   m_Name: Palm_2_3
   m_TagString: Untagged
@@ -94,9 +95,40 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5132085310128233590}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1837015032292661347, guid: d6dd9e760e6b81b4ba74d050904a2bec, type: 3}
+--- !u!136 &4649326179085984739
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5132085310128233590}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.03
+  m_Height: 6.26
+  m_Direction: 1
+  m_Center: {x: -0.1, y: 2.41, z: -0}
