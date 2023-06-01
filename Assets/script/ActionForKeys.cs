@@ -1,5 +1,19 @@
 public static class ActionForKeys
 {
+    //public static string = "";
+
+
+
+    //Movement Keys
+    public static string forwardKey = "forwardKey";
+    public static string backwardKey = "backwardKey";
+    public static string leftKey = "leftKey";
+    public static string rightKey= "rightKey";
+    public static string jumpKey = "jumpKey";
+    public static string sprintKey = "sprintKey";
+
+
+    //Actions Keys
     public static string useKey = "useKey";
 
     public static string switchGravity = "switchGravity";

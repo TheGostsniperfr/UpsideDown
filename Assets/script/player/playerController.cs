@@ -214,7 +214,7 @@ public class playerController : NetworkBehaviour
 
 
         //sprint system
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.sprintKey))))
         {
             if (!isSprinting)
             {
@@ -251,7 +251,23 @@ public class playerController : NetworkBehaviour
 
         if (playerInputControlKeyBoardBool)
         {
-            playerInputControl = new Vector3(Input.GetAxis("Horizontal") * gravity, 0f, Input.GetAxis("Vertical"));
+            float axisHorizontal = 0f;
+            float axisVertical = 0f;
+
+            // Vérifier les touches de déplacement
+            if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.rightKey))))
+                axisHorizontal = 1f;
+            else if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.leftKey))))
+                axisHorizontal = -1f;
+
+            if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.forwardKey))))
+                axisVertical = 1f;
+            else if (Input.GetKey((KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.backwardKey))))
+                axisVertical = -1f;
+
+
+
+            playerInputControl = new Vector3(axisHorizontal * gravity, 0f, axisVertical);
         }
         else
         {
@@ -309,7 +325,7 @@ public class playerController : NetworkBehaviour
         }
 
         //jump
-        if (Input.GetKeyDown(KeyCode.Space) && playerInputControlKeyBoardBool)
+        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.jumpKey))) && playerInputControlKeyBoardBool)
         {
             if (isGrounded() && (hit.collider.gameObject.tag != "cube" || hit.collider.gameObject.tag != "Player"))
             {

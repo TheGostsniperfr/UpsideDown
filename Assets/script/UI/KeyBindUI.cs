@@ -45,30 +45,21 @@ public class KeyBindUI : MonoBehaviour, IPointerClickHandler
 
     private void Update()
     {
-        if (isListeningForInput && Input.anyKeyDown)
+        if (isListeningForInput)
         {
-            KeyCode keyCode = GetPressedKeyCode();
-            if (keyCode != KeyCode.None)
+            foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
             {
-                isListeningForInput = false;
-                inputField.text = keyCode.ToString();
-                inputField.contentType = TMP_InputField.ContentType.Standard;
+                if (Input.GetKeyDown(keyCode))
+                {
+                    isListeningForInput = false;
+                    inputField.text = keyCode.ToString();
+                    inputField.contentType = TMP_InputField.ContentType.Standard;
 
-                //Save key
-                PlayerPrefs.SetString(actionKey, keyCode.ToString());
+                    //Save key
+                    PlayerPrefs.SetString(actionKey, keyCode.ToString());
+                    break;
+                }
             }
         }
-    }
-
-    private KeyCode GetPressedKeyCode()
-    {
-        foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
-        {
-            if (Input.GetKeyDown(keyCode))
-            {
-                return keyCode;
-            }
-        }
-        return KeyCode.None;
     }
 }
