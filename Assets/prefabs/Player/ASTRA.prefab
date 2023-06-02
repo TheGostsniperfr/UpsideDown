@@ -426,8 +426,8 @@ Transform:
   m_GameObject: {fileID: 1438955647155441809}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.1758, y: 1.3554001, z: 0.352}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4546055192812305042}
   - {fileID: 5230255190703769280}
@@ -3183,8 +3183,6 @@ MonoBehaviour:
   syncInterval: 0.1
   rb: {fileID: 1486211225457030816}
   distanceIsGrounded: 1
-  mouseSensitivityX: 5
-  mouseSensitivityY: 5
   gravitySphere: {fileID: 8021077404671443070}
   playerSpeed: 3
   playerCurrentSpeed: 3
@@ -3201,22 +3199,11 @@ MonoBehaviour:
   playerCollider: {fileID: 7603364667557003838}
   playerGraphics: {fileID: 7347292531887473008}
   eneableSwitchGravity: 1
-  gravitRotationSpeed: 2.5
   cam: {fileID: 6812435653995802223}
   camRotMin: -50
   camRotMax: 60
   animator: {fileID: 1022297811457541833}
   netAnimator: {fileID: -2887578985277000490}
-  playerData:
-    useKey: 102
-    switchGravityKey: 101
-    lockObjectKey: 324
-    NoGravityKey: 103
-    nextDialogue: 119
-    testKey: 111
-    reponse1: 121
-    reponse2: 110
-    reponse3: 104
   soundManager: {fileID: 5499479794042957154}
 --- !u!54 &1486211225457030816
 Rigidbody:
@@ -3363,16 +3350,6 @@ MonoBehaviour:
   billBoard: {fileID: 2433646618684584673}
   rb: {fileID: 1486211225457030816}
   playerSetup: {fileID: 6284173179579822254}
-  playerData:
-    useKey: 102
-    switchGravityKey: 101
-    lockObjectKey: 324
-    NoGravityKey: 103
-    nextDialogue: 119
-    testKey: 111
-    reponse1: 121
-    reponse2: 110
-    reponse3: 104
   keyPositions: {fileID: 0}
   playerReatch: 3
   cam: {fileID: 6812435653995802223}
