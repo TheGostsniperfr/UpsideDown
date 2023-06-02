@@ -145,7 +145,6 @@ public class settingsManager : MonoBehaviour
             mouseSensiY.value = 1;
             SetMouseSensiY(1);
         }
-
     }
 
     public void SetResolution(int resolutionIndex)
