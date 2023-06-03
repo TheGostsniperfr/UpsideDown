@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     //game level : progression of the player 
     public int currentGameLevel = 1;
 
+    //quest level
+    public List<bool> currentQuestLevel = new List<bool> { false, false, false, false };
+
     private NetworkSync networkSync;
 
     private void Awake()
@@ -47,6 +50,8 @@ public class GameManager : MonoBehaviour
 
         if (networkSync != null)
         {
+
+            //check game level
             if (networkSync.gameLevel < currentGameLevel)
             {
                 networkSync.CmdUpdateScore(currentGameLevel);
@@ -55,6 +60,22 @@ public class GameManager : MonoBehaviour
             {
                 currentGameLevel = networkSync.gameLevel;
             }
+
+            //check quest level
+            for (int i = 0; i < currentQuestLevel.Count; i++)
+            {
+                if (!networkSync.questLevel[i] && currentQuestLevel[i])
+                {
+                    networkSync.CmdUpdateQuest(i);
+                }
+
+                if (networkSync.questLevel[i] && !currentQuestLevel[i])
+                {
+                    currentQuestLevel[i] = true;
+                }
+            }
+
+
         }
     }
 
