@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -9,11 +7,11 @@ public class keyPos : MonoBehaviour
     [SerializeField] private TMP_Text keyText;
     [SerializeField] Animation animator;
 
-    public char currentKey;
+    public string currentKey;
     public bool isActived;
     [SerializeField] private bool isPlayingAnimation;
 
-    public void setKeyDisplay(char key, string text)
+    public void setKeyDisplay(string key, string text)
     {
         isActived = true;
         currentKey = key;
@@ -23,13 +21,13 @@ public class keyPos : MonoBehaviour
 
     private void Update()
     {
-        if (isActived && !isPlayingAnimation && Input.GetKeyDown((KeyCode)currentKey))
+        if (isActived && !isPlayingAnimation && Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), currentKey)))
         {
             Debug.Log($"key : {currentKey} is pressed !");
             isPlayingAnimation = true;
         }
 
-        if (Input.GetKeyUp((KeyCode)currentKey))
+        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), currentKey)))
         {
             isPlayingAnimation = false;
         }
@@ -47,8 +45,8 @@ public class keyPos : MonoBehaviour
         keyText.text = string.Empty;
     }
 
-    
-    public bool keyAlreadyActive(char key)
+
+    public bool keyAlreadyActive(string key)
     {
         return (isActived && currentKey == key);
     }
