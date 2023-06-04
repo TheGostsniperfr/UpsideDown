@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 
 public class ResetCubeManager : interactiveInterfaceObject
@@ -21,6 +22,7 @@ public class ResetCubeManager : interactiveInterfaceObject
         return (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(ActionForKeys.useKey));
     }
 
+    [Command(requiresAuthority = false)]
     public override void onAction()
     {
         //reset velocity of cube
