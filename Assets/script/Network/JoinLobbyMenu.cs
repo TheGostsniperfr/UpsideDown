@@ -19,6 +19,7 @@ public class JoinLobbyMenu : NetworkBehaviour
 
     private void OnDisable()
     {
+        joinButton.interactable = true;
         NetworkManagerLobby.OnClientConected -= HandleClientConnected;
         NetworkManagerLobby.OnClientDisconnected -= HandleClientDisconnected;
     }
@@ -42,5 +43,4 @@ public class JoinLobbyMenu : NetworkBehaviour
     {
         joinButton.interactable = true;
     }
-
 }
