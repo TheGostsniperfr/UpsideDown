@@ -54,12 +54,11 @@ public class CharacterMoveAB : NetworkBehaviour
                 return;
             }
 
-            while (_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
+            if (_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
             {
                 nextLeurrePoint();
                 _Agent.Pathfinding(LeurrePosition);
             }
-
         }
         else
         {
@@ -76,13 +75,11 @@ public class CharacterMoveAB : NetworkBehaviour
 
                     _Agent.Pathfinding(isPickUp.gameObject.transform.position);
 
-                    while (_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
+                    if(_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
                     {
                         chooseNewRandomPoint();
                         _Agent.Pathfinding(currentPoint.position);
                     }
-
-
                 }
 
                 return;
@@ -95,11 +92,13 @@ public class CharacterMoveAB : NetworkBehaviour
                     return;
                 }
 
-                while (_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
+
+                if (_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
                 {
                     chooseNewRandomPoint();
                     _Agent.Pathfinding(currentPoint.position);
                 }
+                
             }
         }
     }
