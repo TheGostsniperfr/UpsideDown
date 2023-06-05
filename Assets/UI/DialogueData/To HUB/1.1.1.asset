@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - En fait non ahahahahah
-  - "Bon je vais arr\xEAt\xE9 parler de moi je vous laisse avec votre premi\xE8re
-    \xE9preuve c'est le portail le plus pr\xE8s de mon bar."
+  - "Bon je vais arr\xEAter de parler de moi, je vous laisse avec votre premi\xE8re
+    \xE9preuve, allez au portail le plus proche de mon bar."
   responces: []

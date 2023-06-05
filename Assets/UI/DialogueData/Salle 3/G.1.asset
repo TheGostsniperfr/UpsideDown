@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: G.1
   m_EditorClassIdentifier: 
   dialogue:
-  - "Vous voici dans la premi\xE8re salle o\xF9 vous aller devoir chercher un indice
-    quelconque pour aider votre co\xE9quipier \xE0 passer sa salle !"
+  - "Vous voici dans la premi\xE8re salle o\xF9 vous allez devoir chercher un indice
+    quelconque pour aider votre co\xE9quipier \xE0 choisir la bonne porte !"
   responces: []

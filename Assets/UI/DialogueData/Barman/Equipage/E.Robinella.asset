@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: E.Robinella
   m_EditorClassIdentifier: 
   dialogue:
-  - "Robinella la mieux call\xE9 pour connaitre les alcools anciens et si tu vois
-    trouble elle pourra toujours te d\xE9chiffrer ta note."
+  - "Robinella est la mieux call\xE9e pour connaitre les alcools anciens et si tu
+    vois trouble elle pourra toujours te d\xE9chiffrer l'addition."
   responces: []

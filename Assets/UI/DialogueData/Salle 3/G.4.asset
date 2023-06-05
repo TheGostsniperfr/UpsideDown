@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - "Vous arrivez dans la quatri\xE8me salle, votre derni\xE8re !\nEssayez de trouver
-    votre propre chemin gr\xE2ce \xE0 vos indices pr\xE9sent dans votre salle !"
+    votre propre chemin gr\xE2ce aux indices pr\xE9sents dans votre salle !"
   - "Attention les portes sont peut-\xEAtre num\xE9rot\xE9es mais ce n'est que pour
     vous trahir. Les nombres des portes sont invers\xE9s."
   responces: []

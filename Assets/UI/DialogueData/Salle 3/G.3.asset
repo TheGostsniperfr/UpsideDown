@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: G.3
   m_EditorClassIdentifier: 
   dialogue:
-  - "Vous \xEAtes arriv\xE9 dans la troisi\xE8me salle... Cette salle \xE9tait autrefois
+  - "Vous \xEAtes arriv\xE9s dans la troisi\xE8me salle... Cette salle \xE9tait autrefois
     plein de vie mais h\xE9las elle est maintenant sans vie. "
-  - "Comme cette salle est sans vie votre pr\xE9sence n'est pas accept\xE9 ici veuillez
-    quitter les lieux !"
+  - "Comme cette salle est sans vie votre pr\xE9sence n'est pas accept\xE9 ici, trouvez
+    une sortie dans l'environnement !"
   responces: []

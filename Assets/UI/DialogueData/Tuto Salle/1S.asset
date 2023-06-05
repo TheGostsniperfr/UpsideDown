@@ -13,16 +13,19 @@ MonoBehaviour:
   m_Name: 1S
   m_EditorClassIdentifier: 
   dialogue:
-  - "Bienvenue, comme on se retrouve.\nHey, je crois que si tu appuies sur le bouton
-    sur ta gauche un truc\r\nincroyable va arriv\xE9, pas des chocapics mais pas
-    loin."
+  - 'Bienvenue, comme on se retrouve.
+
+    Hey, je crois que si tu appuies sur le
+    bouton sur ta gauche un truc
+
+    incroyable va arriver, pas des chocapics mais
+    pas loin.'
   - "Ah oui et aussi je crois qu'ils ont d\xE9plac\xE9 la porte, bon apr\xE8s vu
-    comment ils sont timbr\xE9s \xE7a m'\xE9tonne pas, si tu veux y acc\xE9der retourne
-    toi."
-  - "Oups, va au plafond, moi et les explications \xE7a fait deux. Bon tu dois juste
-    utilis\xE9 la gravi-sph\xE8re si je ne me trompe pas de nom, pour pouvoir travers\xE9
-    la porte."
-  - "Apr\xE8s \xE7a je te laisse avancer et chercher des boutons comme vous tu l'as
-    vu avant pour ouvrir la porte a l'\xE9tage. Je rappelle que l'utilisation de
-    la gravit\xE9 est fortement conseiller !"
+    comment ils sont timbr\xE9s \xE7a m'\xE9tonne pas, si tu veux y acc\xE9der retourne-toi."
+  - "Oups, faut aller au plafond en fait, d\xE9sol\xE9 mais moi et les explications
+    \xE7a fait deux. Bon tu dois juste utiliser la gravi-sph\xE8re (si je ne me trompe
+    pas de nom) pour pouvoir traverser la porte."
+  - "Apr\xE8s \xE7a je te laisse avancer et chercher des boutons comme tu l'as vu
+    avant pour ouvrir la porte a l'\xE9tage. Je rappelle que l'utilisation de la
+    gravit\xE9 est fortement conseill\xE9e !"
   responces: []

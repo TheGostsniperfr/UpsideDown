@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 2.1
   m_EditorClassIdentifier: 
   dialogue:
-  - "Peut-\xEAtre je sais pas, j'y suis jamais all\xE9."
+  - "Peut-\xEAtre... je sais pas, j'y suis jamais all\xE9."
   responces: []

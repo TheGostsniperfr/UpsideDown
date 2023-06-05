@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: D.2
   m_EditorClassIdentifier: 
   dialogue:
-  - "Vous \xEAtes arriv\xE9 dans une salle peu banales... la deuxi\xE8me.\nComme
-    votre co\xE9quipier juste avant, vous aller devoir chercher un indice lui permettant
+  - "Vous \xEAtes arriv\xE9 dans une salle peu banale... la deuxi\xE8me.\nComme votre
+    co\xE9quipier juste avant, vous aller devoir chercher un indice lui permettant
     de passer sa premi\xE8re salle !"
   - "Comme cette salle est la premi\xE8re du genre, je vais vous donner un p'tit
-    quelque chose si vous vous retrouv\xE9 au plafond l'ordre des portes ne changent
+    quelque chose si vous vous retrouvez au plafond l'ordre des portes ne change
     pas !"
   - "Je m'explique avant que vous couriez \xE0 la mort. Les portes seront alors num\xE9rot\xE9es
     de votre gauche \xE0 votre droite commen\xE7ant par un !"

@@ -14,14 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - "Et bien si vous voulez tout savoir... euh.. je sais plus ! Si, si c'est bon
-    j'ai retrouv\xE9, laiss\xE9 moi vous compter mon \xE9pop\xE9e."
+    j'ai retrouv\xE9, laissez-moi vous compter mon \xE9pop\xE9e."
   - "Je fus un jeune gar\xE7on plein de r\xEAves a cette \xE9poque... Mais maintenant,
     maintenant j'ai pu faire connaissance d'une tr\xE8s dure amie : la VIE !"
   - "Naaan, je vous taquine je suis l\xE0 depuis je ne sais pas combien de temps,
     ma m\xE9moire me fait d\xE9fault parfois, et malheureusement je suis coinc\xE9
     et je ne peux plus accomplir mon r\xEAve..."
-  - "Bon c'est pas tout \xE7a mais parl\xE9 m'a donn\xE9 soif vous voulez un truc
-    ?"
+  - "Bon c'est pas tout \xE7a mais parler m'a donn\xE9 soif vous voulez un truc ?"
   responces:
   - reponseText: Je veux bien !
     dialogueObject: {fileID: 11400000, guid: b601e32f9b472bf40b13569c18e7c75c, type: 2}

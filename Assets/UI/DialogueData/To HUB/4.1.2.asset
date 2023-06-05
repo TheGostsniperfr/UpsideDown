@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: 4.1.2
   m_EditorClassIdentifier: 
   dialogue:
-  - "Ce log pose...\xE7a servait \xE0 se diriger sur les mers ! \xE7a\r\nme rappelle
-    cette fois sur l\u2019ile de Ouahnan o\xF9 je m\u2019\xE9tais retrouv\xE9 en
-    prison pour avoir lanc\xE9 une r\xE9volte g\xE9n\xE9rale contre le chef tyrannique
-    du coin\u2026"
-  - "ou alors c\u2019\xE9tait une bagarre dans un bar\u2026 je me souviens plus"
+  - "Ce coco pose...\xE7a servait \xE0 se diriger sur les mers ! \xE7a\r\nme rappelle
+    cette fois sur l\u2019ile de Tequila o\xF9 je m\u2019\xE9tais retrouv\xE9 en
+    prison pour avoir lanc\xE9 une r\xE9volte  contre le chef tyrannique du coin\u2026"
+  - "ou alors c\u2019\xE9tait \xE0 cause d'une bagarre g\xE9n\xE9rale dans un bar\u2026
+    je me souviens plus"
   - "En tout cas continuez !\r\nVous \xEAtes sur la bonne voie !"
   responces: []

@@ -17,7 +17,7 @@ MonoBehaviour:
     de vous demander qui vous \xEAtes il vaut mieux que je me pr\xE9sente \u2026 "
   - "Et bien sachez que devant vous se trouve le grand, le l\xE9gendaire, la magnifique,
     l'incroyable Monaco D. Whisky, mouahahahahaha."
-  - "Alors impressionn\xE9 ?!"
+  - "Alors impressionn\xE9s ?!"
   responces:
   - reponseText: "Hein ? j'ai pas tout compris l\xE0 !"
     dialogueObject: {fileID: 11400000, guid: f4a4d9b0aa15da443a297e798f8e6aa8, type: 2}
