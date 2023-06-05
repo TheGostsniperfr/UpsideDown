@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: R.2
   m_EditorClassIdentifier: 
   dialogue:
-  - "\xE7a avance vos exp\xE9riences sur la gravit\xE9 ? \xE7a doit creuser de r\xE9fl\xE9chir
+  - "\xC7a avance vos exp\xE9riences sur la gravit\xE9 ? \xE7a doit creuser de r\xE9fl\xE9chir
     comme \xE7a ! Buvez un coup, \xE7a vous fera du bien."
   responces: []

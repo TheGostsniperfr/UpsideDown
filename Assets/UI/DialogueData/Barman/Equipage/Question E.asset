@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Question E
   m_EditorClassIdentifier: 
   dialogue:
-  - "Vous voulez connaitre mon \xE9quipage d'antan !"
+  - "Vous voulez connaitre mon \xE9quipage d'antan ?"
   responces:
   - reponseText: Oui, bien sur !
     dialogueObject: {fileID: 0}

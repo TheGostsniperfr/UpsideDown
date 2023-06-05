@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: E.Broke
   m_EditorClassIdentifier: 
   dialogue:
-  - "Broke celui qui tient le mieux l'alcool \xE0 croire qu'il a pas de foie. Pour
-    l'ambiance \xE7a sera lui qui poussera la chansonnette en premier."
+  - "Broke est celui qui tient le mieux l'alcool \xE0 croire qu'il a pas de foie.
+    Sur le navire, vous pouvez \xEAtre s\xFBr que \xE7a sera lui qui poussera la
+    chansonnette en premier."
   responces: []

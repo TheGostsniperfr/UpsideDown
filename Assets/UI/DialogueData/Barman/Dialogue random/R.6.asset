@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778d33917ee50ce49ad6eca4dd6a2bc5, type: 3}
   m_Name: R.6
   m_EditorClassIdentifier: 
-  dialogue: []
+  dialogue:
+  - "Vous voulez une vanne ? C\u2019est l\u2019histoire de moi et de mon autre moi
+    ensuite \u2026. Euuuuhh \u2026 attendez je connais seulement la fin de ma vanne
+    car en gros j\u2019\xE9tais seul car je m\u2019admirais dans mon miroir. Ahahahah
+    je m'impressionne \u2026 Ouah j\u2019ai bien ri !"
   responces: []

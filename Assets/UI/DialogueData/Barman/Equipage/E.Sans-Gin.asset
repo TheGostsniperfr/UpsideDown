@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: E.Sans-Gin
   m_EditorClassIdentifier: 
   dialogue:
-  - Sans-Gin notre Don Juan de service mais qui malheureusement tiens plus l'alcool
+  - Sans-Gin est notre Don Juan de service mais qui malheureusement tient plus l'alcool
     que les femmes.
   responces: []

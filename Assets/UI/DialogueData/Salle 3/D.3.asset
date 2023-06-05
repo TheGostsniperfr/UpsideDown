@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: D.3
   m_EditorClassIdentifier: 
   dialogue:
-  - "Vous venez d'arriv\xE9 dans la troisi\xE8me salle !\nVous aller devoir trouver
+  - "Vous venez d'arriver dans la troisi\xE8me salle !\nVous aller devoir trouver
     un indice vous permettant de sortir de votre salle actuelle !"
   responces: []

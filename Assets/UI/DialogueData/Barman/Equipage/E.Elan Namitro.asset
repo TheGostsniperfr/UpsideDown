@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: E.Elan Namitro
   m_EditorClassIdentifier: 
   dialogue:
-  - "Elan Namitro la meilleur personne pour savoir o\xF9 sont les meilleurs alcools
-    au meilleur moments mais fais gaffe \xE0 tes poches je fais pas cr\xE9dit."
+  - "Elan Namitro est LA personne pour savoir o\xF9 sont les meilleurs alcools au
+    meilleur moment mais fais gaffe \xE0 tes poches, je fais pas cr\xE9dit."
   responces: []

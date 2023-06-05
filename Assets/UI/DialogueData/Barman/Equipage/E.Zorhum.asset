@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: E.Zorhum
   m_EditorClassIdentifier: 
   dialogue:
-  - "Zorhum le tailleur de glace  \xE0 trois sabre qui pr\xE9f\xE8re en utilis\xE9
-    que deux car la bouche est trop importante pour boire."
+  - "Zorhum est le tailleur de glace \xE0 trois sabre qui pr\xE9f\xE8re en utiliser
+    deux car au lieu d'utiliser sa bouche pour manier son troisi\xE8me sabre, il
+    l'utilise pour boire des coups"
   responces: []

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: G.2
   m_EditorClassIdentifier: 
   dialogue:
-  - "Comme vous l'avez pr\xE9c\xE9demment fait, chercher dans votre environnement
+  - "Comme vous l'avez pr\xE9c\xE9demment fait, cherchez dans votre environnement
     un indice !"
   responces: []

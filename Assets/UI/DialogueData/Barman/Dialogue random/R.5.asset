@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778d33917ee50ce49ad6eca4dd6a2bc5, type: 3}
   m_Name: R.5
   m_EditorClassIdentifier: 
-  dialogue: []
+  dialogue:
+  - "Ouah, qu\u2019est-ce qu\u2019il fait bon ici, vous trouvez pas ? Enfin c\u2019est
+    sur que j\u2019appr\xE9cie votre pr\xE9sence mais bon j\u2019aimerai encore plus
+    que vous m'achetiez quelque chose car je fais faillite vous voyez"
   responces: []

@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: 5S
   m_EditorClassIdentifier: 
   dialogue:
-  - "Rebonjour dans l'avant derni\xE8re salle et oui bient\xF4t la fin et vous allez
-    voir que vous voudriez que \xE7a soit plus simple ! Je vais vous avouer que non
-    !"
-  - "Dans cette salle vous allez rencontr\xE9 une boule de plasma que vous allez
-    devoir transporter jusqu'\xE0 un g\xE9n\xE9rateur qui se trouve quelque part,
-    mais faites attention un choc et c'est la mort."
-  - "Bien sur \xE7a serait trop facile d'avoir que \xE7a, alors attention \xE0 l'oeil
-    qui bouge, car il est attir\xE9 par l'orbe si vous le tenez et il fera tout pour
-    entrer en contact avec l'orbe pour vous tuer !"
-  - "Bien sur pour \xE9viter vous pouvez trouver un leurre, si vous l'activer le
-    robot sera alors attir\xE9 par ce dernier mais attention le temps vous est compt\xE9
-    et vous pouvez vous en servir plusieurs fois avec un laps de temps entre chaque
-    utilisations !"
+  - "Rebonjour dans l'avant derni\xE8re salle et oui c'est bient\xF4t la fin et vous
+    allez voir que vous aimeriez que \xE7a soit plus simple ! Je vais vous avouer
+    que ce n'est pas le cas !"
+  - "Dans cette salle vous allez rencontrer une boule de plasma que vous allez devoir
+    transporter jusqu'\xE0 un g\xE9n\xE9rateur qui se trouve quelque part, mais faites
+    attention ! Un choc et c'est la mort."
+  - "Bien s\xFBr \xE7a serait trop facile si c'\xE9tiat que \xE7a, alors attention
+    au robot qui vole dans la salle, car il est attir\xE9 par l'orbe si vous le tenez
+    et il fera tout pour entrer en contact avec celle-ci pour vous tuer !"
+  - "Bien sur pour \xE9viter \xE7a vous pouvez trouver un leurre, et si vous l'activez
+    le robot sera alors attir\xE9 par ce dernier mais attention le temps vous est
+    compt\xE9 mais vous pouvez vous en servir plusieurs fois avec un laps de temps
+    entre chaque utilisations !"
   responces: []

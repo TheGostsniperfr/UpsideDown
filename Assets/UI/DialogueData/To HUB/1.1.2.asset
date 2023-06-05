@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - "Il y a longtemps, j'ai eu un \xE9quipage et mon r\xEAve \xE9tait de trouver
-    le Pass Tiece laisser par le grand Golri Rot-Jet."
-  - "Bon je vais arr\xEAt\xE9 parler de moi je vous laisse avec votre premi\xE8re
-    \xE9preuve c'est le portail le plus pr\xE8s de mon bar."
+    le Pass Tiece laiss\xE9 par le grand Golri Rot-Jet."
+  - "Bon je vais arr\xEAter de parler de moi je vous laisse avec votre premi\xE8re
+    \xE9preuve, allez dans le portail le plus proche de mon bar."
   responces: []

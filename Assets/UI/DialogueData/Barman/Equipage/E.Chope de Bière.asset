@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "E.Chope de Bi\xE8re"
   m_EditorClassIdentifier: 
   dialogue:
-  - "Chope de Bi\xE8re notre m\xE9decin qui se shoot au m\xE9dicaments. Si tu es
-    malade va le voir mais je sais pas qui va soigner qui !"
+  - "Chope de Bi\xE8re est notre m\xE9decin qui se shoot au m\xE9dicaments. Si tu
+    es malade, va le voir mais honn\xEAtement je sais pas qui va soigner qui dans
+    l'histoire !"
   responces: []
