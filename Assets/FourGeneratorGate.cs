@@ -8,8 +8,8 @@ public class FourGeneratorGate : NetworkBehaviour
     [SerializeField] private List<Active_Generator> active_Generators;
     [SerializeField] private DoorMovement doorMovement;
     [SerializeField] private List<GameObject> tpPoints;
-    public DialogueObject dialogueToShow1;
-    public DialogueObject dialogueToShow2;
+    public DialogueObject dialogueToShowDie;
+    public DialogueObject dialogueToShowRoom7;
 
 
 
@@ -44,7 +44,7 @@ public class FourGeneratorGate : NetworkBehaviour
                     openDoor();
                     foreach (var player in players)
                     {
-                        showDialogueToAll(player, dialogueToShow1);
+                        showDialogueToAll(player, dialogueToShowRoom7);
 
                     }
                 }
@@ -56,7 +56,7 @@ public class FourGeneratorGate : NetworkBehaviour
                     {
                         Rigidbody rb = players[i].GetComponent<Rigidbody>();
                         rb.velocity = Vector3.zero;
-                        showDialogueToAll(players[i], dialogueToShow2);
+                        showDialogueToAll(players[i], dialogueToShowDie);
 
                         players[i].transform.position = tpPoints[i].transform.position; 
                     }
