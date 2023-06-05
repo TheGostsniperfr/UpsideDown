@@ -37,7 +37,7 @@ public class ItemQuest : interactiveInterfaceObject
 
     private void CmdDestroy(GameObject gameObject)
     {
-        NetworkServer.Destroy(this.gameObject);
+        NetworkServer.Destroy(gameObject);
     }
 
 }
