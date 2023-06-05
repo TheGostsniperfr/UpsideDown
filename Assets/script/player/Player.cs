@@ -91,10 +91,7 @@ public class Player : NetworkBehaviour
             playerRegen();
             checkPlayerActions();
 
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                RpcTakeDamage(30);
-            }
+
             checkGravity();
 
             if (bloodScreenImg == null && playerSetup.playerUIInstance != null)
