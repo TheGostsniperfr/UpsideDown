@@ -1,4 +1,5 @@
 
+using Mirror;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,10 @@ public class FourGeneratorGate : MonoBehaviour
     [SerializeField] private List<Active_Generator> active_Generators;
     [SerializeField] private DoorMovement doorMovement;
     [SerializeField] private List<GameObject> tpPoints;
+    public DialogueObject dialogueToShow1;
+    public DialogueObject dialogueToShow2;
+
+
 
     private bool openSomethings = false;
 
@@ -31,20 +36,27 @@ public class FourGeneratorGate : MonoBehaviour
             {
                 NetworkSync networkSync = GameObject.Find("networkSyncObj").GetComponent<NetworkSync>();
 
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
                 if (questCompleted(networkSync.questLevel))
                 {
                     //open the door for the tp portail
                     openDoor();
+                    foreach (var player in players)
+                    {
+                        showDialogueToAll(player, dialogueToShow1);
+
+                    }
                 }
                 else
                 {
                     //tp the player into the end room
-                    GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
                     for (int i = 0; i < 2; i++)
                     {
                         Rigidbody rb = players[i].GetComponent<Rigidbody>();
                         rb.velocity = Vector3.zero;
+                        showDialogueToAll(players[i], dialogueToShow2);
 
                         players[i].transform.position = tpPoints[i].transform.position; 
                     }
@@ -85,5 +97,11 @@ public class FourGeneratorGate : MonoBehaviour
             doorMovement.TriggerOpeningDoor = true;
             doorMovement.TriggerClosingDoor = false;
         }
+    }
+
+    [Command(requiresAuthority = false)]
+    private void showDialogueToAll(GameObject player, DialogueObject dialogueObject)
+    {
+        player.GetComponent<Player>().showDialogue(dialogueObject);
     }
 }
