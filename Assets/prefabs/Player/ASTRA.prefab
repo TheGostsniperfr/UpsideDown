@@ -3200,7 +3200,7 @@ MonoBehaviour:
   playerGraphics: {fileID: 7347292531887473008}
   eneableSwitchGravity: 1
   cam: {fileID: 6812435653995802223}
-  camRotMin: -50
+  camRotMin: -65
   camRotMax: 60
   animator: {fileID: 1022297811457541833}
   netAnimator: {fileID: -2887578985277000490}
