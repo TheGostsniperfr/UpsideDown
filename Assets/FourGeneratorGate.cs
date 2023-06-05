@@ -3,7 +3,7 @@ using Mirror;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FourGeneratorGate : MonoBehaviour
+public class FourGeneratorGate : NetworkBehaviour
 {
     [SerializeField] private List<Active_Generator> active_Generators;
     [SerializeField] private DoorMovement doorMovement;
