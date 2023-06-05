@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Salle 5.unity
     guid: c4f750e744d778c489327a761ba32d17
+  - enabled: 1
+    path: Assets/Scenes/Salle 6.unity
+    guid: 4db70cdc1ae0e4f42aa4b01ba424acff
   m_configObjects: {}
