@@ -20,7 +20,7 @@ public class Active_Generator : NetworkBehaviour
     //receiver mode : 
     [SerializeField] private DoorMovement doorMovement;
 
-    [SerializeField, SyncVar] private bool isActive = false;
+    [SerializeField, SyncVar] public bool isActive = false;
 
     void Update()
     {
