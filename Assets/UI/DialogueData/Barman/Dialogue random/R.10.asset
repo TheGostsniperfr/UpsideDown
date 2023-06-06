@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: R.10
   m_EditorClassIdentifier: 
   dialogue:
-  - 
+  - Tiens les gars je vais vous raconter une de mes aventures !
+  - "C'\xE9tait sur l\u2019ile de Tequila o\xF9 je m\u2019\xE9tais retrouv\xE9 en
+    prison pour avoir lanc\xE9 une r\xE9volte contre le chef tyrannique du coin\u2026ou
+    alors c\u2019\xE9tait \xE0 cause d\u2019une bagarre g\xE9n\xE9rale dans un bar\u2026je
+    me souviens plus"
+  - "Mais quoiqu'il en soit, on n'a pas r\xE9ussi \xE0 se faire le tyran...on retentera
+    une autre fois avec mon \xE9quipage !"
   responces: []
