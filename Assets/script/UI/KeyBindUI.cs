@@ -18,17 +18,11 @@ public class KeyBindUI : MonoBehaviour, IPointerClickHandler
         inputField.onSelect.AddListener(OnInputFieldSelect);
         actionKeyText.text = keyDescription;
 
-        //check if the key is save
-        if (!PlayerPrefs.HasKey(actionKey))
-        {
-            PlayerPrefs.SetString(actionKey, defaultKey.ToString());
-        }
-
     }
 
     private void Start()
     {
-        
+
         //show saved key
         inputField.text = PlayerPrefs.GetString(actionKey);
     }

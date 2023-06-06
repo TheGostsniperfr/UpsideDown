@@ -4,6 +4,7 @@ using UnityEngine;
 public class ItemQuest : interactiveInterfaceObject
 {
     [SerializeField] private string description = "take the item";
+    [SerializeField] private DialogueObject dialogueToShow;
 
     [Header("Id is either 0,1,2 or 3")]
     [SerializeField] private int IdOfItem;
@@ -28,8 +29,19 @@ public class ItemQuest : interactiveInterfaceObject
 
         gameManager.currentQuestLevel[IdOfItem] = true;
 
+        //show dialogue
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in players)
+        {
+            showDialogueToAll(player);
+        }
+
+
         //Destroy the item
         CmdDestroy(this.gameObject);
+
+
 
     }
 
@@ -38,6 +50,12 @@ public class ItemQuest : interactiveInterfaceObject
     private void CmdDestroy(GameObject gameObject)
     {
         NetworkServer.Destroy(gameObject);
+    }
+
+    [Command(requiresAuthority = false)]
+    private void showDialogueToAll(GameObject player)
+    {
+        player.GetComponent<Player>().showDialogue(dialogueToShow);
     }
 
 }

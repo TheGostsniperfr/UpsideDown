@@ -14,6 +14,19 @@ public class KeyPositions : MonoBehaviour
         }
     }
 
+    public bool haveKey(KeyCode keyCode)
+    {
+        string key = keyCode.ToString();
+
+        foreach (var keyPos in keyPositions)
+        {
+            if (keyPos.currentKey == key)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 

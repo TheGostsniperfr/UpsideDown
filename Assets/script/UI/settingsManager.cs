@@ -123,7 +123,7 @@ public class settingsManager : MonoBehaviour
         }
 
         if (PlayerPrefs.HasKey("mouseSensiX"))
-        {   
+        {
             mouseSensiX.value = PlayerPrefs.GetFloat("mouseSensiX");
 
             SetMouseSensiX(PlayerPrefs.GetFloat("mouseSensiX"));
@@ -144,6 +144,61 @@ public class settingsManager : MonoBehaviour
         {
             mouseSensiY.value = 1;
             SetMouseSensiY(1);
+        }
+
+
+        //check for default key bind config
+        if (!PlayerPrefs.HasKey("forwardKey"))
+        {
+            PlayerPrefs.SetString("forwardKey", KeyCode.Z.ToString());
+        }
+        if (!PlayerPrefs.HasKey("backwardKey"))
+        {
+            PlayerPrefs.SetString("backwardKey", KeyCode.S.ToString());
+        }
+        if (!PlayerPrefs.HasKey("leftKey"))
+        {
+            PlayerPrefs.SetString("leftKey", KeyCode.Q.ToString());
+        }
+        if (!PlayerPrefs.HasKey("rightKey"))
+        {
+            PlayerPrefs.SetString("rightKey", KeyCode.D.ToString());
+        }
+        if (!PlayerPrefs.HasKey("jumpKey"))
+        {
+            PlayerPrefs.SetString("jumpKey", KeyCode.Space.ToString());
+        }
+        if (!PlayerPrefs.HasKey("sprintKey"))
+        {
+            PlayerPrefs.SetString("sprintKey", KeyCode.LeftShift.ToString());
+        }
+        if (!PlayerPrefs.HasKey("useKey"))
+        {
+            PlayerPrefs.SetString("useKey", KeyCode.F.ToString());
+        }
+        if (!PlayerPrefs.HasKey("switchGravity"))
+        {
+            PlayerPrefs.SetString("switchGravity", KeyCode.E.ToString());
+        }
+        if (!PlayerPrefs.HasKey("lockObjectKey"))
+        {
+            PlayerPrefs.SetString("lockObjectKey", KeyCode.Mouse1.ToString());
+        }
+        if (!PlayerPrefs.HasKey("actionKeyreponse1"))
+        {
+            PlayerPrefs.SetString("actionKeyreponse1", KeyCode.Alpha1.ToString());
+        }
+        if (!PlayerPrefs.HasKey("actionKeyreponse2"))
+        {
+            PlayerPrefs.SetString("actionKeyreponse2", KeyCode.Alpha2.ToString());
+        }
+        if (!PlayerPrefs.HasKey("actionKeyreponse3"))
+        {
+            PlayerPrefs.SetString("actionKeyreponse3", KeyCode.Alpha3.ToString());
+        }
+        if (!PlayerPrefs.HasKey("nextDialogue"))
+        {
+            PlayerPrefs.SetString("nextDialogue", KeyCode.W.ToString());
         }
     }
 
@@ -183,7 +238,7 @@ public class settingsManager : MonoBehaviour
     }
     public void SetVoiceVolume(float volume)
     {
-       
+
 
         audioMixer.SetFloat("voiceVol", Mathf.Log10(volume) * 20);
 

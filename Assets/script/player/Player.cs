@@ -41,7 +41,7 @@ public class Player : NetworkBehaviour
     [Header("player keyBind")]
     [SerializeField] private KeyPositions keyPositions;
     private RaycastHit hit;
-    private GameObject currentHit = null;
+    public GameObject currentHit = null;
     private KeyCode currentKey;
     private interactiveInterfaceObject currentInterfaceObject;
 
@@ -309,7 +309,7 @@ public class Player : NetworkBehaviour
                 //check new interactif object ( ex: door, tv, ... )
                 if ((hit.collider.gameObject.tag == "interactive" || (tags != null && tags.HasTag("interactive"))) && hit.collider.gameObject != currentHit)
                 {
-                    if (currentHit != null)
+                    if (keyPositions != null && keyPositions.haveKey(currentKey))
                     {
                         keyPositions.removeKeyUI(currentKey);
                     }
@@ -329,7 +329,7 @@ public class Player : NetworkBehaviour
         }
         else
         {
-            if (currentHit != null)
+            if (keyPositions != null && keyPositions.haveKey(currentKey))
             {
                 //var outLine = currentHit.GetComponent<OutlineObject>();
                 //outLine.enabled = false;
