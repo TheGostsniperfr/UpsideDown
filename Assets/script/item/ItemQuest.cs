@@ -69,7 +69,6 @@ public class ItemQuest : interactiveInterfaceObject
         NetworkServer.Destroy(gameObject);
     }
 
-    [Command(requiresAuthority = false)]
     private void showDialogueToAll(GameObject player)
     {
         player.GetComponent<Player>().showDialogue(dialogueToShow);

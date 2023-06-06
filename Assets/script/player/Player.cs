@@ -348,7 +348,6 @@ public class Player : NetworkBehaviour
 
     }
 
-
     public void showDialogue(DialogueObject dialogueObject)
     {
         if (isLocalPlayer)
