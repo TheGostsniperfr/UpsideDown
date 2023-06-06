@@ -25,6 +25,9 @@ public class CharacterMoveAB : NetworkBehaviour
     [SerializeField] private float cooldownToUpdatePath = 3f;
     private float lastUpdatePath = 0f;
 
+    public float cooldownPathPathFinding = 1f;
+    public float lastUpdatePathFinding = -1f;
+
 
 
     private void Start()
@@ -44,9 +47,18 @@ public class CharacterMoveAB : NetworkBehaviour
         {
             if (!GoToLeurre)
             {
-                nextLeurrePoint();
-                _Agent.Pathfinding(LeurrePosition);
-                GoToLeurre = true;
+
+                if (lastUpdatePathFinding + cooldownPathPathFinding < Time.timeSinceLevelLoad)
+                {
+                    lastUpdatePathFinding = Time.timeSinceLevelLoad;
+
+                    nextLeurrePoint();
+
+                    _Agent.Pathfinding(LeurrePosition);
+                    GoToLeurre = true;
+                }
+
+                
             }
 
             if (_Agent.Status != AStarAgentStatus.Finished)
@@ -56,8 +68,12 @@ public class CharacterMoveAB : NetworkBehaviour
 
             if (_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
             {
-                nextLeurrePoint();
-                _Agent.Pathfinding(LeurrePosition);
+                if (lastUpdatePathFinding + cooldownPathPathFinding < Time.timeSinceLevelLoad)
+                {
+                    lastUpdatePathFinding = Time.timeSinceLevelLoad;
+                    nextLeurrePoint();
+                    _Agent.Pathfinding(LeurrePosition);
+                }
             }
         }
         else
@@ -73,12 +89,21 @@ public class CharacterMoveAB : NetworkBehaviour
                 {
                     lastUpdatePath = Time.timeSinceLevelLoad;
 
-                    _Agent.Pathfinding(isPickUp.gameObject.transform.position);
+                    if (lastUpdatePathFinding + cooldownPathPathFinding < Time.timeSinceLevelLoad)
+                    {
+                        lastUpdatePathFinding = Time.timeSinceLevelLoad;
+
+                        _Agent.Pathfinding(isPickUp.gameObject.transform.position);
+                    }
 
                     if(_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
                     {
-                        chooseNewRandomPoint();
-                        _Agent.Pathfinding(currentPoint.position);
+                        if (lastUpdatePathFinding + cooldownPathPathFinding < Time.timeSinceLevelLoad)
+                        {
+                            lastUpdatePathFinding = Time.timeSinceLevelLoad;
+                            chooseNewRandomPoint();
+                            _Agent.Pathfinding(currentPoint.position);
+                        }
                     }
                 }
 
@@ -96,7 +121,11 @@ public class CharacterMoveAB : NetworkBehaviour
                 if (_Agent.Status == AStarAgentStatus.Invalid || _Agent.Status == AStarAgentStatus.Finished)
                 {
                     chooseNewRandomPoint();
-                    _Agent.Pathfinding(currentPoint.position);
+                    if (lastUpdatePathFinding + cooldownPathPathFinding < Time.timeSinceLevelLoad)
+                    {
+                        lastUpdatePathFinding = Time.timeSinceLevelLoad;
+                        _Agent.Pathfinding(currentPoint.position);
+                    }
                 }
                 
             }
