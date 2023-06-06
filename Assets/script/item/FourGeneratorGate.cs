@@ -27,7 +27,7 @@ public class FourGeneratorGate : NetworkBehaviour
 
     private void Update()
     {
-        if(!openSomethings && allIsActive()) 
+        if (!openSomethings && allIsActive())
         {
             openSomethings = true;
 
@@ -38,7 +38,7 @@ public class FourGeneratorGate : NetworkBehaviour
 
                 GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-                if (questCompleted(networkSync.questLevel))
+                if (networkSync.itemQuest0 == 1 && networkSync.itemQuest1 == 1 && networkSync.itemQuest2 == 1 && networkSync.itemQuest3 == 1)
                 {
                     //open the door for the tp portail
                     openDoor();
@@ -58,7 +58,7 @@ public class FourGeneratorGate : NetworkBehaviour
                         rb.velocity = Vector3.zero;
                         showDialogueToAll(players[i], dialogueToShowDie);
 
-                        players[i].transform.position = tpPoints[i].transform.position; 
+                        players[i].transform.position = tpPoints[i].transform.position;
                     }
                 }
             }
@@ -67,24 +67,11 @@ public class FourGeneratorGate : NetworkBehaviour
     }
 
 
-    private bool questCompleted(List<bool> a)
-    {
-        foreach(bool b in a)
-        {
-            if(!b)
-            {
-                return false;   
-            }
-        }
-
-        return true;
-    }
-
     private bool allIsActive()
     {
         foreach (var generator in active_Generators)
         {
-            if(!generator.isActive) { return false; }
+            if (!generator.isActive) { return false; }
         }
         return true;
     }

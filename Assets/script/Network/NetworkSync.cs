@@ -1,17 +1,15 @@
 using Mirror;
-using System.Collections.Generic;
 
 public class NetworkSync : NetworkBehaviour
 {
     [SyncVar] public int gameLevel;
 
-    [SyncVar] public List<bool> questLevel;
+    [SyncVar] public int itemQuest0;
+    [SyncVar] public int itemQuest1;
+    [SyncVar] public int itemQuest2;
+    [SyncVar] public int itemQuest3;
 
 
-    private void Start()
-    {
-        questLevel = new List<bool> { false, false, false, false };
-    }
 
     [Command(requiresAuthority = false)]
     public void CmdUpdateScore(int newGameLevel)
@@ -19,10 +17,30 @@ public class NetworkSync : NetworkBehaviour
         gameLevel = newGameLevel;
     }
 
+
+
     [Command(requiresAuthority = false)]
-    public void CmdUpdateQuest(int index)
+    public void CmdUpdateQuest0(int newQuestLevel)
     {
 
-        questLevel[index] = true;
+        itemQuest0 = newQuestLevel;
+    }
+    [Command(requiresAuthority = false)]
+    public void CmdUpdateQuest1(int newQuestLevel)
+    {
+
+        itemQuest1 = newQuestLevel;
+    }
+    [Command(requiresAuthority = false)]
+    public void CmdUpdateQuest2(int newQuestLevel)
+    {
+
+        itemQuest2 = newQuestLevel;
+    }
+    [Command(requiresAuthority = false)]
+    public void CmdUpdateQuest3(int newQuestLevel)
+    {
+
+        itemQuest3 = newQuestLevel;
     }
 }

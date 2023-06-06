@@ -15,7 +15,10 @@ public class GameManager : MonoBehaviour
     public int currentGameLevel = 1;
 
     //quest level
-    public List<bool> currentQuestLevel = new List<bool> { false, false, false, false };
+    public int currentItemQuest0 = 0;
+    public int currentItemQuest1 = 0;
+    public int currentItemQuest2 = 0;
+    public int currentItemQuest3 = 0;
 
     private NetworkSync networkSync;
 
@@ -61,21 +64,43 @@ public class GameManager : MonoBehaviour
                 currentGameLevel = networkSync.gameLevel;
             }
 
-            //check quest level
-            for (int i = 0; i < currentQuestLevel.Count; i++)
-            {
-                if (!networkSync.questLevel[i] && currentQuestLevel[i])
-                {
-                    networkSync.CmdUpdateQuest(i);
-                }
 
-                if (networkSync.questLevel[i] && !currentQuestLevel[i])
-                {
-                    currentQuestLevel[i] = true;
-                }
+
+            if (networkSync.itemQuest0 < currentItemQuest0)
+            {
+                networkSync.CmdUpdateQuest0(currentItemQuest0);
+            }
+            else if (networkSync.itemQuest0 > currentItemQuest0)
+            {
+                currentItemQuest0 = networkSync.itemQuest0;
             }
 
+            if (networkSync.itemQuest1 < currentItemQuest1)
+            {
+                networkSync.CmdUpdateQuest1(currentItemQuest1);
+            }
+            else if (networkSync.itemQuest1 > currentItemQuest1)
+            {
+                currentItemQuest1 = networkSync.itemQuest1;
+            }
 
+            if (networkSync.itemQuest2 < currentItemQuest2)
+            {
+                networkSync.CmdUpdateQuest2(currentItemQuest2);
+            }
+            else if (networkSync.itemQuest2 > currentItemQuest2)
+            {
+                currentItemQuest2 = networkSync.itemQuest2;
+            }
+
+            if (networkSync.itemQuest3 < currentItemQuest3)
+            {
+                networkSync.CmdUpdateQuest3(currentItemQuest3);
+            }
+            else if (networkSync.itemQuest3 > currentItemQuest3)
+            {
+                currentItemQuest3 = networkSync.itemQuest3;
+            }
         }
     }
 

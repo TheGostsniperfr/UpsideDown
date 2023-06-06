@@ -25,10 +25,29 @@ public class itemQuestBar : MonoBehaviour
                 catch { }
             }
 
-            if (networkSync != null && networkSync.questLevel[indexOfItem])
+            if (networkSync != null)
             {
 
-                meshRenderer.enabled = true;
+                switch (indexOfItem)
+                {
+                    case 0:
+                        if (networkSync.itemQuest0 == 1) { meshRenderer.enabled = true; }
+                        break;
+                    case 1:
+                        if (networkSync.itemQuest1 == 1) { meshRenderer.enabled = true; }
+                        break;
+                    case 2:
+                        if (networkSync.itemQuest2 == 1) { meshRenderer.enabled = true; }
+                        break;
+                    case 3:
+                        if (networkSync.itemQuest3 == 1) { meshRenderer.enabled = true; }
+                        break;
+
+                    default:
+                        break;
+                }
+
+
             }
         }
     }

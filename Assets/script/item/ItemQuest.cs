@@ -25,9 +25,26 @@ public class ItemQuest : interactiveInterfaceObject
         //update the questLevel
         GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        if (IdOfItem >= gameManager.currentQuestLevel.Count) { Debug.LogError("RTFM"); }
 
-        gameManager.currentQuestLevel[IdOfItem] = true;
+        switch (IdOfItem)
+        {
+            case 0:
+                gameManager.currentItemQuest0 = 1;
+                break;
+            case 1:
+                gameManager.currentItemQuest1 = 1;
+                break;
+            case 2:
+                gameManager.currentItemQuest2 = 1;
+                break;
+            case 3:
+                gameManager.currentItemQuest3 = 1;
+                break;
+
+            default:
+                break;
+        }
+
 
         //show dialogue
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
