@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerSoundManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class playerSoundManager : MonoBehaviour
     [Header("Ambient Sound")]
     [SerializeField] private AudioSource ambientSound;
     [SerializeField] private AudioClip[] ambientMusiks;
+    [SerializeField] private AudioClip HubMusic;
     int index = 0;
 
 
@@ -25,18 +27,39 @@ public class playerSoundManager : MonoBehaviour
     {
         if (!ambientSound.isPlaying)
         {
-            index = (index + 1) % ambientMusiks.Length;
 
-            ambientSound.clip = ambientMusiks[index];
+            if (SceneManager.GetActiveScene().name == "Hub")
+            {
+                ambientSound.clip = HubMusic;
+            }
+            else
+            {
+
+
+                index = (index + 1) % ambientMusiks.Length;
+
+                ambientSound.clip = ambientMusiks[index];
+            }
             ambientSound.Play();
+
 
         }
     }
 
     private void takeRandomAmbientMusik()
     {
-        index = Random.Range(0, ambientMusiks.Length);
-        ambientSound.clip = ambientMusiks[index];
+
+        if(SceneManager.GetActiveScene().name == "Hub")
+        {
+            ambientSound.clip = HubMusic;
+        }
+        else
+        {
+            index = Random.Range(0, ambientMusiks.Length);
+            ambientSound.clip = ambientMusiks[index];
+        }
+
+        
     }
 
     public void isAmbient(bool state)

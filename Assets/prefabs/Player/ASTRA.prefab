@@ -3351,6 +3351,7 @@ MonoBehaviour:
   rb: {fileID: 1486211225457030816}
   playerSetup: {fileID: 6284173179579822254}
   keyPositions: {fileID: 0}
+  currentHit: {fileID: 0}
   playerReatch: 3
   cam: {fileID: 6812435653995802223}
   pickupParent: {fileID: 0}
@@ -3431,6 +3432,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0d86b13054e55e24e9013b90137b4b96, type: 3}
   - {fileID: 8300000, guid: 7907cc2bfcde270499ccf1dba39b280e, type: 3}
   - {fileID: 8300000, guid: 871b952fcd3aee145a5dede44b60ad00, type: 3}
+  HubMusic: {fileID: 8300000, guid: 504af2325f83d494f99193afad352cab, type: 3}
 --- !u!114 &7744959435606929019
 MonoBehaviour:
   m_ObjectHideFlags: 0
