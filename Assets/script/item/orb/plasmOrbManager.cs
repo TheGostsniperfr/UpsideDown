@@ -6,7 +6,7 @@ public class plasmOrbManager : NetworkBehaviour
     [SerializeField] private isPickUp isPickUpComponent;
     public orbSupportManager orbEmitterSupportManager;
 
-    private void OnTriggerEnter(Collider col)
+    private void OnTriggerStay(Collider col)
     {
 
         if (isPickUpComponent.player == null && col.gameObject.tag != "Player" && col.gameObject.layer != 16 && col.gameObject.tag != "volume" && col.gameObject.tag != "orb")
