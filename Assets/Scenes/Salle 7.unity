@@ -650,6 +650,10 @@ PrefabInstance:
       value: 2001707333
       objectReference: {fileID: 0}
     - target: {fileID: 5137653290310251395, guid: f4ef50eb96443d143b082e660e8976e4, type: 3}
+      propertyPath: oneActivation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137653290310251395, guid: f4ef50eb96443d143b082e660e8976e4, type: 3}
       propertyPath: dialogueToShow
       value: 
       objectReference: {fileID: 11400000, guid: 170c4d57c8b18814f825e73ac3ed9aeb, type: 2}
